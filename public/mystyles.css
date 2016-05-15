@@ -1,0 +1,55 @@
+.brand {
+    font-style: normal;
+    font-size: 30px;
+
+}
+
+.navbar {
+    background-color: darkslategray;
+    padding: 30px;
+    border-bottom:solid black;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    background-color: rgba(251, 255, 209, 0.8);
+
+}
+
+.navbar-default .navbar-brand{
+    color: darkgrey;
+}
+
+body {
+    background-image: url(./images/Blurred-Background1.jpg);
+    width: auto;
+    height: auto;
+}
+
+.homepage-content {
+    margin-top: 100px;
+}
+
+.homepage-content .list-group .list-group-item{
+    background-color: transparent;/home/nasir/Desktop/Blurred-Background1.jpg
+}
+
+.homepage-content .list-group a {
+    display: block;
+    text-decoration: none;
+    color: #4b4b4b;
+    font-weight: bold;
+}
+
+.homepage-content .list-group .list-group-item{
+    border-color: darkslategray;
+}
+
+.homepage-content .list-group .list-group-item:hover {
+    background-color: darkslategray;
+}
+
+.homepage-content .list-group .list-group-item:hover a {
+    color: white;
+}
+
+
