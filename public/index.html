@@ -2,29 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+    <title>Web Dev Course</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="mystyles.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>Web Dev Course Home Page</h1>
-
-    <p>
-        Customize this home page to your linking.
-    </p>
-
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="#">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+       <nav class="navbar navbar-default">
+        <div class="navbar-inner">
+            <a href="#" class="brand navbar-brand">Web Dev Course</a>
+            <div>
+                <ul class="nav navbar-nav nav-tabs">
+                    <li class="active" >
+                        <a href="#">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+       <div>
+       <div class="homepage-content">
+            <ul class="list-group">
+               <li class="list-group-item text-center text-uppercase" >
+                   <a href="project/index.html">Project</a>
+               </li>
+               <li class="list-group-item text-center text-uppercase">
+                   <a href="assignment/index.html">Assignment</a>
+               </li>
+               <li class="list-group-item text-center text-uppercase">
+                   <a href="test/index.html">Test MongoDB</a>
+               </li>
+               <li class="list-group-item text-center text-uppercase">
+                   <a href="#">Github repository</a>
+               </li>
+           </ul>
+       </div>
+       </div>
 </body>
 </html>
