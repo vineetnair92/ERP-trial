@@ -62,3 +62,7 @@ body {
     border-color: transparent;
     border-radius: 5px;
 }
+
+.navbar-link > .glyphicon {
+color: rgb(58, 58, 58);
+}
