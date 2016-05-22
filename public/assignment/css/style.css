@@ -4,6 +4,7 @@ input.form-control {
 
 body {
     padding-top: 70px;
+
 }
 
 
@@ -11,11 +12,14 @@ body {
     margin-left: -5px;
     margin-right: -3px;
     float: none;
-
 }
+
+
+
 
 .navbar-brand {
     margin-left: -5px;
+    font-weight: bold;
 }
 
 .navbar-text {
@@ -34,7 +38,8 @@ body {
 
 .section-heading {
     font-weight: bold;
-    font-size: 14.5px;
+    font-size: 18px;
+    margin-bottom: 3px;
 }
 
 .widget-settings {
