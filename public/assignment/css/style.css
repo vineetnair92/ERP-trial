@@ -8,8 +8,41 @@ body {
 
 
 .container-fluid > .navbar-header {
-    margin-left: -10px;
-    margin-right: -5px;
+    margin-left: -5px;
+    margin-right: -3px;
     float: none;
 
+}
+
+.navbar-text {
+    float: none;
+}
+
+.navbar-footer {
+    margin-left: -5px;
+    margin-right: -3px;
+}
+
+body .content {
+   margin-top: -30px;
+    margin-bottom: 50px;
+}
+.section-heading {
+    font-weight: bold;
+    font-size: 14.5px;
+}
+
+.widget-settings {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    padding: 2px;
+    opacity: 0.8;
+    border-bottom-left-radius: 5px;
+
+}
+
+.image {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
