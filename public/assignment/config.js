@@ -14,11 +14,16 @@
               controller : 'LoginController',
               controllerAs : 'model'
             })
-            .when("/profile", {
-                templateUrl : 'views/user/profile.view.client.html'
+            .when("/profile/:uid", {
+                templateUrl : 'views/user/profile.view.client.html',
+                controller : 'ProfileController',
+                controllerAs: 'model'
+         
             })
             .when("/register", {
-                templateUrl : 'views/user/register.view.client.html'
+                templateUrl : 'views/user/register.view.client.html',
+                controller : 'RegisterController',
+                controllerAs: 'model'
             })
             .otherwise({
                 redirectTo:'/'
