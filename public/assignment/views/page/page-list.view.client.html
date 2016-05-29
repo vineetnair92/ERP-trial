@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../website/website-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -22,35 +22,11 @@
 
 <div class="container-fluid">
     <ul class="list-group">
-        <li class="list-group-item">
-            <a href="../widget/widget-list.view.client.html">
-                Page-Content
+        <li ng-repeat="page in model.pages" class="list-group-item">
+            <a href="#/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}/widget">
+                {{page.name}}
             </a>
-            <a href="../page/page-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../widget/widget-list.view.client.html">
-                Home
-            </a>
-            <a href="../page/page-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../widget/widget-list.view.client.html">
-               About Us
-            </a>
-            <a href="../page/page-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="../widget/widget-list.view.client.html">
-                Contact
-            </a>
-            <a href="../page/page-edit.view.client.html" class="pull-right">
+            <a href="#/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>
