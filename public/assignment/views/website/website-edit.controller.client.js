@@ -4,6 +4,7 @@
         .controller("EditWebsiteController", EditWebsiteController);
 
     function EditWebsiteController($location, $routeParams, WebsiteService) {
+        console.log("In edit");
         var cModel = this;
         cModel.userId = $routeParams.uid;
         cModel.websiteId = $routeParams.wid;

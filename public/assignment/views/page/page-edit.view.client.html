@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="page-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -11,7 +11,7 @@
                 Edit Page
             </a>
             <p class="navbar-text pull-right">
-                <a href="page-list.view.client.html" class="navbar-link">
+                <a ng-click="model.updatePage(model.page)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -24,22 +24,45 @@
     <form>
         <div class="form-group">
             <label for="edit-page-name">Name</label>
-            <input type="text" class="form-control" id="edit-page-name" placeholder="Page Name" value="Page-Content">
+            <input type="text"
+                   class="form-control"
+                   id="edit-page-name"
+                   placeholder="Page Name"
+                   ng-model = "model.page.name"
+                   value="Page-Content">
         </div>
         <div class="form-group">
             <label for="create-page-title">Title</label>
-            <input type="text" class="form-control" id="create-page-title" placeholder="Page Title">
+            <input type="text"
+                   class="form-control"
+                   id="create-page-title"
+                   ng-model = "model.page.title"
+                   placeholder="Page Title">
         </div>
     </form>
+
+    <div ng-switch="model.updateStats">
+        <div ng-switch-when="true" class="alert alert-success" role="alert">
+            Update Sucess!
+        </div>
+        <div ng-switch-when="false" class="alert alert-danger" role="alert">
+            Update Error!
+        </div>
+    </div>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        Error Page Deletion !
+    </div>
+
     <a class="btn btn-danger  btn-block"
-       href="page-list.view.client.html">Delete</a>
+       ng-click="model.deletePage(model.page._id)">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="row navbar-text navbar-footer">
             <div class="text-center pull-right">
-                <a href="../user/profile.view.client.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
