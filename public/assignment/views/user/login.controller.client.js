@@ -10,7 +10,7 @@
         function login(userInput) {
             var user = UserService.findUserByCredentials(userInput.username, userInput.password);
             if(user) {
-               $location.url("/profile/"+user._id);
+               $location.url("/user/"+user._id);
             }
             else {
                 cModel.error = "Username/Password is incorrect";

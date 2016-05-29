@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="website-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -11,7 +11,7 @@
                 Edit Website
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-list.view.client.html" class="navbar-link">
+                <a ng-click="model.updateWebsite(model.website)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -25,20 +25,32 @@
     <form>
         <div class="form-group">
             <label for="website-name">Website Name</label>
-            <input type="text" class="form-control" id="website-name" value="Gizmodo" placeholder="Gizmodo">
+            <input type="text" class="form-control"
+                   id="website-name"
+                   ng-model="model.website.name"
+                   placeholder="Gizmodo">
         </div>
         <div class="form-group">
             <label for="website-desc">Website Description</label>
             <textarea id="website-desc"
                       class="form-control"
                       rows=4
-                      placeholder="Description">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </textarea>
+                      ng-model="model.website.description"
+                      placeholder="Description"></textarea>
         </div>
     </form>
 
+    <div ng-switch="model.updateStats">
+            <div ng-switch-when="true" class="alert alert-success" role="alert">
+                Update Sucess!
+            </div>
+            <div ng-switch-when="false" class="alert alert-danger" role="alert">
+                Update Error!
+            </div>
+    </div>
+
     <a class="btn btn-danger  btn-block"
-       href="website-list.view.client.html">Delete</a>
+       ng-click="model.deleteWebsite(model.website._id)">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -50,7 +62,7 @@
                 </a>
             </div>
             <div class="navbar-text  pull-right">
-                <a href="../user/profile.view.client.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

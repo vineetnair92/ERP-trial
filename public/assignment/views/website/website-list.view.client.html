@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="">
                 Websites
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-new.view.client.html" class="navbar-link">
-                  <span class="glyphicon glyphicon-plus"></span>
+                <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </p>
         </div>
@@ -15,46 +15,16 @@
 
 <div class="container-fluid">
     <ul class="list-group">
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">
-                Gizmodo
-            </a>
-            <div class="pull-right">
-                <a href="../website/website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
+            <li ng-repeat="website in model.websites" class="list-group-item">
+                <a href="../page/page-list.view.client.html">
+                    {{website.name}}
                 </a>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">
-                Facebook
-            </a>
-            <div class="pull-right">
-                <a href="../website/website-edit.view.client.html" >
-                    <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
-                </a>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">
-                Youtube
-            </a>
-            <div class="pull-right">
-                <a href="../website/website-edit.view.client.html" >
-                    <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
-                </a>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <a href="../page/page-list.view.client.html">
-                Google
-            </a>
-            <div class="pull-right">
-                <a href="../website/website-edit.view.client.html"  >
-                    <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
-                </a>
-            </div>
-        </li>
+                <div class="pull-right">
+                    <a href="#/user/{{website.developerId}}/website/{{website._id}}">
+                        <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
+                    </a>
+                </div>
+            </li>
     </ul>
 </div>
 
@@ -62,7 +32,7 @@
     <div class="container-fluid">
         <div class="row navbar-footer ">
             <div class="navbar-text text-center pull-right">
-                <a href="../user/profile.view.client.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>
