@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="widget-list.view.client.html">
+                Widget Edit
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="widget-list.view.client.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container content">
+    <div ng-switch="model.widget.widgetType">
+        <div ng-switch-when="HEADER">
+            {{model.widget}}
+            <ng-include src="'views/widget/widget-heading.view.client.html'" />
+        </div>
+        <div ng-switch-when="IMAGE">
+            {{model.widget}}
+            <ng-include src="'views/widget/widget-image.view.client.html'" />
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            {{model.widget}}
+            <ng-include src="'views/widget/widget-youtube.view.client.html'" />
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row navbar-footer">
+            <p class="navbar-text pull-right">
+                <a href="../user/profile.view.client.html">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
