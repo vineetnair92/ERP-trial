@@ -13,15 +13,12 @@
             cModel.user = UserService.findByUserId(currentUserId);
 
         }
-        
+
         function updateProfile(user) {
-             console.log(user);
-             cModel.updateStats = UserService.updateUser(currentUserId, user);
-             
+            console.log(user);
+            cModel.updateStats = UserService.updateUser(currentUserId, user);
+
         }
-
-
-
 
 
     }

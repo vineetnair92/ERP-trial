@@ -8,7 +8,7 @@
         cModel.createUserStats = true;
         function createUser(user) {
             cModel.createUserStats = UserService.createUser(user);
-            if(cModel.createUserStats) {
+            if (cModel.createUserStats) {
                 $location.url("/");
             }
         }

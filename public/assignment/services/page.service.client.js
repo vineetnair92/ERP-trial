@@ -20,13 +20,13 @@
         return api;
 
         function deletePage(pageId) {
-                for (var i in pages) {
-                    if (pages[i]._id === pageId) {
-                        pages.splice(i, 1);
-                        return true;
-                    }
+            for (var i in pages) {
+                if (pages[i]._id === pageId) {
+                    pages.splice(i, 1);
+                    return true;
                 }
-                return false;
+            }
+            return false;
         }
 
         function createPage(websiteId, page) {
@@ -51,8 +51,8 @@
         }
 
         function findPageById(pageId) {
-            for(var i in pages) {
-                if(pages[i]._id === pageId) {
+            for (var i in pages) {
+                if (pages[i]._id === pageId) {
                     return pages[i];
                 }
             }

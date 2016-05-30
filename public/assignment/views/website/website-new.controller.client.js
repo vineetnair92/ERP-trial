@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("NewWebsiteController", NewWebsiteController);
@@ -11,8 +11,8 @@
 
         function createWebsite(website) {
             var result = WebsiteService.createWebsite(cModel.userId, website);
-            if(result) {
-                $location.url("/user/"+cModel.userId+"/website");
+            if (result) {
+                $location.url("/user/" + cModel.userId + "/website");
             } else {
                 cModel.error = "Unable to create website";
             }

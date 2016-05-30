@@ -13,7 +13,8 @@
         cModel.websiteId = $routeParams.wid;
         cModel.pageId = $routeParams.pid;
         cModel.chooseWidget = chooseWidget;
-        var widgetEditUrl = "/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page/"+cModel.pageId+"/widget/";
+        var widgetEditUrl = "/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget/";
+
         function chooseWidget(widgetType) {
             switch (widgetType) {
                 case HEADER  :
@@ -23,7 +24,7 @@
                         widgetType: HEADER
                     };
                     WidgetService.createWidget(cModel.pageId, newWidget);
-                    $location.url(widgetEditUrl+newWidget._id);
+                    $location.url(widgetEditUrl + newWidget._id);
                     break;
                 case IMAGE   :
                     console.log("Image Chosen");
@@ -32,7 +33,7 @@
                         widgetType: IMAGE
                     };
                     WidgetService.createWidget(cModel.pageId, headerWidget);
-                    $location.url(widgetEditUrl+headerWidget._id);
+                    $location.url(widgetEditUrl + headerWidget._id);
                     break;
                 case YOUTUBE   :
                     console.log("Youtube Chosen");
@@ -41,7 +42,7 @@
                         widgetType: YOUTUBE
                     };
                     WidgetService.createWidget(cModel.pageId, headerWidget);
-                    $location.url(widgetEditUrl+headerWidget._id);
+                    $location.url(widgetEditUrl + headerWidget._id);
                     break;
                 default :
                     console.log("Error Choose");

@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("EditPageController", EditPageController);
@@ -19,8 +19,8 @@
 
         function updatePage(page) {
             cModel.updateStats = PageService.updatePage(cModel.pageId, page);
-            if(cModel.updateStats) {
-                $location.url("/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page");
+            if (cModel.updateStats) {
+                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
             } else {
                 cModel.error = "Unable to update page";
             }
@@ -28,8 +28,8 @@
 
         function deletePage(pageId) {
             var result = PageService.deletePage(pageId);
-            if(result) {
-                $location.url("/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page");
+            if (result) {
+                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
             } else {
                 cModel.error = "Unable to delete page";
             }

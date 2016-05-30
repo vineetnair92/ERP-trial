@@ -15,16 +15,16 @@
 
 <div class="container-fluid content">
     <ul class="list-group">
-            <li ng-repeat="website in model.websites" class="list-group-item">
-                <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
-                    {{website.name}}
+        <li ng-repeat="website in model.websites" class="list-group-item">
+            <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                {{website.name}}
+            </a>
+            <div class="pull-right">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}">
+                    <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
                 </a>
-                <div class="pull-right">
-                    <a href="#/user/{{website.developerId}}/website/{{website._id}}">
-                        <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
-                    </a>
-                </div>
-            </li>
+            </div>
+        </li>
     </ul>
 </div>
 

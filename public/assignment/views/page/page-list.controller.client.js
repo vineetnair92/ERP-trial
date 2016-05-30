@@ -12,7 +12,7 @@
 
         function init() {
             cModel.pages = PageService.findPageByWebsiteId(cModel.websiteId)
-            console.log(cModel.pages);
+            //console.log(cModel.pages);
         }
     }
 

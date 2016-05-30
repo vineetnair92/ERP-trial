@@ -1,10 +1,10 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("EditWidgetController", EditWidgetController);
 
     function EditWidgetController($location, $routeParams, WidgetService) {
-        console.log("In edit widget");
+        //console.log("In edit widget");
         var cModel = this;
         cModel.userId = $routeParams.uid;
         cModel.websiteId = $routeParams.wid;
@@ -21,8 +21,8 @@
 
         function updateWidget(widget) {
             cModel.updateStats = WidgetService.updateWidget(cModel.widgetId, widget);
-            if( cModel.updateStats) {
-                $location.url("/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page/"+cModel.pageId+"/widget");
+            if (cModel.updateStats) {
+                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
             } else {
                 cModel.error = "Unable to update widget";
             }
@@ -30,8 +30,8 @@
 
         function deleteWidget(widgetId) {
             var result = WidgetService.deleteWidget(widgetId);
-            if(result) {
-                $location.url("/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page/"+cModel.pageId+"/widget");
+            if (result) {
+                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
             } else {
                 cModel.error = "Unable to delete widget";
             }

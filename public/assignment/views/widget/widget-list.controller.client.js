@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("WidgetListController", WidgetListController);
@@ -14,6 +14,7 @@
         function init() {
             cModel.widgets = WidgetService.findWidgetsByPageId(cModel.pageId);
         }
+
         init();
 
         function getSafeHtml(widget) {

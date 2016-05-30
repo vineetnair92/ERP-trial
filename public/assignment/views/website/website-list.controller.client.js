@@ -11,7 +11,7 @@
 
         function init() {
             cModel.websites = WebsiteService.findWebsitesByUser(cModel.userId);
-            console.log(cModel.websites);
+            //console.log(cModel.websites);
         }
     }
 

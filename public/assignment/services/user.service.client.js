@@ -11,19 +11,19 @@
     ]
 
     function UserService() {
-         api = {
-             findUserByCredentials : findUserByCredentials,
-             findByUserId : findByUserId,
-             findUserByUsername: findUserByUsername,
-             updateUser: updateUser,
-             createUser: createUser,
-             deleteuser: deleteUser
-         }
-         return api;
-        
+        api = {
+            findUserByCredentials: findUserByCredentials,
+            findByUserId: findByUserId,
+            findUserByUsername: findUserByUsername,
+            updateUser: updateUser,
+            createUser: createUser,
+            deleteuser: deleteUser
+        }
+        return api;
+
         function findUserByCredentials(username, password) {
-            for(var i in users) {
-                if(users[i].username === username && users[i].password === password) {
+            for (var i in users) {
+                if (users[i].username === username && users[i].password === password) {
                     return users[i];
                 }
             }
@@ -32,8 +32,8 @@
         }
 
         function findByUserId(userId) {
-            for(var i in users) {
-                if(users[i]._id === userId) {
+            for (var i in users) {
+                if (users[i]._id === userId) {
                     return users[i];
                 }
             }
@@ -42,8 +42,8 @@
         }
 
         function findUserByUsername(userName) {
-            for(var i in users) {
-                if(users[i].username === userName) {
+            for (var i in users) {
+                if (users[i].username === userName) {
                     return users[i];
                 }
             }
@@ -52,8 +52,8 @@
         }
 
         function updateUser(userId, user) {
-            for(var i in users) {
-                if(users[i]._id === userId) {
+            for (var i in users) {
+                if (users[i]._id === userId) {
                     users[i].firstName = user.firstName;
                     users[i].lastName = user.lastName;
                     users[i].email = user.email;
@@ -65,7 +65,7 @@
 
         function createUser(user) {
             var newUser = {};
-            newUser._id = parseInt(users[users.length - 1]._id) + 1 +"";
+            newUser._id = parseInt(users[users.length - 1]._id) + 1 + "";
             newUser.username = user.username;
             newUser.password = user.password;
             users.push(newUser);
@@ -73,9 +73,9 @@
         }
 
         function deleteUser(userId) {
-            for(var i in users) {
-                if(users[i]._id === userId) {
-                    users.splice(i,1);
+            for (var i in users) {
+                if (users[i]._id === userId) {
+                    users.splice(i, 1);
                     return true;
                 }
             }
