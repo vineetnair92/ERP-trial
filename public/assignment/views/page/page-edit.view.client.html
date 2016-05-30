@@ -41,17 +41,8 @@
         </div>
     </form>
 
-    <div ng-switch="model.updateStats">
-        <div ng-switch-when="true" class="alert alert-success" role="alert">
-            Update Sucess!
-        </div>
-        <div ng-switch-when="false" class="alert alert-danger" role="alert">
-            Update Error!
-        </div>
-    </div>
-
     <div ng-show="model.error" class="alert alert-danger" role="alert">
-        Error Page Deletion !
+        {{model.error}}
     </div>
 
     <a class="btn btn-danger  btn-block"

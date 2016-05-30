@@ -40,14 +40,11 @@
         </div>
     </form>
 
-    <div ng-switch="model.updateStats">
-            <div ng-switch-when="true" class="alert alert-success" role="alert">
-                Update Sucess!
-            </div>
-            <div ng-switch-when="false" class="alert alert-danger" role="alert">
-                Update Error!
-            </div>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
     </div>
+
 
     <a class="btn btn-danger  btn-block"
        ng-click="model.deleteWebsite(model.website._id)">Delete</a>

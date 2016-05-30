@@ -15,6 +15,7 @@
         }
         
         function updateProfile(user) {
+             console.log(user);
              cModel.updateStats = UserService.updateUser(currentUserId, user);
              
         }

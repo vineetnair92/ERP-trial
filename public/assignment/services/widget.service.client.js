@@ -24,34 +24,101 @@
         {"_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
 
+    var HEADER = 'HEADER';
+    var IMAGE = 'IMAGE';
+    var YOUTUBE = 'YOUTUBE';
+
     function WidgetService() {
         var api = {
-            findWidgetsForPageId: findWidgetsForPageId,
-            findWidgetById: findWidgetById
+            findWidgetsByPageId: findWidgetsByPageId,
+            findWidgetById: findWidgetById,
+            createWidget: createWidget,
+            updateWidget: updateWidget,
+            deleteWidget: deleteWidget
         };
         return api;
 
-        function findWidgetsForPageId(pageId) {
+        function findWidgetsByPageId(pageId) {
             var resultSet = [];
             for (var i in widgets) {
                 if (widgets[i].pageId === pageId) {
                     resultSet.push(widgets[i]);
                 }
             }
-            if(resultSet.length)
+            if (resultSet.length)
                 return resultSet;
             else
                 return null;
         }
 
         function findWidgetById(widgetId) {
-            for(var i in widgets) {
-                if(widgets[i]._id === widgetId) {
+            for (var i in widgets) {
+                if (widgets[i]._id === widgetId) {
                     return widgets[i];
                 }
             }
 
             return null;
+        }
+
+        function createWidget(pageId, widget) {
+            widget.pageId = pageId;
+            widgets.push(widget);
+            return true;
+        }
+
+        function deleteWidget(widgetId) {
+            for (var i in widgets) {
+                if(widgets[i]._id == widgetId) {
+                    widgets.splice(i,1);
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+        function updateWidget(widgetId, widget) {
+            for (var i in widgets) {
+                if (widgets[i]._id === widgetId) {
+                    switch (widgets[i].widgetType) {
+                        case HEADER:
+                            updateHeaderWidget(widgets[i], widget);
+                            return true;
+                            break;
+                        case IMAGE:
+                            updateImageWidget(widgets[i], widget);
+                            return true;
+                            break;
+                        case YOUTUBE:
+                            updateYTubeWidget(widgets[i], widget);
+                            return true;
+                            break;
+                        default :
+                            return false;
+                    }
+                }
+            }
+        }
+
+        function updateHeaderWidget(oldWidget, newWidget) {
+            oldWidget.name = newWidget.name;
+            oldWidget.size = newWidget.size;
+            oldWidget.text = newWidget.text;
+        }
+
+        function updateImageWidget(oldWidget, newWidget) {
+            oldWidget.name = newWidget.name;
+            oldWidget.text = newWidget.text;
+            oldWidget.width = newWidget.width;
+            oldWidget.url = newWidget.url;
+        }
+
+        function updateYTubeWidget(oldWidget, newWidget) {
+            oldWidget.name = newWidget.name;
+            oldWidget.text = newWidget.text;
+            oldWidget.width = newWidget.width;
+            oldWidget.url = newWidget.url;
         }
     }
 })();

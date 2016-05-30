@@ -18,14 +18,26 @@
     <div class="form-group">
         <label for="widget-head-size">Size</label>
         <select class="form-control"
-                id="widget-head-size">
-            <option ng-repeat="i in [1,2,3,4,5,6]"
+                id="widget-head-size"
+                ng-model="model.widget.size">
+         <!--   <option ng-repeat="i in [1,2,3,4,5,6]"
                     ng-selected="model.widget.size == i"
-                    ng-value="i">{{i}}
-            </option>
+                    ng-value="i">
+                {{i}}
+            </option>-->
+            <option ng-selected="model.widget.size == 1" value="1">1</option>
+            <option ng-selected="model.widget.size == 2" value="2">2</option>
+            <option ng-selected="model.widget.size == 3" value="3">3</option>
+            <option ng-selected="model.widget.size == 4" value="4">4</option>
+            <option ng-selected="model.widget.size == 5" value="5">5</option>
+            <option ng-selected="model.widget.size == 6" value="6">6</option>
         </select>
     </div>
 
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
     <a class="btn btn-danger  btn-block"
-       href="widget-list.view.client.html">Delete</a>
+       ng-click="model.deleteWidget(model.widget._id)">Delete</a>
 </form>

@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("EditWebsiteController", EditWebsiteController);
@@ -15,15 +15,20 @@
         function init() {
             cModel.website = WebsiteService.findWebsiteById(cModel.websiteId);
         }
-        
+
         function updateWebsite(website) {
             cModel.updateStats = WebsiteService.updateWebsite(cModel.websiteId, website);
+            if (cModel.updateStats) {
+                $location.url("/user/" + cModel.userId + "/website");
+            } else {
+                cModel.error = "Unable to delete website";
+            }
         }
 
         function deleteWebsite(websiteId) {
             var result = WebsiteService.deleteWebsite(websiteId);
-            if(result) {
-                $location.url("/user/"+cModel.userId+"/website");
+            if (result) {
+                $location.url("/user/" + cModel.userId + "/website");
             } else {
                 cModel.error = "Unable to delete website";
             }

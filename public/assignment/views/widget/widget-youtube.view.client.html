@@ -29,6 +29,10 @@
                ng-model="model.widget.width">
     </div>
 
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
     <a class="btn btn-danger  btn-block"
-       href="widget-list.view.client.html">Delete</a>
+       ng-click="model.deleteWidget(model.widget._id)">Delete</a>
 </form>

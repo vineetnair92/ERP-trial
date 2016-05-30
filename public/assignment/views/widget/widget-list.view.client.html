@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../page/page-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -38,13 +38,13 @@
                 <h5 ng-switch-when="5">{{widget.text}}</h5>
                 <h6 ng-switch-when="6">{{widget.text}}</h6>
             </div>
-            <div ng-switch-when="HTML">
+            <div class="widget" ng-switch-when="HTML">
                 <div ng-bind-html="model.getSafeHtml(widget)"></div>
             </div>
-            <div ng-switch-when="IMAGE">
+            <div class="widget" ng-switch-when="IMAGE">
                 <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
             </div>
-            <div ng-switch-when="YOUTUBE">
+            <div class="widget" ng-switch-when="YOUTUBE">
                 <iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0"
                         allowfullscreen></iframe>
             </div>
@@ -128,7 +128,7 @@
                 </a>
             </div>
             <div class="navbar-text  pull-right">
-                <a href="../user/profile.view.client.html">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

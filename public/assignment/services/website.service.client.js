@@ -32,12 +32,12 @@
             return false;
         }
 
-        function createWebsite(developerId, website) {
+        function createWebsite(userId, website) {
             var newWebsite = {
                 _id: (new Date()).getTime() + "",
                 name: website.name,
                 description: website.description,
-                developerId: developerId
+                developerId: userId
             };
             websites.push(newWebsite);
             return newWebsite;

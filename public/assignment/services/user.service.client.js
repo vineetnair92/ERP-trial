@@ -14,6 +14,7 @@
          api = {
              findUserByCredentials : findUserByCredentials,
              findByUserId : findByUserId,
+             findUserByUsername: findUserByUsername,
              updateUser: updateUser,
              createUser: createUser,
              deleteuser: deleteUser
@@ -40,7 +41,7 @@
             return null;
         }
 
-        function findByUsername(userName) {
+        function findUserByUsername(userName) {
             for(var i in users) {
                 if(users[i].username === userName) {
                     return users[i];

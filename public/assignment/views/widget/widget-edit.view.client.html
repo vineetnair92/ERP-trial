@@ -11,7 +11,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-list.view.client.html" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -19,10 +19,10 @@
     </div>
 </nav>
 
+
 <div class="container content">
     <div ng-switch="model.widget.widgetType">
         <div ng-switch-when="HEADER">
-            {{model.widget}}
             <ng-include src="'views/widget/widget-heading.view.client.html'" />
         </div>
         <div ng-switch-when="IMAGE">

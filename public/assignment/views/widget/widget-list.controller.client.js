@@ -12,7 +12,7 @@
         cModel.getSafeUrl = getSafeUrl;
 
         function init() {
-            cModel.widgets = WidgetService.findWidgetsForPageId(cModel.pageId);
+            cModel.widgets = WidgetService.findWidgetsByPageId(cModel.pageId);
         }
         init();
 

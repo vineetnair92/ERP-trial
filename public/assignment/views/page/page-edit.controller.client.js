@@ -19,6 +19,11 @@
 
         function updatePage(page) {
             cModel.updateStats = PageService.updatePage(cModel.pageId, page);
+            if(cModel.updateStats) {
+                $location.url("/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page");
+            } else {
+                cModel.error = "Unable to update page";
+            }
         }
 
         function deletePage(pageId) {

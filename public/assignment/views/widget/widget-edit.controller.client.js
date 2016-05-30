@@ -12,6 +12,7 @@
         cModel.widgetId = $routeParams.wgid
         cModel.updateWidget = updateWidget;
         cModel.deleteWidget = deleteWidget;
+
         init();
 
         function init() {
@@ -20,12 +21,17 @@
 
         function updateWidget(widget) {
             cModel.updateStats = WidgetService.updateWidget(cModel.widgetId, widget);
+            if( cModel.updateStats) {
+                $location.url("/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page/"+cModel.pageId+"/widget");
+            } else {
+                cModel.error = "Unable to update widget";
+            }
         }
 
         function deleteWidget(widgetId) {
             var result = WidgetService.deleteWidget(widgetId);
             if(result) {
-                $location.url("/user/"+cModel.userId+"/widget");
+                $location.url("/user/"+cModel.userId+"/website/"+cModel.websiteId+"/page/"+cModel.pageId+"/widget");
             } else {
                 cModel.error = "Unable to delete widget";
             }
