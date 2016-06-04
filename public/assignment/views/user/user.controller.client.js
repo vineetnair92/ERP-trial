@@ -10,7 +10,11 @@
         init();
 
         function init() {
-            cModel.user = UserService.findByUserId(currentUserId);
+            UserService
+                .findByUserId(currentUserId)
+                .then(function (response)  {
+                    cModel.user = response.data;
+                });
 
         }
 

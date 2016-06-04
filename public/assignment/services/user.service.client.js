@@ -10,7 +10,7 @@
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
     ]
 
-    function UserService() {
+    function UserService($http) {
         api = {
             findUserByCredentials: findUserByCredentials,
             findByUserId: findByUserId,
@@ -32,13 +32,8 @@
         }
 
         function findByUserId(userId) {
-            for (var i in users) {
-                if (users[i]._id === userId) {
-                    return users[i];
-                }
-            }
-
-            return null;
+            var url = "/api/user/"+userId;
+            return $http.get(url);
         }
 
         function findUserByUsername(userName) {
