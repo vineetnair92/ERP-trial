@@ -13,6 +13,13 @@
     </div>
 </nav>
 <div class="container content">
+    <div ng-if="model.updateStats == 'success'" class="alert alert-success" role="alert">
+        Update Success
+    </div>
+    <div ng-if="model.updateStats == 'error'" class="alert alert-danger" role="alert">
+        Update Error!!
+    </div>
+
     <form>
         <div class="form-group">
             <label for="username">Username</label>

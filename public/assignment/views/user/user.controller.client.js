@@ -20,7 +20,16 @@
 
         function updateProfile(user) {
             console.log(user);
-            cModel.updateStats = UserService.updateUser(currentUserId, user);
+            UserService
+                .updateUser(currentUserId, user)
+                .then(function (response) {
+                   if(response.status === 200) {
+                       cModel.updateStats = "success";
+                   }
+                   else{
+                       cModel.updateStats = "error";
+                   }
+                })
 
         }
 

@@ -8,17 +8,18 @@
         cModel.login = login;
 
         function login(userInput) {
-            var user = UserService.findUserByCredentials(userInput.username, userInput.password);
-            if (user) {
-                $location.url("/user/" + user._id);
-            }
-            else {
-                cModel.error = "Username/Password is incorrect";
-            }
-
+             UserService
+                .findUserByCredentials(userInput.username, userInput.password)
+                .then(function (response) {
+                    var user = response.data;
+                    if (user) {
+                        $location.url("/user/" + user._id);
+                    }
+                    else {
+                        cModel.error = "Username/Password is incorrect";
+                    }
+                });
         }
-
-
     }
 
 })();

@@ -22,13 +22,17 @@
         return api;
 
         function findUserByCredentials(username, password) {
-            for (var i in users) {
+            var attr1 = "username="+username;
+            var attr2 = "password="+password;
+            var url="/api/user?"+attr1+"&"+attr2;
+            return $http.get(url);
+            /*for (var i in users) {
                 if (users[i].username === username && users[i].password === password) {
                     return users[i];
                 }
             }
 
-            return null;
+            return null;*/
         }
 
         function findByUserId(userId) {
@@ -37,25 +41,14 @@
         }
 
         function findUserByUsername(userName) {
-            for (var i in users) {
-                if (users[i].username === userName) {
-                    return users[i];
-                }
-            }
-
-            return null;
+            var attr1 = "username="+username;
+            var url="/api/user?"+attr1;
+            return $http.get(url);
         }
 
         function updateUser(userId, user) {
-            for (var i in users) {
-                if (users[i]._id === userId) {
-                    users[i].firstName = user.firstName;
-                    users[i].lastName = user.lastName;
-                    users[i].email = user.email;
-                    return true;
-                }
-            }
-            return false;
+            var url ="/api/user/"+userId;
+            return $http.put(url, user);
         }
 
         function createUser(user) {
@@ -63,18 +56,14 @@
             newUser._id = parseInt(users[users.length - 1]._id) + 1 + "";
             newUser.username = user.username;
             newUser.password = user.password;
-            users.push(newUser);
-            return true;
+            var url = "/api/user";
+            return $http.post(url, newUser);
         }
 
         function deleteUser(userId) {
-            for (var i in users) {
-                if (users[i]._id === userId) {
-                    users.splice(i, 1);
-                    return true;
-                }
-            }
-            return false;
+            var url ="/api/user/"+userId;
+            return $http.delete(url);
+            
         }
 
 

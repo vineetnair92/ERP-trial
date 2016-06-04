@@ -1,7 +1,7 @@
 <div class="container content">
     <h2>Register</h2>
-    <div ng-hide="model.createUserStats" class="alert alert-danger" role="alert">
-        User Created Successfully!
+    <div ng-if="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
     </div>
     <form>
         <div class="form-group">
@@ -21,11 +21,12 @@
         <div class="form-group">
             <input type="password"
                    class="form-control"
-                   id="verify-password"
+                   id="verifypassword"
                    ng-model="user.verifypassword"
                    placeholder="verify password">
         </div>
     </form>
+
 
     <a class="btn btn-primary btn-block"
        ng-click="model.createUser(user)">Register</a>
