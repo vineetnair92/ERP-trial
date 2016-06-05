@@ -12,7 +12,7 @@
         {"_id": "789", "name": "Chess", "developerId": "234"}
     ];
 
-    function WebsiteService() {
+    function WebsiteService($http) {
         var api = {
             createWebsite: createWebsite,
             findWebsitesByUser: findWebsitesByUser,
@@ -23,13 +23,8 @@
         return api;
 
         function deleteWebsite(websiteId) {
-            for (var i in websites) {
-                if (websites[i]._id === websiteId) {
-                    websites.splice(i, 1);
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/website/" + websiteId;
+            return $http.delete(url);
         }
 
         function createWebsite(userId, website) {
@@ -39,38 +34,24 @@
                 description: website.description,
                 developerId: userId
             };
-            websites.push(newWebsite);
-            return newWebsite;
+            var url = "/api/user/" + userId + "/website";
+            $http.post()
+
         }
 
         function findWebsitesByUser(userId) {
-            var resultSet = [];
-            for (var i in websites) {
-                if (websites[i].developerId === userId) {
-                    resultSet.push(websites[i]);
-                }
-            }
-            return resultSet;
+            var url = "/api/user/" + userId + "/website";
+            return $http.get(url);
         }
 
         function findWebsiteById(websiteId) {
-            for (var i in websites) {
-                if (websites[i]._id === websiteId) {
-                    return websites[i];
-                }
-            }
-            return null;
+            var url = "/api/website/" + websiteId;
+            return $http.get(url);
         }
 
         function updateWebsite(websiteId, website) {
-            for (var i in websites) {
-                if (websites[i]._id === websiteId) {
-                    websites[i].name = website.name;
-                    websites[i].description = website.description;
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/website/" + websiteId;
+            return $http.put(url, website);
         }
 
     }

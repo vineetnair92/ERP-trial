@@ -22,6 +22,10 @@
 
 <div class="container content">
 
+    <div ng-if="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
     <form>
         <div class="form-group">
             <label for="website-name">Website Name</label>
@@ -39,11 +43,6 @@
                       placeholder="Description"></textarea>
         </div>
     </form>
-
-
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
-    </div>
 
 
     <a class="btn btn-danger  btn-block"

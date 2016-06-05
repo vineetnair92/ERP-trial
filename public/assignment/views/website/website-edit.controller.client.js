@@ -13,25 +13,52 @@
         init();
 
         function init() {
-            cModel.website = WebsiteService.findWebsiteById(cModel.websiteId);
+                WebsiteService
+                    .findWebsiteById(cModel.websiteId)
+                    .then(function(response) {
+                        cModel.website = response.data;
+                        console.log(cModel.website);
+                    })
         }
 
         function updateWebsite(website) {
-            cModel.updateStats = WebsiteService.updateWebsite(cModel.websiteId, website);
-            if (cModel.updateStats) {
-                $location.url("/user/" + cModel.userId + "/website");
-            } else {
-                cModel.error = "Unable to delete website";
-            }
+            cModel.updateStats =
+
+                WebsiteService
+                    .updateWebsite(cModel.websiteId, website)
+                    .then(function(response) {
+                        var updateStats = response.status;
+                        if (updateStats === 200) {
+                            $location.url("/user/" + cModel.userId + "/website");
+                        }
+                        else {
+                            cModel.error = "Unable to update website";
+                        }
+
+                    })
+                    .catch(function(response) {
+                        cModel.error = "Unable to update website";
+                    });
+
+
+
         }
 
         function deleteWebsite(websiteId) {
-            var result = WebsiteService.deleteWebsite(websiteId);
-            if (result) {
-                $location.url("/user/" + cModel.userId + "/website");
-            } else {
-                cModel.error = "Unable to delete website";
-            }
+            WebsiteService.deleteWebsite(websiteId)
+                .then(function (response) {
+                    var deleteStats = response.status;
+                    if (deleteStats === 200) {
+                        $location.url("/user/" + cModel.userId + "/website");
+                    }
+                    else {
+                        cModel.error = "Unable to delete website";
+                    }
+
+                })
+                .catch(function (response) {
+                    cModel.error = "Unable to delete website";
+                });
         }
     }
 })();

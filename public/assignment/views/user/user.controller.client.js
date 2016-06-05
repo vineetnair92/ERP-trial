@@ -30,6 +30,9 @@
                        cModel.updateStats = "error";
                    }
                 })
+                .catch(function(response) {
+                    cModel.updateStats = "error";
+                })
 
         }
 
