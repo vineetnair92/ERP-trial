@@ -10,12 +10,19 @@
 
 
         function createWebsite(website) {
-            var result = WebsiteService.createWebsite(cModel.userId, website);
-            if (result) {
-                $location.url("/user/" + cModel.userId + "/website");
-            } else {
-                cModel.error = "Unable to create website";
-            }
+
+
+                WebsiteService
+                    .createWebsite(cModel.userId, website)
+                    .then(function (response) {
+                        var result = response.status;
+                        if (result) {
+                            $location.url("/user/" + cModel.userId + "/website");
+                        } else {
+                            cModel.error = "Unable to create website";
+                        }
+                    })
+
         }
     }
 })();

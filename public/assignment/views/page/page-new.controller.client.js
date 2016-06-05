@@ -11,12 +11,16 @@
 
 
         function createPage(page) {
-            var result = PageService.createPage(cModel.websiteId, page);
-            if (result) {
-                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
-            } else {
-                cModel.error = "Unable to create website";
-            }
+            PageService
+                .createPage(cModel.websiteId, page)
+                .then(function (response) {
+                    var result = response.status;
+                    if (result == 200) {
+                        $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
+                    } else {
+                        cModel.error = "Unable to create website";
+                    }
+                });
         }
     }
 })();

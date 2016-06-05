@@ -23,32 +23,36 @@
                         _id: (new Date()).getTime() + "",
                         widgetType: HEADER
                     };
-                    WidgetService.createWidget(cModel.pageId, newWidget);
-                    $location.url(widgetEditUrl + newWidget._id);
+                    createWidget(cModel.pageId, newWidget);
                     break;
                 case IMAGE   :
                     console.log("Image Chosen");
-                    var headerWidget = {
+                    var newWidget = {
                         _id: (new Date()).getTime() + "",
                         widgetType: IMAGE
                     };
-                    WidgetService.createWidget(cModel.pageId, headerWidget);
-                    $location.url(widgetEditUrl + headerWidget._id);
+                    createWidget(cModel.pageId, newWidget);
                     break;
                 case YOUTUBE   :
                     console.log("Youtube Chosen");
-                    var headerWidget = {
+                    var newWidget = {
                         _id: (new Date()).getTime() + "",
                         widgetType: YOUTUBE
                     };
-                    WidgetService.createWidget(cModel.pageId, headerWidget);
-                    $location.url(widgetEditUrl + headerWidget._id);
+                    createWidget(cModel.pageId, newWidget);
                     break;
                 default :
-                    console.log("Error Choose");
+                    console.log("Error !! Invalid Widget Type ");
             }
         }
 
+        function createWidget(pageId, widget) {
+            WidgetService
+                .createWidget(pageId, widget)
+                .then(function (response) {
+                    $location.url(widgetEditUrl + widget._id);
+                })
+        }
     }
 
 })();

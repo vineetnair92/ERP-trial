@@ -11,8 +11,12 @@
         init();
 
         function init() {
-            cModel.pages = PageService.findPageByWebsiteId(cModel.websiteId)
-            //console.log(cModel.pages);
+
+                PageService
+                    .findPageByWebsiteId(cModel.websiteId)
+                    .then(function(response) {
+                        cModel.pages = response.data;
+                    });
         }
     }
 

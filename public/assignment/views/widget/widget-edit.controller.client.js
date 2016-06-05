@@ -16,25 +16,40 @@
         init();
 
         function init() {
-            cModel.widget = WidgetService.findWidgetById(cModel.widgetId);
+            WidgetService
+                .findWidgetById(cModel.widgetId)
+                .then(function (response) {
+                    cModel.widget = response.data;
+                })
         }
 
         function updateWidget(widget) {
-            cModel.updateStats = WidgetService.updateWidget(cModel.widgetId, widget);
-            if (cModel.updateStats) {
-                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
-            } else {
-                cModel.error = "Unable to update widget";
-            }
+           WidgetService
+                .updateWidget(cModel.widgetId, widget)
+                .then(function (response) {
+                    var updateStats = response.status;
+                    if (updateStats == 200) {
+                        $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
+                    } else {
+                        cModel.error = "Unable to update widget";
+                    }
+                })
+                .catch(function (response) {
+                    cModel.error = "Unable to update widget";
+                })
         }
 
         function deleteWidget(widgetId) {
-            var result = WidgetService.deleteWidget(widgetId);
-            if (result) {
-                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
-            } else {
-                cModel.error = "Unable to delete widget";
-            }
+            WidgetService
+                .deleteWidget(widgetId)
+                .then(function(response) {
+                    var result = response.status;
+                    if (result) {
+                        $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
+                    } else {
+                        cModel.error = "Unable to delete widget";
+                    }
+                });
         }
     }
 })();

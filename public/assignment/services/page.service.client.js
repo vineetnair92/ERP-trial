@@ -9,7 +9,7 @@
         {"_id": "543", "name": "Post 3", "websiteId": "456"}
     ];
 
-    function PageService() {
+    function PageService($http) {
         var api = {
             createPage: createPage,
             deletePage: deletePage,
@@ -19,16 +19,6 @@
         };
         return api;
 
-        function deletePage(pageId) {
-            for (var i in pages) {
-                if (pages[i]._id === pageId) {
-                    pages.splice(i, 1);
-                    return true;
-                }
-            }
-            return false;
-        }
-
         function createPage(websiteId, page) {
             var newPage = {
                 _id: (new Date()).getTime() + "",
@@ -36,40 +26,31 @@
                 title: page.title,
                 websiteId: websiteId
             };
-            pages.push(newPage);
-            return newPage;
+            var url = "/api/website/" + websiteId + "/page";
+            return $http.post(url, newPage);
+        }
+
+        function deletePage(pageId) {
+            var url = "/api/page/" + pageId;
+            return $http.delete(url);
+        }
+
+        function updatePage(pageId, page) {
+            var url = "/api/page/" + pageId;
+            return $http.put(url, page);
         }
 
         function findPageByWebsiteId(websiteId) {
-            var resultSet = [];
-            for (var i in pages) {
-                if (pages[i].websiteId === websiteId) {
-                    resultSet.push(pages[i]);
-                }
-            }
-            return resultSet;
+            var url = "/api/website/" + websiteId + "/page";
+            return $http.get(url);
+
         }
 
         function findPageById(pageId) {
-            for (var i in pages) {
-                if (pages[i]._id === pageId) {
-                    return pages[i];
-                }
-            }
-            return null;
+            var url = "/api/page/" + pageId;
+            return $http.get(url);
         }
 
-
-        function updatePage(pageId, page) {
-            for (var i in pages) {
-                if (pages[i]._id === pageId) {
-                    pages[i].name = page.name;
-                    pages[i].title = page.title;
-                    return true;
-                }
-            }
-            return false;
-        }
 
     }
 })();

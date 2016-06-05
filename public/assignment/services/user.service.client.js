@@ -40,7 +40,7 @@
             return $http.get(url);
         }
 
-        function findUserByUsername(userName) {
+        function findUserByUsername(username) {
             var attr1 = "username="+username;
             var url="/api/user?"+attr1;
             return $http.get(url);
@@ -53,7 +53,7 @@
 
         function createUser(user) {
             var newUser = {};
-            newUser._id = parseInt(users[users.length - 1]._id) + 1 + "";
+            newUser._id = (new Date()).getTime() + "";
             newUser.username = user.username;
             newUser.password = user.password;
             var url = "/api/user";
@@ -63,7 +63,7 @@
         function deleteUser(userId) {
             var url ="/api/user/"+userId;
             return $http.delete(url);
-            
+
         }
 
 

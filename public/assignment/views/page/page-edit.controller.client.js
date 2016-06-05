@@ -14,25 +14,44 @@
         init();
 
         function init() {
-            cModel.page = PageService.findPageById(cModel.pageId);
+             PageService
+                 .findPageById(cModel.pageId)
+                 .then(function(response) {
+                     cModel.page = response.data;
+                 });
         }
 
         function updatePage(page) {
-            cModel.updateStats = PageService.updatePage(cModel.pageId, page);
-            if (cModel.updateStats) {
-                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
-            } else {
-                cModel.error = "Unable to update page";
-            }
+            PageService
+                .updatePage(cModel.pageId, page)
+                .then(function (response) {
+                    var updateStats = response.status;
+                    if (updateStats) {
+                        $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
+                    } else {
+                        cModel.error = "Unable to update page";
+                    }
+                })
+                .catch(function(response) {
+                    cModel.error = "Unable to update page";
+                });
         }
 
         function deletePage(pageId) {
-            var result = PageService.deletePage(pageId);
-            if (result) {
-                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
-            } else {
-                cModel.error = "Unable to delete page";
-            }
+           PageService
+                .deletePage(pageId)
+                .then(function(response) {
+                    var result = response.status;
+                    if (result == 200) {
+                        $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
+                    } else {
+                        cModel.error = "Unable to delete page";
+                    }
+                })
+               .catch(function(response) {
+                   cModel.error = "Unable to delete page";
+               });
+
         }
     }
 })();
