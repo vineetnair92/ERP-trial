@@ -1,4 +1,7 @@
-<form>
+<form id="imageEditForm" role="form" onsubmit="submitForm(this, event)" method="post" enctype="multipart/form-data">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
     <div class="form-group">
         <label for="widget-img-name">Name</label>
         <input type="text"
@@ -29,17 +32,23 @@
                id="widget-img-width">
     </div>
 
-    <div class="form-group">
+<!--    <div class="form-group">
         <label for="imagefile-input">Upload</label>
         <input type="file" class="form-control" id="imagefile-input"/>
+    </div>-->
+
+    <div class="form-group">
+        <label for="imagefile-input">Upload</label>
+        <input  name="myFile" type="file" id="imagefile-input" class="form-control"/>
+        <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+        <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+        <input  name="userId"    value="{{model.userId}}" style="display: none"/>
+        <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+        <input  name="pageId" value="{{model.pageId}}"   style="display: none"/>
+        <button type="submit"   class="btn btn-block btn-primary">Upload The Image</button>
     </div>
 
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
-    </div>
 
-    <a class="btn btn-primary btn-block"
-       href="widget-list.view.client.html">Upload Image</a>
     <a class="btn btn-danger  btn-block"
        ng-click="model.deleteWidget(model.widget._id)">Delete</a>
 </form>
