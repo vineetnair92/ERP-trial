@@ -28,7 +28,7 @@
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{widget.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
+            <span class="handleSort glyphicon glyphicon-align-justify"></span>
         </div>
         <div ng-if="widget" ng-switch="widget.widgetType">
             <div ng-switch-when="HEADER" ng-switch="widget.size">

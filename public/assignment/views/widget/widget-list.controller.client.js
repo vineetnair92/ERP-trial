@@ -18,7 +18,8 @@
                     cModel.widgets = response.data;
                 })
             $(".widget-list-parent").sortable({
-                axis: "y"
+                axis: "y",
+                handle: ".handleSort"
             });
         }
 
