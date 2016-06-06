@@ -92,8 +92,10 @@ color: rgb(58, 58, 58);
 .flickr-thumbnail {
     height: 100%;
     width: 100%;
-    padding-top: 5px ;
 }
 .flickr-search-results {
     margin-top: -30px;
+}
+.flickr-search-results .col-xs-4 {
+    padding: 0;
 }
