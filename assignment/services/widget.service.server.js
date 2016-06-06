@@ -129,6 +129,9 @@ module.exports = function (app) {
 
     function uploadImage(req, res) {
 
+        var imageName = req.body.imageName;
+        var imageText = req.body.imageText;
+
         var widgetId = req.body.widgetId;
         var width = req.body.width;
         var myFile = req.file;
@@ -136,7 +139,8 @@ module.exports = function (app) {
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
         var pageId = req.body.pageId;
-        
+
+
         if(myFile) {
             var originalname = myFile.originalname; // file name on user's computer
             var filename = myFile.filename;     // new file name in upload folder
@@ -147,15 +151,18 @@ module.exports = function (app) {
 
 
 
-            updateWidgetImageUrl(widgetId, filename);
+            updateWidgetImageUrl(imageName, imageText, width, widgetId, filename);
         }
 
         res.redirect("/assignment/#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
     }
 
-    function updateWidgetImageUrl(widgetId, filename) {
+    function updateWidgetImageUrl(imageName, imageText, width, widgetId, filename) {
         for (var i in widgets) {
             if (widgets[i]._id === widgetId) {
+                widgets[i].name = imageName;
+                widgets[i].text = imageText;
+                widgets[i].width = width;
                 widgets[i].url = "/uploads/"+filename;
                 return;
             }

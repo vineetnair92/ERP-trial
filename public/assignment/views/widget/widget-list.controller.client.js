@@ -17,6 +17,9 @@
                 .then(function (response) {
                     cModel.widgets = response.data;
                 })
+            $(".widget-list-parent").sortable({
+                axis: "y"
+            });
         }
 
         init();
@@ -33,5 +36,9 @@
 
         }
 
+
     }
 })();
+
+console.log("WOWWWWWWWW");
+
