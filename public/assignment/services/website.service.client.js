@@ -29,10 +29,10 @@
 
         function createWebsite(userId, website) {
             var newWebsite = {
-                _id: (new Date()).getTime() + "",
+                //_id: (new Date()).getTime() + "",
                 name: website.name,
                 description: website.description,
-                developerId: userId
+                _user: userId
             };
             var url = "/api/user/" + userId + "/website";
             return $http.post(url, newWebsite);

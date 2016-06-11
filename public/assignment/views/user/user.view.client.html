@@ -20,6 +20,13 @@
         Update Error!!
     </div>
 
+    <div ng-if="model.deleteStats == 'success'" class="alert alert-success" role="alert">
+        Delete Success
+    </div>
+    <div ng-if="model.deleteStats == 'error'" class="alert alert-danger" role="alert">
+        Delete Error!!
+    </div>
+
     <form>
         <div class="form-group">
             <label for="username">Username</label>
@@ -53,6 +60,14 @@
                    ng-model="model.user.lastName"
                    placeholder="Xyz">
         </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text"
+                   class="form-control"
+                   id="phone"
+                   ng-model="model.user.phone"
+                   placeholder="0123456789">
+        </div>
         <div ng-switch="model.updateStats">
             <div ng-switch-when="true">
                 <div class="alert alert-success" role="alert">
@@ -69,6 +84,8 @@
 
     <a class="btn btn-primary btn-block"
        href="#/user/{{model.user._id}}/website">Websites</a>
+    <a class="btn btn-danger  btn-block"
+      ng-click="model.deleteUser(model.userId)">Delete</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
 </div>

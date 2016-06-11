@@ -18,7 +18,10 @@
                     else {
                         cModel.error = "Username/Password is incorrect";
                     }
-                });
+                })
+                 .catch(function (response) {
+                     cModel.error = "Something is wrong!!";
+                 })
         }
     }
 

@@ -13,11 +13,11 @@
     function UserService($http) {
         api = {
             findUserByCredentials: findUserByCredentials,
-            findByUserId: findByUserId,
+            findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             updateUser: updateUser,
             createUser: createUser,
-            deleteuser: deleteUser
+            deleteUser: deleteUser
         }
         return api;
 
@@ -35,7 +35,7 @@
             return null;*/
         }
 
-        function findByUserId(userId) {
+        function findUserById(userId) {
             var url = "/api/user/"+userId;
             return $http.get(url);
         }
@@ -53,7 +53,7 @@
 
         function createUser(user) {
             var newUser = {};
-            newUser._id = (new Date()).getTime() + "";
+            //newUser._id = (new Date()).getTime() + "";
             newUser.username = user.username;
             newUser.password = user.password;
             var url = "/api/user";
