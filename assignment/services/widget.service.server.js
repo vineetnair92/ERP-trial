@@ -35,6 +35,7 @@ module.exports = function (app, models) {
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.post("/api/upload", upload.single('myFile'), uploadImage);
+    app.put("/page/:pageId/widget", reorderWidget);
 
     function createWidget(req, res) {
         var newWidget = req.body;
@@ -165,6 +166,15 @@ module.exports = function (app, models) {
 
 
 
+    }
+
+
+    function reorderWidget(req, res) {
+        var pageId = req.params.pageId;
+        var start = req.query.start;
+        var end = req.query.end;
+        widgetModel
+            .reorderWidget(pageId, start, end, res)
     }
 
 

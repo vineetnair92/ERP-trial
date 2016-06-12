@@ -45,20 +45,35 @@
 
         function createWidget(pageId, widget) {
             WidgetService
-                .createWidget(pageId, widget)
+                .findWidgetsByPageId(pageId)
                 .then(function (response) {
-                    var widget = response.data;
-                    if(widget){
-                        var _widgetId = widget._id;
-                        updateWidgetReferencesInPage(_widgetId);
-                    }
-                    else{
-                        cModel.error = "Unable to create widget";
-                    }
+                    var widgets = response.data;
+                    var newRank = widgets.length + 1;
+                    widget.rank = newRank;
+                    WidgetService
+                        .createWidget(pageId, widget)
+                        .then(function (response) {
+                            var widget = response.data;
+                            if(widget){
+                                var _widgetId = widget._id;
+                                updateWidgetReferencesInPage(_widgetId);
+                            }
+                            else{
+                                cModel.error = "Unable to create widget";
+                            }
+                        })
+                        .catch(function(error){
+                            cModel.error = "Something went wrong!!"
+                        })
                 })
-                .catch(function(error){
+                .catch(function (error) {
                     cModel.error = "Something went wrong!!"
                 })
+
+
+
+
+
         }
 
         function updateWidgetReferencesInPage(widgetId) {

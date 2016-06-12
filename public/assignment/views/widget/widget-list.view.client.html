@@ -21,9 +21,8 @@
     </div>
 </nav>
 
-<div class="container-fluid content widget-list-parent">
-
-    <div ng-repeat="widget in model.widgets" class="widget-section">
+<div wam-sortable wam-callback="model.sort(start,end)" class="container-fluid content widget-list-parent">
+    <div ng-repeat="widget in model.widgets | orderBy: 'rank'" class="widget-section">
         <div class="widget-settings pull-right">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{widget._page}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>

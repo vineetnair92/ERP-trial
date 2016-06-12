@@ -18,6 +18,7 @@ module.exports = function () {
         icon: String,
         deletable: Boolean,
         formatted: Boolean,
+        rank: {type: Number, default: 0},
         dateCreated: {type: Date, default: Date.now},
     }, {collection: "widget"});
 

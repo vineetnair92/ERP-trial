@@ -10,6 +10,7 @@
         cModel.websiteId = $routeParams.wid;
         cModel.getSafeHtml = getSafeHtml;
         cModel.getSafeUrl = getSafeUrl;
+        cModel.sort = sort;
 
         function init() {
             WidgetService
@@ -17,10 +18,10 @@
                 .then(function (response) {
                     cModel.widgets = response.data;
                 })
-            $(".widget-list-parent").sortable({
+           /* $(".widget-list-parent").sortable({
                 axis: "y",
                 handle: ".handleSort"
-            });
+            });*/
         }
 
         init();
@@ -35,6 +36,20 @@
             var url = "https://www.youtube.com/embed/" + id;
             return $sce.trustAsResourceUrl(url);
 
+        }
+
+        function sort(start, end){
+
+            console.log("WidgetListController start=" + start + " end=" + end);
+            WidgetService
+                .reorderWidget(cModel.pageId, start, end)
+                .then(function (response) {
+                    if(response)
+                    cModel.widgets = response.data;
+                })
+                .catch(function (error) {
+                    cModel.error = "Error rendering widgets!";
+                })
         }
 
 

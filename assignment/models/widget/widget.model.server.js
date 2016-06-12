@@ -8,7 +8,8 @@ module.exports = function () {
         findAllWidgetsForPage: findAllWidgetsForPage,
         findWidgetById: findWidgetById,
         updateWidget: updateWidget,
-        deleteWidget: deleteWidget
+        deleteWidget: deleteWidget,
+        reorderWidget: reorderWidget
     };
     return api;
 
@@ -56,6 +57,39 @@ module.exports = function () {
 
         return Widget.remove({_id: widgetId})
 
+    }
+
+    function reorderWidget(pageId, start, end, res){
+        start++;
+        end++;
+        Widget
+            .find({_page: pageId})
+            .then(function (widgets) {
+                widgets.forEach(function(widget){
+                    if(start > end) {
+                        if(widget.rank >= end && widget.rank < start) {
+                            widget.rank++;
+                            widget.save(function(){});
+                        } else if(widget.rank === start) {
+                            widget.rank = end;
+                            widget.save(function(){});
+                        }
+                    } else {
+                        if(widget.rank > start && widget.rank <= end) {
+                            widget.rank--;
+                            widget.save(function(){});
+                        } else if(widget.rank === start) {
+                            widget.rank = end;
+                            widget.save(function(){});
+                        }
+                    }
+                })
+                res.json(widgets);
+            })
+            .catch(function (error) {
+                console.log(error)
+                res.status(400).send();
+            })
     }
 
 }
