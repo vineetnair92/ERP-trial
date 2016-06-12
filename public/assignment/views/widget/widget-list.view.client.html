@@ -48,7 +48,7 @@
                 <iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0"
                         allowfullscreen></iframe>
             </div>
-            <div ng-switch-when="TEXT">
+            <div class="widget" ng-switch-when="TEXT">
                 <div ng-if="widget.formatted" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
                                                                         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
                                                                         ['indent','outdent'],['html']]"></div>
