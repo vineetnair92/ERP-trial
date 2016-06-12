@@ -99,12 +99,12 @@ module.exports = function (app, models) {
                         pageModel
                             .deleteWidgetForPage(widget._page, widgetId)
                             .then(function (response) {
-                                res.send(response);
+                                widgetModel
+                                    .resetWidgetsRank(widget._page, widget.rank, res);
                             })
                             .catch(function (error) {
                                 res.status(400).send(error);
                             })
-
                     })
                     .catch(function (error) {
                         res.status(400).send(error);
@@ -173,6 +173,7 @@ module.exports = function (app, models) {
         var pageId = req.params.pageId;
         var start = req.query.start;
         var end = req.query.end;
+
         widgetModel
             .reorderWidget(pageId, start, end, res)
     }

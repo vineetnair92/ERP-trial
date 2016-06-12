@@ -9,7 +9,8 @@ module.exports = function () {
         findWidgetById: findWidgetById,
         updateWidget: updateWidget,
         deleteWidget: deleteWidget,
-        reorderWidget: reorderWidget
+        reorderWidget: reorderWidget,
+        resetWidgetsRank: resetWidgetsRank
     };
     return api;
 
@@ -91,5 +92,22 @@ module.exports = function () {
                 res.status(400).send();
             })
     }
-
+    
+    function resetWidgetsRank(pageId, widgetRank, res) {
+        Widget
+            .find({_page: pageId})
+            .then(function (widgets) {
+                widgets.forEach(function(widget){
+                    if(widget.rank > widgetRank) {
+                        widget.rank--;
+                        widget.save(function(){});
+                    }
+                });
+                res.status(200).send(widgets);
+            })
+            .catch(function (error) {
+                console.log(error)
+                res.status(400).send();
+            })
+    }
 }

@@ -44,7 +44,7 @@
                 .deleteWidget(widgetId)
                 .then(function(response) {
                     var result = response.status;
-                    if (result) {
+                    if (result == 200) {
                         $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
                     } else {
                         cModel.error = "Unable to delete widget";

@@ -12,6 +12,7 @@
             console.log("Inside directve");
             element.sortable({
                 axis: 'y',
+                handle: ".handleSort",
                 start: function (event, ui) {
                     console.log("in start")
                     start = ui.item.index();
