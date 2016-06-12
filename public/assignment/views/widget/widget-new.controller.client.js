@@ -6,6 +6,8 @@
     var HEADER = 'HEADER';
     var IMAGE = 'IMAGE';
     var YOUTUBE = 'YOUTUBE';
+    var HTML = 'HTML';
+    var TEXT = 'TEXT';
     var pageWidgetsUpdateError = "Error updating widgets references in pages";
     function NewWidgetController($location, $routeParams, WidgetService, PageService) {
         var cModel = this;
@@ -35,6 +37,20 @@
                     console.log("Youtube Chosen");
                     var newWidget = {
                         type: YOUTUBE
+                    };
+                    createWidget(cModel.pageId, newWidget);
+                    break;
+                case HTML   :
+                    console.log("Html Chosen");
+                    var newWidget = {
+                        type: HTML
+                    };
+                    createWidget(cModel.pageId, newWidget);
+                    break;
+                case TEXT   :
+                    console.log("Text Chosen");
+                    var newWidget = {
+                        type: TEXT
                     };
                     createWidget(cModel.pageId, newWidget);
                     break;
