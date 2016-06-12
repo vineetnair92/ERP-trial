@@ -1,14 +1,15 @@
 module.exports = function (app, models) {
 
     var websiteModel = models.websiteModel;
-    var websites = [
+    var userModel = models.userModel;
+    /*var websites = [
         {"_id": "123", "name": "Facebook", "developerId": "456"},
         {"_id": "234", "name": "Tweeter", "developerId": "456"},
         {"_id": "456", "name": "Gizmodo", "developerId": "456"},
         {"_id": "567", "name": "Tic Tac Toe", "developerId": "123"},
         {"_id": "678", "name": "Checkers", "developerId": "123"},
         {"_id": "789", "name": "Chess", "developerId": "234"}
-    ];
+    ];*/
 
     app.post("/api/user/:userId/website", createWebsite);
     app.get("/api/user/:userId/website", findAllWebsitesForUser);
@@ -22,6 +23,7 @@ module.exports = function (app, models) {
             .createWebsiteForUser(newWebsite)
             .then(function (website) {
                res.json(website);
+                console.log(website._doc._id);
             })
             .catch(function (error) {
                res.status(400).send(error);
@@ -56,23 +58,38 @@ module.exports = function (app, models) {
     function updateWebsite(req, res) {
         var website = req.body;
         var websiteId = req.params.websiteId;
-        for (var i in websites) {
-            if (websites[i]._id === websiteId) {
-                websites[i].name = website.name;
-                websites[i].description = website.description;
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.sendStatus(400);
+        delete website._id;
+        websiteModel
+            .updateWebsite(websiteId, website)
+            .then(function (response) {
+                res.send(response);
+            })
+            .catch(function (error) {
+                res.status(400).send(error);
+            })
     }
 
     function deleteWebsite(req, res) {
         var websiteId = req.params.websiteId;
         websiteModel
-            .deleteWebsite(websiteId)
-            .then(function (response) {
-                res.send(response);
+            .findWebsiteById(websiteId) 
+            .then(function (website) {
+                websiteModel
+                    .deleteWebsite(websiteId)
+                    .then(function (response) {
+                        userModel
+                            .deleteWebsiteForUser(website._user, websiteId)
+                            .then(function (response) {
+                                res.send(response);
+                            })
+                            .catch(function (error) {
+                                res.status(400).send(error);
+                            })
+                        
+                    })
+                    .catch(function (error) {
+                        res.status(400).send(error);
+                    });
             })
             .catch(function (error) {
                 res.status(400).send(error);

@@ -21,10 +21,9 @@
 
         function createPage(websiteId, page) {
             var newPage = {
-                _id: (new Date()).getTime() + "",
                 name: page.name,
                 title: page.title,
-                websiteId: websiteId
+                _website: websiteId
             };
             var url = "/api/website/" + websiteId + "/page";
             return $http.post(url, newPage);

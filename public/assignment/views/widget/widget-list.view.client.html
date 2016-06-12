@@ -25,12 +25,12 @@
 
     <div ng-repeat="widget in model.widgets" class="widget-section">
         <div class="widget-settings pull-right">
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{widget.pageId}}/widget/{{widget._id}}">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{widget._page}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <span class="handleSort glyphicon glyphicon-align-justify"></span>
         </div>
-        <div ng-if="widget" ng-switch="widget.widgetType">
+        <div ng-if="widget" ng-switch="widget.type">
             <div ng-switch-when="HEADER" ng-switch="widget.size">
                 <h1 ng-switch-when="1">{{widget.text}}</h1>
                 <h2 ng-switch-when="2">{{widget.text}}</h2>

@@ -1,12 +1,12 @@
 module.exports = function (app, models) {
 
     var userModel = models.userModel;
-    var users = [
+    /*var users = [
         {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
         {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
         {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-    ];
+    ];*/
 
 
     //app.get("/api/user", getUsers);
@@ -50,7 +50,7 @@ module.exports = function (app, models) {
         } else if (username) {
             findUserByUsername(username, res);
         } else {
-            res.send(users);
+            res.status(400).send();
         }
     }
 

@@ -10,7 +10,9 @@ module.exports = function () {
         findUserByCredentials: findUserByCredentials,
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        deleteWebsiteForUser: deleteWebsiteForUser
+
     };
     return api;
 
@@ -70,5 +72,16 @@ module.exports = function () {
 
     function deleteUser(userId) {
         return User.remove({_id:userId});
+    }
+
+
+    function deleteWebsiteForUser(userId, websiteId) {
+        return User.update({_id: userId},
+            {
+                $pullAll: {
+                    "websites": [websiteId]
+                }
+            },
+            {safe: true});
     }
 }

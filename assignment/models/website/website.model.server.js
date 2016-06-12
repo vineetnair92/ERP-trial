@@ -3,13 +3,13 @@ module.exports = function () {
     var mongoose = require("mongoose");
     var WebsiteSchema = require("./website.schema.server.js")();
     var Website = mongoose.model("Website", WebsiteSchema);
-    var User = mongoose.model("User");
     var api = {
         createWebsiteForUser: createWebsiteForUser,
         findAllWebsitesForUser: findAllWebsitesForUser,
         findWebsiteById: findWebsiteById,
         updateWebsite: updateWebsite,
-        deleteWebsite: deleteWebsite
+        deleteWebsite: deleteWebsite,
+        deletePageForWebsite: deletePageForWebsite
     };
     return api;
 
@@ -51,13 +51,13 @@ module.exports = function () {
     
     function updateWebsite(websiteId, website) {
 
-        return Website.update({_id: userId},
+        return Website.update({_id: websiteId},
             {
                 $set: {
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    email: user.email,
-                    phone: user.phone
+                    _user: website._user,
+                    name: website.name,
+                    description: website.description,
+                    pages: website.pages
                 }
             });
     }
@@ -75,35 +75,17 @@ module.exports = function () {
                     })
 
             });*/
+        return Website.remove({_id: websiteId})
 
-        var userId;
-        return Website.findById({_id: websiteId},function (err, website) {
-            if(err) {
-                console.log("Error in deleteWebsite,FindOne : " + err)
-                return new Error(err);
-            }
-            else {
-                userId = website._user;
-                User.update({_id: userId},
-                    {$pullAll : {
-                        "websites": [websiteId]
-                    }},
-                    { safe: true })
-                    .then(function (response) {
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+    }
 
-               Website.remove({_id: websiteId})
-                   .then(function (response) {
-                       console.log(response);
-                   })
-                   .catch(function (error) {
-                       console.log(error);
-                   })
-            }
-        });
+    function deletePageForWebsite(websiteId, pageId) {
+        return Website.update({_id: websiteId},
+            {
+                $pullAll: {
+                    "pages": [pageId]
+                }
+            },
+            {safe: true});
     }
 }
