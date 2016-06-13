@@ -1,6 +1,6 @@
-(function(){
+(function () {
     angular
-        .module("wamDirectives",[])
+        .module("wamDirectives", [])
         .directive("wamSortable", wamSortable);
 
 

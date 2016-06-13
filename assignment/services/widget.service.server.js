@@ -150,7 +150,7 @@ module.exports = function (app, models) {
                 widget.name = imageName;
                 widget.text = imageText;
                 widget.width = width;
-                widget.url = "/uploads/"+filename;
+                widget.url = "/uploads/" + filename;
                 widgetModel
                     .updateWidget(widgetId, widget)
                     .then(function (response) {
@@ -163,7 +163,6 @@ module.exports = function (app, models) {
             .catch(function (error) {
                 console.error(error);
             })
-
 
 
     }

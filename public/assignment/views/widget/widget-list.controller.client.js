@@ -18,10 +18,6 @@
                 .then(function (response) {
                     cModel.widgets = response.data;
                 })
-           /* $(".widget-list-parent").sortable({
-                axis: "y",
-                handle: ".handleSort"
-            });*/
         }
 
         init();
@@ -38,14 +34,14 @@
 
         }
 
-        function sort(start, end){
+        function sort(start, end) {
 
             console.log("WidgetListController start=" + start + " end=" + end);
             WidgetService
                 .reorderWidget(cModel.pageId, start, end)
                 .then(function (response) {
-                    if(response)
-                    cModel.widgets = response.data;
+                    if (response)
+                        cModel.widgets = response.data;
                 })
                 .catch(function (error) {
                     cModel.error = "Error rendering widgets!";

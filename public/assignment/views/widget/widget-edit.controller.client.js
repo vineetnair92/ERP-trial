@@ -24,7 +24,7 @@
         }
 
         function updateWidget(widget) {
-           WidgetService
+            WidgetService
                 .updateWidget(cModel.widgetId, widget)
                 .then(function (response) {
                     var updateStats = response.status;
@@ -42,7 +42,7 @@
         function deleteWidget(widgetId) {
             WidgetService
                 .deleteWidget(widgetId)
-                .then(function(response) {
+                .then(function (response) {
                     var result = response.status;
                     if (result == 200) {
                         $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");

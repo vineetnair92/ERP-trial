@@ -1,10 +1,10 @@
-module.exports = function(app, models) {
+module.exports = function (app, models) {
 
-/*    var pages = [
-        {"_id": "321", "name": "Post 1", "websiteId": "456"},
-        {"_id": "432", "name": "Post 2", "websiteId": "456"},
-        {"_id": "543", "name": "Post 3", "websiteId": "456"}
-    ];*/
+    /*    var pages = [
+     {"_id": "321", "name": "Post 1", "websiteId": "456"},
+     {"_id": "432", "name": "Post 2", "websiteId": "456"},
+     {"_id": "543", "name": "Post 3", "websiteId": "456"}
+     ];*/
 
     var pageModel = models.pageModel;
     var websiteModel = models.websiteModel;
@@ -14,7 +14,7 @@ module.exports = function(app, models) {
     app.put("/api/page/:pageId", updatePage);
     app.delete("/api/page/:pageId", deletePage);
 
-    function createPage(req, res){
+    function createPage(req, res) {
         var newPage = req.body;
         pageModel
             .createPage(newPage)
@@ -25,7 +25,8 @@ module.exports = function(app, models) {
                 res.status(400).send(error);
             });
     }
-    function findAllPagesForWebsite(req, res){
+
+    function findAllPagesForWebsite(req, res) {
         var websiteId = req.params.websiteId;
         pageModel
             .findAllPagesForWebsite(websiteId)
@@ -38,7 +39,7 @@ module.exports = function(app, models) {
 
     }
 
-    function findPageById(req, res){
+    function findPageById(req, res) {
         var pageId = req.params.pageId;
         pageModel
             .findPageById(pageId)
@@ -50,7 +51,7 @@ module.exports = function(app, models) {
             });
     }
 
-    function updatePage(req, res){
+    function updatePage(req, res) {
         var page = req.body;
         var pageId = req.params.pageId;
         delete page._id;
@@ -65,7 +66,7 @@ module.exports = function(app, models) {
 
     }
 
-    function deletePage(req, res){
+    function deletePage(req, res) {
         var pageId = req.params.pageId;
         pageModel
             .findPageById(pageId)

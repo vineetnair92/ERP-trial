@@ -4,7 +4,7 @@ function submitForm(form, event) {
 
 
     console.log($("#imagefile-input").val());
-    if($("#imagefile-input").val() != '') {
+    if ($("#imagefile-input").val() != '') {
         $("#imageEditForm")
             .attr("action", "/api/upload");
         form.submit();

@@ -12,8 +12,8 @@
 
         function init() {
             UserService
-                .findUserById( cModel.userId)
-                .then(function (response)  {
+                .findUserById(cModel.userId)
+                .then(function (response) {
                     cModel.user = response.data;
                 });
 
@@ -22,16 +22,16 @@
         function updateProfile(user) {
             console.log(user);
             UserService
-                .updateUser( cModel.userId, user)
+                .updateUser(cModel.userId, user)
                 .then(function (response) {
-                   if(response.status === 200) {
-                       cModel.updateStats = "success";
-                   }
-                   else{
-                       cModel.updateStats = "error";
-                   }
+                    if (response.status === 200) {
+                        cModel.updateStats = "success";
+                    }
+                    else {
+                        cModel.updateStats = "error";
+                    }
                 })
-                .catch(function(response) {
+                .catch(function (response) {
                     cModel.updateStats = "error";
                 })
         }
@@ -40,15 +40,15 @@
             UserService
                 .deleteUser(userId)
                 .then(function (response) {
-                    if(response.status === 200) {
+                    if (response.status === 200) {
                         cModel.deleteStats = "success";
                         $location.url("/login");
                     }
-                    else{
+                    else {
                         cModel.deleteStats = "error";
                     }
                 })
-                .catch(function(response) {
+                .catch(function (response) {
                     cModel.deleteStats = "error";
                 });
         }

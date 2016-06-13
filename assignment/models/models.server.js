@@ -4,7 +4,7 @@ module.exports = function () {
 
     var connectionString = 'mongodb://localhost/assignment';
 
-    if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+    if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
             process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
             process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +

@@ -9,6 +9,7 @@
     var HTML = 'HTML';
     var TEXT = 'TEXT';
     var pageWidgetsUpdateError = "Error updating widgets references in pages";
+
     function NewWidgetController($location, $routeParams, WidgetService, PageService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
@@ -70,24 +71,21 @@
                         .createWidget(pageId, widget)
                         .then(function (response) {
                             var widget = response.data;
-                            if(widget){
+                            if (widget) {
                                 var _widgetId = widget._id;
                                 updateWidgetReferencesInPage(_widgetId);
                             }
-                            else{
+                            else {
                                 cModel.error = "Unable to create widget";
                             }
                         })
-                        .catch(function(error){
+                        .catch(function (error) {
                             cModel.error = "Something went wrong!!"
                         })
                 })
                 .catch(function (error) {
                     cModel.error = "Something went wrong!!"
                 })
-
-
-
 
 
         }

@@ -27,7 +27,7 @@
         }
 
         function createUserAfterValidation(user) {
-            
+
             UserService
                 .createUser(user)
                 .then(function (response) {

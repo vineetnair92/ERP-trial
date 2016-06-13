@@ -10,11 +10,11 @@
         init();
 
         function init() {
-           WebsiteService
-               .findWebsitesByUser(cModel.userId)
-               .then(function(response) {
-                   cModel.websites = response.data;
-               })
+            WebsiteService
+                .findWebsitesByUser(cModel.userId)
+                .then(function (response) {
+                    cModel.websites = response.data;
+                })
         }
     }
 

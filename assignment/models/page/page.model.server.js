@@ -44,12 +44,12 @@ module.exports = function () {
 
 
     function deletePage(pageId) {
-      
+
         return Page.remove({_id: pageId})
 
     }
 
-    function deleteWidgetForPage(pageId, widgetId){
+    function deleteWidgetForPage(pageId, widgetId) {
         return Page.update({_id: pageId},
             {
                 $pullAll: {

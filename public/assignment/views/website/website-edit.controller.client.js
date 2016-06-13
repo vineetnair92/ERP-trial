@@ -13,12 +13,12 @@
         init();
 
         function init() {
-                WebsiteService
-                    .findWebsiteById(cModel.websiteId)
-                    .then(function(response) {
-                        cModel.website = response.data;
-                        console.log(cModel.website);
-                    })
+            WebsiteService
+                .findWebsiteById(cModel.websiteId)
+                .then(function (response) {
+                    cModel.website = response.data;
+                    console.log(cModel.website);
+                })
         }
 
         function updateWebsite(website) {
@@ -26,7 +26,7 @@
 
                 WebsiteService
                     .updateWebsite(cModel.websiteId, website)
-                    .then(function(response) {
+                    .then(function (response) {
                         var updateStats = response.status;
                         if (updateStats === 200) {
                             $location.url("/user/" + cModel.userId + "/website");
@@ -36,10 +36,9 @@
                         }
 
                     })
-                    .catch(function(response) {
+                    .catch(function (response) {
                         cModel.error = "Unable to update website";
                     });
-
 
 
         }

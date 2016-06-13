@@ -2,11 +2,11 @@ module.exports = function (app, models) {
 
     var userModel = models.userModel;
     /*var users = [
-        {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-        {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-        {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-    ];*/
+     {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
+     {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
+     {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
+     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
+     ];*/
 
 
     //app.get("/api/user", getUsers);
@@ -34,7 +34,7 @@ module.exports = function (app, models) {
         var uid = req.params.userId;
         userModel
             .findUserById(uid)
-            .then(function(user) {
+            .then(function (user) {
                 res.send(user);
             })
             .catch(function (error) {
@@ -67,14 +67,14 @@ module.exports = function (app, models) {
     }
 
     function findUserByUsername(username, res) {
-           userModel
-               .findUserByUsername(username)
-               .then(function(user){
-                    res.send(user);
-               })
-               .catch(function(error){
-                    res.status(400).send(error)
-               });
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                res.send(user);
+            })
+            .catch(function (error) {
+                res.status(400).send(error)
+            });
     }
 
     function updateUser(req, res) {
@@ -96,11 +96,11 @@ module.exports = function (app, models) {
         var userId = req.params.userId;
         userModel
             .deleteUser(userId)
-            .then(function(response){
+            .then(function (response) {
                 res.send(response);
-            }) 
+            })
             .catch(function (error) {
-                 res.status(400).send(error);
+                res.status(400).send(error);
             });
     }
 };

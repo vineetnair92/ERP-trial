@@ -1,8 +1,8 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("FlickrSearchController", FlickrSearchController);
-    
+
     function FlickrSearchController($routeParams, $location, FlickrService, WidgetService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
@@ -25,9 +25,9 @@
         function searchPhotos(searchText) {
             FlickrService
                 .searchPhotos(searchText)
-                .then(function(response){
-                    data = response.data.replace("jsonFlickrApi(","");
-                    data = data.substring(0,data.length - 1);
+                .then(function (response) {
+                    data = response.data.replace("jsonFlickrApi(", "");
+                    data = data.substring(0, data.length - 1);
                     data = JSON.parse(data);
                     cModel.photos = data.photos;
                 });
@@ -40,9 +40,9 @@
             WidgetService
                 .updateWidget(cModel.widgetId, widget)
                 .then(function (response) {
-                    if(response.status == 200){
+                    if (response.status == 200) {
                         $location
-                            .url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget/"+cModel.widgetId);
+                            .url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget/" + cModel.widgetId);
                     }
                 });
 

@@ -8,7 +8,7 @@
         cModel.login = login;
 
         function login(userInput) {
-             UserService
+            UserService
                 .findUserByCredentials(userInput.username, userInput.password)
                 .then(function (response) {
                     var user = response.data;
@@ -19,9 +19,9 @@
                         cModel.error = "Username/Password is incorrect";
                     }
                 })
-                 .catch(function (response) {
-                     cModel.error = "Something is wrong!!";
-                 })
+                .catch(function (response) {
+                    cModel.error = "Something is wrong!!";
+                })
         }
     }
 

@@ -42,28 +42,7 @@ module.exports = function () {
 
     function findUserById(userId) {
 
-       /* User.find({websites: {$in: ['575c4add48ca7ebc53c4eef6']}})
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error){
-                console.log(error);
-
-            });*/
-
-      /* User.update({_id: userId},
-            {$pullAll : {
-                "websites": ["575c61802de178285e96663c"]
-            }},
-            { safe: true })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });*/
-
-        return User.findOne({_id:userId});
+        return User.findOne({_id: userId});
     }
 
     function findUserByUsername(username) {
@@ -71,7 +50,7 @@ module.exports = function () {
     }
 
     function deleteUser(userId) {
-        return User.remove({_id:userId});
+        return User.remove({_id: userId});
     }
 
 

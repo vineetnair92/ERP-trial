@@ -60,31 +60,32 @@ module.exports = function () {
 
     }
 
-    function reorderWidget(pageId, start, end, res){
+    function reorderWidget(pageId, start, end, res) {
         start++;
         end++;
         Widget
             .find({_page: pageId})
             .then(function (widgets) {
-                widgets.forEach(function(widget){
-                    if(start > end) {
-                        if(widget.rank >= end && widget.rank < start) {
+                widgets.forEach(function (widget) {
+
+                    if (widget.rank === start) {
+                        widget.rank = end;
+                        widget.save(function () {
+                        });
+                    }
+                    else {
+                        if (start > end && (widget.rank >= end && widget.rank < start)) {
                             widget.rank++;
-                            widget.save(function(){});
-                        } else if(widget.rank === start) {
-                            widget.rank = end;
-                            widget.save(function(){});
+                            widget.save(function () {
+                            });
                         }
-                    } else {
-                        if(widget.rank > start && widget.rank <= end) {
+                        else if (start < end && (widget.rank > start && widget.rank <= end)) {
                             widget.rank--;
-                            widget.save(function(){});
-                        } else if(widget.rank === start) {
-                            widget.rank = end;
-                            widget.save(function(){});
+                            widget.save(function () {
+                            });
                         }
                     }
-                })
+                });
                 res.json(widgets);
             })
             .catch(function (error) {
@@ -92,15 +93,16 @@ module.exports = function () {
                 res.status(400).send();
             })
     }
-    
+
     function resetWidgetsRank(pageId, widgetRank, res) {
         Widget
             .find({_page: pageId})
             .then(function (widgets) {
-                widgets.forEach(function(widget){
-                    if(widget.rank > widgetRank) {
+                widgets.forEach(function (widget) {
+                    if (widget.rank > widgetRank) {
                         widget.rank--;
-                        widget.save(function(){});
+                        widget.save(function () {
+                        });
                     }
                 });
                 res.status(200).send(widgets);

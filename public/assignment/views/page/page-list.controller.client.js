@@ -12,11 +12,11 @@
 
         function init() {
 
-                PageService
-                    .findPageByWebsiteId(cModel.websiteId)
-                    .then(function(response) {
-                        cModel.pages = response.data;
-                    });
+            PageService
+                .findPageByWebsiteId(cModel.websiteId)
+                .then(function (response) {
+                    cModel.pages = response.data;
+                });
         }
     }
 

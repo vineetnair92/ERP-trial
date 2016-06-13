@@ -4,6 +4,7 @@
         .controller("NewWebsiteController", NewWebsiteController);
 
     var userWebsitesUpdateError = "Error updating website references in user";
+
     function NewWebsiteController($location, $routeParams, WebsiteService, UserService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
@@ -38,10 +39,10 @@
                         UserService
                             .updateUser(cModel.userId, user)
                             .then(function (response) {
-                                if(response.status === 200) {
+                                if (response.status === 200) {
                                     $location.url("/user/" + cModel.userId + "/website");
                                 }
-                                else{
+                                else {
                                     cModel.error = userWebsitesUpdateError;
                                 }
                             })

@@ -3,13 +3,13 @@ module.exports = function (app, models) {
     var websiteModel = models.websiteModel;
     var userModel = models.userModel;
     /*var websites = [
-        {"_id": "123", "name": "Facebook", "developerId": "456"},
-        {"_id": "234", "name": "Tweeter", "developerId": "456"},
-        {"_id": "456", "name": "Gizmodo", "developerId": "456"},
-        {"_id": "567", "name": "Tic Tac Toe", "developerId": "123"},
-        {"_id": "678", "name": "Checkers", "developerId": "123"},
-        {"_id": "789", "name": "Chess", "developerId": "234"}
-    ];*/
+     {"_id": "123", "name": "Facebook", "developerId": "456"},
+     {"_id": "234", "name": "Tweeter", "developerId": "456"},
+     {"_id": "456", "name": "Gizmodo", "developerId": "456"},
+     {"_id": "567", "name": "Tic Tac Toe", "developerId": "123"},
+     {"_id": "678", "name": "Checkers", "developerId": "123"},
+     {"_id": "789", "name": "Chess", "developerId": "234"}
+     ];*/
 
     app.post("/api/user/:userId/website", createWebsite);
     app.get("/api/user/:userId/website", findAllWebsitesForUser);
@@ -22,11 +22,11 @@ module.exports = function (app, models) {
         websiteModel
             .createWebsiteForUser(newWebsite)
             .then(function (website) {
-               res.json(website);
+                res.json(website);
                 console.log(website._doc._id);
             })
             .catch(function (error) {
-               res.status(400).send(error);
+                res.status(400).send(error);
             });
     }
 
@@ -35,23 +35,23 @@ module.exports = function (app, models) {
         websiteModel
             .findAllWebsitesForUser(userId)
             .then(function (websites) {
-               res.json(websites);
+                res.json(websites);
             })
             .catch(function (error) {
-               res.status(400).send(error);
+                res.status(400).send(error);
             });
     }
 
     function findWebsiteById(req, res) {
         var websiteId = req.params.websiteId;
-       websiteModel
-           .findWebsiteById(websiteId)
-           .then(function (website) {
-              res.json(website);
-           })
-           .catch(function (error) {
-               res.status(400).send(error);
-           });
+        websiteModel
+            .findWebsiteById(websiteId)
+            .then(function (website) {
+                res.json(website);
+            })
+            .catch(function (error) {
+                res.status(400).send(error);
+            });
 
     }
 
@@ -72,7 +72,7 @@ module.exports = function (app, models) {
     function deleteWebsite(req, res) {
         var websiteId = req.params.websiteId;
         websiteModel
-            .findWebsiteById(websiteId) 
+            .findWebsiteById(websiteId)
             .then(function (website) {
                 websiteModel
                     .deleteWebsite(websiteId)
@@ -85,7 +85,7 @@ module.exports = function (app, models) {
                             .catch(function (error) {
                                 res.status(400).send(error);
                             })
-                        
+
                     })
                     .catch(function (error) {
                         res.status(400).send(error);

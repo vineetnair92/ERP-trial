@@ -14,11 +14,11 @@
         init();
 
         function init() {
-             PageService
-                 .findPageById(cModel.pageId)
-                 .then(function(response) {
-                     cModel.page = response.data;
-                 });
+            PageService
+                .findPageById(cModel.pageId)
+                .then(function (response) {
+                    cModel.page = response.data;
+                });
         }
 
         function updatePage(page) {
@@ -32,15 +32,15 @@
                         cModel.error = "Unable to update page";
                     }
                 })
-                .catch(function(response) {
+                .catch(function (response) {
                     cModel.error = "Unable to update page";
                 });
         }
 
         function deletePage(pageId) {
-           PageService
+            PageService
                 .deletePage(pageId)
-                .then(function(response) {
+                .then(function (response) {
                     var result = response.status;
                     if (result == 200) {
                         $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
@@ -48,9 +48,9 @@
                         cModel.error = "Unable to delete page";
                     }
                 })
-               .catch(function(response) {
-                   cModel.error = "Unable to delete page";
-               });
+                .catch(function (response) {
+                    cModel.error = "Unable to delete page";
+                });
 
         }
     }
