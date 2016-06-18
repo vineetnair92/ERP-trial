@@ -5,7 +5,7 @@ module.exports = function () {
     var User = mongoose.model("User", UserSchema);
     var Schema = mongoose.Schema;
     var api = {
-        createWebsite: createUser,
+        createUser: createUser,
         updateUser: updateUser,
         findUserByCredentials: findUserByCredentials,
         findUserById: findUserById,

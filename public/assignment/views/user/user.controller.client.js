@@ -2,12 +2,13 @@
     angular.module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService, $location) {
+    function ProfileController($routeParams, UserService, $location, $rootScope) {
         var cModel = this;
-        cModel.userId = $routeParams.uid;
-        var currentUserId = $routeParams.uid;
+        cModel.userId = $rootScope.currentUser._id;
         cModel.updateProfile = updateProfile;
         cModel.deleteUser = deleteUser;
+        cModel.logout = logout;
+
         init();
 
         function init() {
@@ -52,8 +53,20 @@
                     cModel.deleteStats = "error";
                 });
         }
+        
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                       $rootScope.currentUser = null;
+                        $location.url("/");
+                    },
+                    function(err) {
 
-
+                    }
+                );
+        }
     }
 
 })();

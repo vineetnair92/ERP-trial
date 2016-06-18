@@ -17,7 +17,7 @@
                     .findUserByUsername(user.username)
                     .then(function (response) {
                         if (!response.data) {
-                            createUserAfterValidation(user);
+                            registerUserAfterValidation(user);
                         }
                         else {
                             cModel.error = "Username already exists, Please enter another username !!";
@@ -45,7 +45,24 @@
                 });
         }
 
+        function registerUserAfterValidation(user) {
 
+            UserService
+                .register(user)
+                .then(function (response) {
+                    var user = response.data;
+                    if (user) {
+                        $location.url("/user/"+user._id);
+                    }
+                    else {
+                        cModel.error = "Error creating user!!";
+                    }
+                })
+                .catch(function (response) {
+                    console.log("Error");
+
+                });
+        }
     }
 
 })();

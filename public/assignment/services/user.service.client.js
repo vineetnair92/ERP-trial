@@ -12,6 +12,10 @@
 
     function UserService($http) {
         api = {
+            login: login,
+            logout: logout,
+            register: register,
+            isLoggedIn: isLoggedIn,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
@@ -21,6 +25,22 @@
         }
         return api;
 
+        function login(user) {
+            return $http.post("/api/login", user);
+        }
+
+        function logout() {
+            return $http.post("/api/logout");
+        }
+
+        function register(user) {
+            return $http.post("/api/register", user);
+        }
+        
+        function isLoggedIn() {
+            return $http.get("/api/isLoggedIn");
+        }
+        
         function findUserByCredentials(username, password) {
             var attr1 = "username="+username;
             var attr2 = "password="+password;

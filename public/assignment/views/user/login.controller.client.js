@@ -2,18 +2,19 @@
     angular.module("WebAppMaker")
         .controller("LoginController", LoginController);
 
-    function LoginController($location, UserService) {
+    function LoginController($location, UserService, $rootScope) {
         var cModel = this;
 
         cModel.login = login;
 
         function login(userInput) {
             UserService
-                .findUserByCredentials(userInput.username, userInput.password)
+                .login(userInput)
                 .then(function (response) {
                     var user = response.data;
                     if (user) {
-                        $location.url("/user/" + user._id);
+                        $rootScope.currentUser = user;
+                        $location.url("/user");
                     }
                     else {
                         cModel.error = "Username/Password is incorrect";
@@ -22,6 +23,18 @@
                 .catch(function (response) {
                     cModel.error = "Something is wrong!!";
                 })
+        }
+
+        function testApi() {
+            UserService
+                .testApi()
+                .then(
+                    function (response) {
+
+                    },
+                    function (err) {
+
+                    });
         }
     }
 
