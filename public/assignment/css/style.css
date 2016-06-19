@@ -14,6 +14,12 @@ body {
     float: none;
 }
 
+.container > .navbar-header {
+    margin-left: -5px;
+    margin-right: -3px;
+    float: none;
+}
+
 .navbar-brand {
     margin-left: -5px;
     font-weight: bold;

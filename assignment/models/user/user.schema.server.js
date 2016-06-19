@@ -10,6 +10,10 @@ module.exports = function () {
         email: String,
         phone: String,
         websites: [{type: Schema.ObjectId}],
+        facebook: {
+            id:    String,
+            token: String
+        },
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "user"});
 

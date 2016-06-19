@@ -7,7 +7,10 @@
 
         cModel.login = login;
 
+
+
         function login(userInput) {
+            
             UserService
                 .login(userInput)
                 .then(function (response) {
@@ -25,17 +28,8 @@
                 })
         }
 
-        function testApi() {
-            UserService
-                .testApi()
-                .then(
-                    function (response) {
 
-                    },
-                    function (err) {
 
-                    });
-        }
     }
 
 })();

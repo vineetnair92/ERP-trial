@@ -11,7 +11,8 @@ module.exports = function () {
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
-        deleteWebsiteForUser: deleteWebsiteForUser
+        deleteWebsiteForUser: deleteWebsiteForUser,
+        findUserByFacebookId: findUserByFacebookId
 
     };
     return api;
@@ -62,5 +63,9 @@ module.exports = function () {
                 }
             },
             {safe: true});
+    }
+    
+    function findUserByFacebookId(facebookId) {
+        return User.findOne({'facebook.id': facebookId});
     }
 }

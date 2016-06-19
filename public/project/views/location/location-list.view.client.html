@@ -1,0 +1,63 @@
+<nav class="mobile-nav navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="">
+                My Locations
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#/user/:uid/location/addlocation" class="navbar-link ">
+                    Add Location <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid content">
+
+    <div ng-if="model.updateStats == 'success'" class="alert alert-success" role="alert">
+        Update Success <a class="pull-right" href="#/user" >Home</a>
+    </div>
+    <div ng-if="model.updateStats == 'error'" class="alert alert-danger" role="alert">
+        Update Error!!
+    </div>
+
+    <div ng-if="model.deleteStats == 'success'" class="alert alert-success" role="alert">
+        Delete Success
+    </div>
+    <div ng-if="model.deleteStats == 'error'" class="alert alert-danger" role="alert">
+        Delete Error!!
+    </div>
+
+    <ul class="list-group">
+        <li ng-repeat="location in model.location" class="list-group-item">
+            <a href="#/user/{{model.userId}}/location/{{location._id}}/post">
+                {{location.name}}
+            </a>
+            <div class="pull-right">
+                <a href="#/user/{{website._user}}/website/{{website._id}}">
+                    <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
+                </a>
+            </div>
+        </li>
+    </ul>
+
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row navbar-footer pull-right">
+            <div class=" navbar-text text-center">
+                <a href="#/user">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
