@@ -1,3 +1,4 @@
+<form name="newPageForm" novalidate>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -11,9 +12,9 @@
                 New Page
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.createPage(page)" class="navbar-link">
+                <button ng-click="(submitted=true) && newPageForm.$valid && model.createPage(page)" class="validationButton navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
-                </a>
+                </button>
             </p>
         </div>
     </div>
@@ -21,14 +22,18 @@
 
 
 <div class="container content">
-    <form>
         <div class="form-group">
             <label for="create-page-name">Name</label>
             <input type="text"
                    class="form-control"
                    id="create-page-name"
+                   name="pagename"
                    ng-model="page.name"
-                   placeholder="Page Name">
+                   placeholder="Page Name"
+                   required>
+            <div ng-show="newPageForm.$submitted && newPageForm.pagename.$invalid" class="elementErrorMsg">
+                <span>*required field</span>
+            </div>
         </div>
         <div class="form-group">
             <label for="create-page-title">Title</label>
@@ -38,7 +43,7 @@
                    ng-model="page.title"
                    placeholder="Page Title">
         </div>
-    </form>
+
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         Error Page Creation !
     </div>
@@ -55,3 +60,4 @@
         </div>
     </div>
 </nav>
+</form>

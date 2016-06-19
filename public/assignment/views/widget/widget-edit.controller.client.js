@@ -24,19 +24,27 @@
         }
 
         function updateWidget(widget) {
-            WidgetService
-                .updateWidget(cModel.widgetId, widget)
-                .then(function (response) {
-                    var updateStats = response.status;
-                    if (updateStats == 200) {
-                        $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
-                    } else {
+
+            if(!widget.name) {
+                cModel.error = "Error Update!"
+                cModel.inputmsg = "*required field"
+                $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget/"+widget._id);
+            }
+            else {
+                WidgetService
+                    .updateWidget(cModel.widgetId, widget)
+                    .then(function (response) {
+                        var updateStats = response.status;
+                        if (updateStats == 200) {
+                            $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget");
+                        } else {
+                            cModel.error = "Unable to update widget";
+                        }
+                    })
+                    .catch(function (response) {
                         cModel.error = "Unable to update widget";
-                    }
-                })
-                .catch(function (response) {
-                    cModel.error = "Unable to update widget";
-                })
+                    })
+            }
         }
 
         function deleteWidget(widgetId) {

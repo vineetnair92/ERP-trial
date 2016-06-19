@@ -120,7 +120,7 @@ module.exports = function (app, models) {
 
     function logout(req, res) {
         req.logOut();
-        res.send(200);
+        res.status(200).send();
     }
 
     function register(req, res) {

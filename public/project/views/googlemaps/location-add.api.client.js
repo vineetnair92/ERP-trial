@@ -2,8 +2,8 @@
 function initAddlocation() {
     var marker;
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -33.8688, lng: 151.2195},
-        zoom: 13,
+        center: {lat: 42.339809, lng: -71.089529},
+        zoom: 15,
         mapTypeControl: true,
         rotateControl: true,
         mapTypeControlOptions: {
@@ -27,6 +27,13 @@ function initAddlocation() {
             });
         }
         $("#pac-input").val(marker.getPosition());
+        $("#pac-input").trigger("input");
+        var latlng = (marker.getPosition()+"").match(/\((.+?)\)/)[1];
+        var lat = latlng.split(',')[0].trim();
+        var lng = latlng.split(',')[1].trim();
+        console.log("LatLng from marker = "+lat+","+lng);
+        $("#lat").val(lat);
+        $("#lng").val(lng);
 
     });
 
@@ -51,7 +58,12 @@ function initAddlocation() {
             return;
         }
         else {
-            console.log(place.geometry.location.lat() + "," + place.geometry.location.lng());
+            console.log(place);
+            $("#pac-input").val(place.formatted_address);
+            $("#pac-input").trigger("input");
+            console.log("LatLng from autocomplete = "+ place.geometry.location.lat() + "," + place.geometry.location.lng());
+            $("#lat").val(place.geometry.location.lat());
+            $("#lng").val(place.geometry.location.lng());
         }
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {

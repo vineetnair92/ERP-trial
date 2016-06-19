@@ -3,21 +3,38 @@
         {{model.error}}
     </div>
     <h1>Login</h1>
-    <input type="text"
-           class="form-control"
-           placeholder="username"
-           ng-model="user.username"/>
-    <input type="password"
-           class="form-control"
-           placeholder="password"
-           ng-model="user.password"/>
-    <a ng-click="model.login(user)" class="btn btn-primary btn-block">Login</a>
-    <a href="/auth/facebook" class="btn btn-primary btn-block">
-        <span class="fa fa-facebook-official"></span>
-        Facebook Login
-    </a>
-    <a class="btn btn-success btn-block"
-       href="#/register">Register</a>
+    <form name="loginForm" novalidate>
+        <div ng-if="loginForm.$submitted && loginForm.$invalid" class="alert alert-danger" role="alert">
+           Error Loggin In!!
+        </div>
+        <input name="username"
+               type="text"
+               class="form-control"
+               placeholder="username"
+               required
+               ng-model="user.username"/>
 
+        <div ng-show="loginForm.$submitted && loginForm.username.$invalid" class="elementErrorMsg">
+          <span>*required field</span>
+        </div>
+        <input name="password"
+               type="password"
+               class="form-control"
+               placeholder="password"
+               required
+               ng-model="user.password"/>
+        <div ng-show="loginForm.$submitted && loginForm.username.$invalid" class="elementErrorMsg">
+            <span>*required field</span>
+        </div>
+        <button name="loginButton"
+           ng-click=" (submitted=true) && loginForm.$valid && model.login(user)"
+           class="btn btn-primary btn-block">Login</button>
+        <a href="/auth/facebook" class="btn btn-primary btn-block">
+            <span class="fa fa-facebook-official"></span>
+            Facebook Login
+        </a>
+        <a class="btn btn-success btn-block"
+           href="#/register">Register</a>
+    </form>
     <!--<div>{{model.response}}</div>-->
 </div>

@@ -1,3 +1,4 @@
+<form name="editWebsiteForm" novalidate>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -11,9 +12,9 @@
                 Edit Website
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateWebsite(model.website)" class="navbar-link">
+                <button ng-click="(submitted=true) && editWebsiteForm.$valid && model.updateWebsite(model.website)" class="validationButton navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
-                </a>
+                </button>
             </p>
         </div>
     </div>
@@ -26,13 +27,17 @@
         {{model.error}}
     </div>
 
-    <form>
         <div class="form-group">
             <label for="website-name">Website Name</label>
             <input type="text" class="form-control"
                    id="website-name"
+                   name="websitename"
                    ng-model="model.website.name"
-                   placeholder="Gizmodo">
+                   placeholder="Gizmodo"
+                   required/>
+            <div ng-show="editWebsiteForm.$submitted && editWebsiteForm.websitename.$invalid" class="elementErrorMsg">
+                <span>*required field</span>
+            </div>
         </div>
         <div class="form-group">
             <label for="website-desc">Website Description</label>
@@ -42,8 +47,6 @@
                       ng-model="model.website.description"
                       placeholder="Description"></textarea>
         </div>
-    </form>
-
 
     <a class="btn btn-danger  btn-block"
        ng-click="model.deleteWebsite(model.website._id)">Delete</a>
@@ -65,3 +68,6 @@
         </div>
     </div>
 </nav>
+
+</form>
+

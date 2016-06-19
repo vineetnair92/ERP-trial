@@ -1,3 +1,4 @@
+<form name="newWebsiteForm" novalidate>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -11,9 +12,9 @@
                 New Website
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.createWebsite(website)" class="navbar-link">
+                <button ng-click="(submitted=true) && newWebsiteForm.$valid && model.createWebsite(website)" class="validationButton navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
-                </a>
+                </button>
             </p>
         </div>
     </div>
@@ -21,24 +22,28 @@
 
 
 <div class="container content">
-    <form>
         <div class="form-group">
             <label for="create-website-name">Name</label>
             <input type="text"
                    class="form-control"
+                   name="websitename"
                    id="create-website-name"
                    ng-model="website.name"
-                   placeholder="Gizmodo">
+                   placeholder="Gizmodo"
+                   required>
+         <div ng-show="newWebsiteForm.$submitted && newWebsiteForm.websitename.$invalid" class="elementErrorMsg">
+             <span>*required field</span>
+         </div>
         </div>
         <div class="form-group">
             <label for="create-website-desc">Description</label>
             <textarea id="create-website-desc"
+                      name="websitedesc"
                       class="form-control"
                       rows=4
                       ng-model="website.description"
                       placeholder="Description"></textarea>
         </div>
-    </form>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -52,3 +57,4 @@
         </div>
     </div>
 </nav>
+</form>

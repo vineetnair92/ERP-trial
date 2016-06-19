@@ -1,3 +1,4 @@
+<form name="editPageForm" novalidate>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -11,9 +12,9 @@
                 Edit Page
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updatePage(model.page)" class="navbar-link">
+                <button ng-click="(submitted=true) && editPageForm.$valid && model.updatePage(model.page)" class="validationButton navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
-                </a>
+                </button>
             </p>
         </div>
     </div>
@@ -21,15 +22,19 @@
 
 
 <div class="container content">
-    <form>
         <div class="form-group">
             <label for="edit-page-name">Name</label>
             <input type="text"
                    class="form-control"
                    id="edit-page-name"
+                   name="pagename"
                    placeholder="Page Name"
                    ng-model="model.page.name"
-                   value="Page-Content">
+                   value="Page-Content"
+                   required/>
+            <div ng-show="editPageForm.$submitted && editPageForm.pagename.$invalid" class="elementErrorMsg">
+                <span>*required field</span>
+            </div>
         </div>
         <div class="form-group">
             <label for="create-page-title">Title</label>
@@ -39,7 +44,6 @@
                    ng-model="model.page.title"
                    placeholder="Page Title">
         </div>
-    </form>
 
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
@@ -60,3 +64,5 @@
         </div>
     </div>
 </nav>
+</form>
+

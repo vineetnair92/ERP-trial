@@ -9,7 +9,7 @@
         var cModel = this;
         cModel.userId = $routeParams.uid;
         cModel.createLocation = createLocation;
-
+        cModel.addLocation = addLocation;
         function createLocation(location) {
             LocationService
                 .createLocation(cModel.userId, location)
@@ -23,6 +23,10 @@
                         cModel.error = "Error Creating Location!!"
                     }
                 );
+        }
+
+        function addLocation(location) {
+            console.log(location);
         }
 
 

@@ -1,10 +1,18 @@
-<form>
+<form id="widgetEditForm" name="widgetEditForm" novalidate>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
     <div class="form-group">
         <label for="widget-ytube-name">Name</label>
         <input type="text"
                class="form-control"
                ng-model="model.widget.name"
-               id="widget-ytube-name">
+               id="widget-ytube-name"
+               required>
+        <div ng-show="model.inputmsg" class="elementErrorMsg">
+            <span>*required field</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="widget-ytube-text">Text</label>
@@ -27,10 +35,6 @@
                class="form-control"
                id="widget-ytube-width"
                ng-model="model.widget.width">
-    </div>
-
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
     </div>
 
     <a class="btn btn-danger  btn-block"

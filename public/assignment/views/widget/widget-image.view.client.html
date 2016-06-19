@@ -5,10 +5,14 @@
     <div class="form-group">
         <label for="widget-img-name">Name</label>
         <input type="text"
-               name="imageName"
+               name="name"
                class="form-control"
                ng-model="model.widget.name"
-               id="widget-img-name">
+               id="widget-img-name"
+               required>
+        <div ng-show="model.inputmsg" class="elementErrorMsg">
+            <span>*required field</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="widget-img-text">Text</label>

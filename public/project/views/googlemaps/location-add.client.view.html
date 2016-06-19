@@ -85,27 +85,45 @@
 <div ng-if="model.error" class="alert alert-danger" role="alert">
        {{model.error}}
 </div>
+    {{model.location}}
 <div class="col-sm-6">
-<input id="pac-input" class="search-input controls" type="text"
-                   placeholder="Enter a location"/>
+<input id="pac-input"
+       class="search-input controls"
+       type="text"
+       placeholder="Enter a location"
+       ng-model="model.location.name"/>
 </div>
 
 <div class="col-sm-6">
-<input id="opt-loc-name" class="search-input controls" type="text"
-           placeholder="Loc Name (Optional)"/>
+<input id="opt-loc-name"
+       class="search-input controls"
+       type="text"
+       placeholder="Marker's Alternate LocName"
+       ng-model="model.location.optname"/>
 </div>
 </div>
 
 <div class="row">
 <div class="col-sm-4">
-        <button id="add" class="btn btn-success mapsButton" type="button">
+        <button id="add"
+                class="btn btn-success mapsButton"
+                type="button"
+                ng-click="model.addLocation(model.location)">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add
         </button>
 </div>
-
-</div>
 </div>
 
+</div>
+
+<div id="loc-variables">
+<input id="lat"
+       type="hidden"
+       ng-model="model.location.lat">
+<input id="lng"
+       type="hidden"
+       ng-model="model.location.lng">
+</div>
 
 
 

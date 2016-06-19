@@ -6,7 +6,7 @@
     function LocationListController($routeParams, LocationService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
-        cModel.createLocation = createLocation;
+    
 
        // init();
 
