@@ -25,7 +25,7 @@
 
         function updateWidget(widget) {
 
-            if(!widget.name) {
+            if(!widget.name  &&  widget.type!='TEXT' && widget.type!='HTML') {
                 cModel.error = "Error Update!"
                 cModel.inputmsg = "*required field"
                 $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/" + cModel.pageId + "/widget/"+widget._id);
