@@ -9,7 +9,7 @@ module.exports = function () {
             process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
             process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
             process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-            process.env.OPENSHIFT_APP_NAME+"Project";
+            process.env.OPENSHIFT_APP_NAME;
     }
 
     var db_project = mongoose.createConnection(connectionString);

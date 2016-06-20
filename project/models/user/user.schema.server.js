@@ -24,7 +24,7 @@ module.exports = function () {
         friends: [FriendSchema],
         locations: [LocationSchema],
         dateCreated: {type: Date, default: Date.now}
-    }, {collection: "user"});
+    }, {collection: "user_tp"});
 
     return UserSchema;
 }
