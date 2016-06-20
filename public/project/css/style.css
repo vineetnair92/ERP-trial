@@ -1,0 +1,187 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+.container > .navbar-header {
+    margin-left: -5px;
+    margin-right: -3px;
+
+}
+
+
+.container-fluid > .navbar-header {
+    margin-left: -5px;
+    margin-right: -3px;
+
+}
+
+.mobile-nav .container-fluid > .navbar-header {
+    margin-left: -5px;
+    margin-right: -3px;
+    float: none;
+
+}
+
+
+.navbar {
+    background-color: rgba(51, 122, 183, 0.82);
+}
+
+.navbar .glyphicon{
+    color: #eaeaea;
+}
+
+.navbar .navbar-brand{
+    color: #eaeaea;
+}
+
+
+.navbar-brand {
+    margin-left: -5px;
+    font-weight: bold;
+}
+
+.navbar-text {
+    float: none;
+}
+
+
+
+.navbar-default .navbar-nav li>a{
+    color: rgba(250, 255, 248, 0.96);
+    font-family: Arial, sans-serif;
+    font-weight: bolder;
+
+}
+
+.navbar-default .navbar-nav .dropdown-menu>li>a {
+    color: black;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: black;
+}
+
+.navbar-default .navbar-nav li>a:hover{
+    color: rgba(255, 247, 255, 0.96);
+
+}
+
+.navbar-default .navbar-nav li>a:active{
+  font-size: larger;
+
+}
+
+.navbar-footer {
+    margin-left: -5px;
+    margin-right: -3px;
+}
+
+.content {
+    margin-top: 60px;
+    margin-bottom: 70px;
+}
+
+.section-heading {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+.widget {
+    padding-top: 5px;
+}
+.widget-settings {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    padding: 2px;
+    opacity: 0.8;
+    border-bottom-left-radius: 5px;
+
+}
+
+.image {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#imagefile-input::-webkit-file-upload-button {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 5px;
+}
+
+
+.flickr-add-button {
+    font-weight: bolder;
+}
+
+.navbar-inverse {
+    background-color: #4580cd;
+
+}
+
+.navbar-inverse .glyphicon{
+   color: white;
+
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.cursor-hand{
+    cursor: pointer;
+}
+
+.flickr-thumbnail {
+    height: 100%;
+    width: 100%;
+}
+.flickr-search-results {
+    margin-top: 10px;
+}
+.flickr-search-results .col-xs-4 {
+    padding: 0;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dropdown-menu .glyphicon {
+    margin-left: 20px;
+    color: black;
+}
+
+.dropdown-menu a{
+    cursor: pointer;
+}
+
+.mapsButton {
+    margin-left: 12px;
+    margin-top: 10px;
+    padding: 15px;
+    height: 50px;
+}
+
+.dropdown-menu > li a:hover {
+    background-color: rgba(101, 224, 117, 0.37);
+}
+
+.input-hidden {
+   visibility: hidden;
+}
+
+

@@ -12,14 +12,15 @@ module.exports = function () {
             process.env.OPENSHIFT_APP_NAME;
     }
 
-    mongoose.connect(connectionString);
+   var db_assignment =  mongoose.createConnection(connectionString);
 
 
     var models = {
-        userModel: require("./user/user.model.server.js")(),
-        websiteModel: require("./website/website.model.server")(),
-        pageModel: require("./page/page.model.server")(),
-        widgetModel: require("./widget/widget.model.server")()
+        userModel: require("./user/user.model.server.js")(db_assignment),
+        websiteModel: require("./website/website.model.server")(db_assignment),
+        pageModel: require("./page/page.model.server")(db_assignment),
+        widgetModel: require("./widget/widget.model.server")(db_assignment)
     }
+
     return models;
 }

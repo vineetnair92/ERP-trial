@@ -1,8 +1,8 @@
-module.exports = function (db_assignment) {
+module.exports = function (db_project) {
 
     var mongoose = require("mongoose");
     var UserSchema = require("./user.schema.server")();
-    var User = db_assignment.model("User", UserSchema);
+    var User = db_project.model("UserProj", UserSchema);
     var Schema = mongoose.Schema;
     var api = {
         createUser: createUser,
@@ -12,7 +12,7 @@ module.exports = function (db_assignment) {
         findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
         deleteWebsiteForUser: deleteWebsiteForUser,
-        findUserByFacebookId: findUserByFacebookId
+        addLocationForUser: addLocationForUser
 
     };
     return api;
@@ -32,7 +32,8 @@ module.exports = function (db_assignment) {
                     lastName: user.lastName,
                     email: user.email,
                     phone: user.phone,
-                    websites: user.websites
+                    friends: user.friends,
+                    locations: user.locations
                 }
             });
     }
@@ -64,8 +65,25 @@ module.exports = function (db_assignment) {
             },
             {safe: true});
     }
-    
-    function findUserByFacebookId(facebookId) {
-        return User.findOne({'facebook.id': facebookId});
+
+    function addLocationForUser(userId, location, res) {
+        User
+            .findOne({_id: userId})
+            .then(
+                function (user) {
+                   if(user) {
+                       user.locations.push(location);
+                       user.save();
+                       res.status(200).send();
+                   }
+                   else{
+                      res.status(404).send();
+                   }
+                },
+                function (err) {
+                   res.status(400).send(err);
+                });
     }
+    
+   
 }

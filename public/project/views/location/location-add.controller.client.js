@@ -9,26 +9,41 @@
         var cModel = this;
         cModel.userId = $routeParams.uid;
         cModel.createLocation = createLocation;
-        cModel.addLocation = addLocation;
+
         function createLocation(location) {
+            console.log(location);
+            location.users = [cModel.userId];
             LocationService
                 .createLocation(cModel.userId, location)
                 .then(
                     function (response) {
-                        if(response.data) {
-                            $location.url("/user/"+cModel.userId+"/location");
+                        if (response.data) {
+                            var location = response.data;
+                            var locRef = {
+                                _id: location._id,
+                                name: location.name
+                            }
+                            return UserService
+                                     .addLocationForUser(cModel.userId, locRef);
                         }
                     },
                     function (error) {
                         cModel.error = "Error Creating Location!!"
                     }
-                );
+                )
+                .then(
+                    function (response) {
+                        if(response.status == 200) {
+                            $location.url("/user/" + cModel.userId + "/location");
+                        }
+                        else{
+                            cModel.error = "Error: not able to add location to user!!"
+                        }
+                    },
+                    function (err) {
+                        cModel.error = "Error: not able to add location to user!!"
+                    }
+                )
         }
-
-        function addLocation(location) {
-            console.log(location);
-        }
-
-
     }
 })();

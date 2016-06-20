@@ -1,8 +1,8 @@
-module.exports = function () {
+module.exports = function (db_assignment) {
 
     var mongoose = require("mongoose");
     var PageSchema = require("./page.schema.server.js")();
-    var Page = mongoose.model("Page", PageSchema);
+    var Page = db_assignment.model("Page", PageSchema);
     var api = {
         createPage: createPage,
         findAllPagesForWebsite: findAllPagesForWebsite,

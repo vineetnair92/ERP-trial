@@ -33,7 +33,10 @@ function initAddlocation() {
         var lng = latlng.split(',')[1].trim();
         console.log("LatLng from marker = "+lat+","+lng);
         $("#lat").val(lat);
+        $("#lat").trigger("input");
+
         $("#lng").val(lng);
+        $("#lng").trigger("input");
 
     });
 
@@ -63,7 +66,11 @@ function initAddlocation() {
             $("#pac-input").trigger("input");
             console.log("LatLng from autocomplete = "+ place.geometry.location.lat() + "," + place.geometry.location.lng());
             $("#lat").val(place.geometry.location.lat());
+            $("#lat").trigger("input");
+
             $("#lng").val(place.geometry.location.lng());
+            $("#lng").trigger("input");
+
         }
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {

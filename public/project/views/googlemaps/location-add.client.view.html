@@ -108,7 +108,7 @@
         <button id="add"
                 class="btn btn-success mapsButton"
                 type="button"
-                ng-click="model.addLocation(model.location)">
+                ng-click="model.createLocation(model.location)">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add
         </button>
 </div>
@@ -116,14 +116,18 @@
 
 </div>
 
-<div id="loc-variables">
-<input id="lat"
-       type="hidden"
-       ng-model="model.location.lat">
-<input id="lng"
-       type="hidden"
-       ng-model="model.location.lng">
+<div style="display: none" id="loc-variables">
+    <input id="lat"
+           type="text"
+           class="input-hidden"
+           ng-model="model.location.lat">
+    <input id="lng"
+           type="text"
+           class="input-hidden"
+           ng-model="model.location.lng">
 </div>
+
+
 
 
 

@@ -24,9 +24,9 @@ var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 3001;
 
 
-require("./assignment/app.js")(app);
+//require("./assignment/app.js")(app);
 
-//require("./project/app.js")(app);
+require("./project/app.js")(app);
 
 
 

@@ -1,8 +1,8 @@
-module.exports = function () {
+module.exports = function (db_assignment) {
 
     var mongoose = require("mongoose");
     var WidgetSchema = require("./widget.schema.server.js")();
-    var Widget = mongoose.model("Widget", WidgetSchema);
+    var Widget = db_assignment.model("Widget", WidgetSchema);
     var api = {
         createWidget: createWidget,
         findAllWidgetsForPage: findAllWidgetsForPage,

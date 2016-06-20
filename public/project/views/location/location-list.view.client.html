@@ -11,7 +11,7 @@
                 My Locations
             </a>
             <p class="navbar-text pull-right">
-                <a href="#/user/:uid/location/addlocation" class="navbar-link ">
+                <a href="#/user/{{model.userId}}/location/addlocation" class="navbar-link ">
                     Add Location <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </p>
@@ -35,7 +35,7 @@
     </div>
 
     <ul class="list-group">
-        <li ng-repeat="location in model.location" class="list-group-item">
+        <li ng-repeat="location in model.locations" class="list-group-item">
             <a href="#/user/{{model.userId}}/location/{{location._id}}/post">
                 {{location.name}}
             </a>

@@ -1,10 +1,10 @@
 module.exports = function (db_assignment) {
 
     var mongoose = require("mongoose");
-    var WebsiteSchema = require("./website.schema.server.js")();
-    var Website = db_assignment.model("Website", WebsiteSchema);
+    var LocationSchema = require("./location.schema.server")();
+    var Location = db_assignment.model("Location", LocationSchema);
     var api = {
-        createWebsiteForUser: createWebsiteForUser,
+        createLocationForUser: createLocationForUser,
         findAllWebsitesForUser: findAllWebsitesForUser,
         findWebsiteById: findWebsiteById,
         updateWebsite: updateWebsite,
@@ -13,9 +13,9 @@ module.exports = function (db_assignment) {
     };
     return api;
 
-    function createWebsiteForUser(website) {
-        console.log("Create website in model");
-        return Website.create(website);
+    function createLocationForUser(location) {
+        console.log("Create location in model");
+        return Location.create(location);
     }
 
     function findAllWebsitesForUser(userId) {

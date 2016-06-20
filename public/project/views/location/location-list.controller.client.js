@@ -3,18 +3,18 @@
         .module('TrafficPost')
         .controller("LocationListController", LocationListController);
 
-    function LocationListController($routeParams, LocationService) {
+    function LocationListController($routeParams, LocationService, UserService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
     
 
-       // init();
+       init();
 
         function init() {
             UserService
-                .findLocationsByUser(cModel.userId)
+                .findUserById(cModel.userId)
                 .then(function (response) {
-                    cModel.locations = response.data;
+                    cModel.locations = response.data.locations;
                 })
         }
 

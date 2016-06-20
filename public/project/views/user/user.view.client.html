@@ -1,0 +1,107 @@
+<nav class="mobile-nav navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="">
+                Profile
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateProfile(model.user)" class="navbar-link ">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<div class="container content">
+    <div ng-if="model.updateStats == 'success'" class="alert alert-success" role="alert">
+        Update Success <a class="pull-right" href="#/user" >Home</a>
+    </div>
+    <div ng-if="model.updateStats == 'error'" class="alert alert-danger" role="alert">
+        Update Error!!
+    </div>
+
+    <div ng-if="model.deleteStats == 'success'" class="alert alert-success" role="alert">
+        Delete Success
+    </div>
+    <div ng-if="model.deleteStats == 'error'" class="alert alert-danger" role="alert">
+        Delete Error!!
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   ng-model="model.user.username"
+                   placeholder="username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   ng-model="model.user.email"
+                   placeholder="abc@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="first-name"
+                   ng-model="model.user.firstName"
+                   placeholder="Abcde">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="last-name"
+                   ng-model="model.user.lastName"
+                   placeholder="Xyz">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text"
+                   class="form-control"
+                   id="phone"
+                   ng-model="model.user.phone"
+                   placeholder="0123456789">
+        </div>
+        <div ng-switch="model.updateStats">
+            <div ng-switch-when="true">
+                <div class="alert alert-success" role="alert">
+                    Update Sucess!
+                </div>
+            </div>
+            <div ng-switch-when="false">
+                <div class="alert alert-danger" role="alert">
+                    Update Error!
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <a class="btn btn-primary btn-block"
+       href="#/user/{{model.user._id}}/friends">Friends</a>
+    <a class="btn btn-danger  btn-block"
+      ng-click="model.deleteUser(model.userId)">Delete Account</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row navbar-footer pull-right">
+            <div class=" navbar-text text-center">
+                <a href="">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
