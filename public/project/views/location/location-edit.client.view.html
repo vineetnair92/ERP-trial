@@ -1,0 +1,115 @@
+<nav name="top" class="mobile-nav navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/location" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="">
+                Edit Location
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateLocation(model.location)" class="navbar-link ">
+                   <span class="glyphicon glyphicon-check"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid content">
+
+    <div ng-if="model.updateStats == 'success'" class="alert alert-success" role="alert">
+        Update Success <a class="pull-right" href="#/user" >Home</a>
+    </div>
+    <div ng-if="model.updateStats == 'error'" class="alert alert-danger" role="alert">
+        Update Error!!
+    </div>
+
+    <div ng-if="model.deleteStats == 'success'" class="alert alert-success" role="alert">
+        Delete Success
+    </div>
+    <div ng-if="model.deleteStats == 'error'" class="alert alert-danger" role="alert">
+        Delete Error!!
+    </div>
+
+    <!-- <ul class="list-group">
+         <li ng-repeat="location in model.locations" class="list-group-item">
+             <a href="#/user/{{model.userId}}/location/{{location._id}}/post">
+                 {{location.name}}
+             </a>
+             <div class="pull-right">
+                 <a href="#/user/{{website._user}}/website/{{website._id}}">
+                     <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
+                 </a>
+             </div>
+         </li>
+     </ul>-->
+
+    <div ng-if="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="panel panel-success">
+            <div class="panel-heading edit">
+                <a class="btn btn-danger pull-right"
+                   ng-click="model.deleteLocation(model.location._id)">Delete</a>
+            </div>
+            <div class="panel-body">
+                    <label for="location-name">Location Name</label>
+                    <input type="text" class="form-control"
+                           id="location-name"
+                           name="location_name"
+                           ng-model="model.location.name"
+                           placeholder="Location Name"
+                           readonly/>
+                    <label for="location-desc">Location Description</label>
+                    <textarea style="max-width: 100%;
+                              max-height: 100%" id="location-desc"
+                              class="form-control"
+                              rows=2
+                              ng-model="model.location.description"
+                              placeholder="Description"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="well">
+        <form class="form">
+            <h4>Sign-up</h4>
+            <div class="input-group text-center">
+                <input type="text" class="form-control input-lg" placeholder="Enter your email address">
+                <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
+            </div>
+        </form>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootply Editor &amp; Code Library</h4></div>
+        <div class="panel-body">
+            <p><img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">The Bootstrap Playground</a></p>
+            <div class="clearfix"></div>
+            <hr>
+            Design, build, test, and prototype using Bootstrap in real-time from your Web browser. Bootply combines the power of hand-coded HTML, CSS and JavaScript with the benefits of responsive design using Bootstrap. Find and showcase Bootstrap-ready snippets in the 100% free Bootply.com code repository.
+        </div>
+    </div>
+
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row navbar-footer pull-right">
+            <div class=" navbar-text text-center">
+                <a href="#/user">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
