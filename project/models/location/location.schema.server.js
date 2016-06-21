@@ -6,6 +6,7 @@ module.exports = function () {
 
     var LocationSchema = Schema({
         name: {type: String, required: true},
+        description: String,
         lat: String,
         lng: String,
         city: String,

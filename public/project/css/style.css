@@ -1,3 +1,9 @@
+body {
+    background-color:#e0e0e0;
+    -webkit-font-smoothing: antialiased;
+    font: normal 14px Roboto,arial,sans-serif;
+}
+
 input.form-control {
     margin-bottom: 5px;
 }
@@ -184,4 +190,39 @@ input.form-control {
    visibility: hidden;
 }
 
+hr {border-color:#ececec;}
+button {
+    outline: 0;
+}
+textarea {
+    resize: none;
+    outline: 0;
+}
+.panel .btn i,.btn span{
+    color:#666666;
+}
+.panel .panel-heading {
+    background-color: #f9fbaa;
+    font-weight:800;
+    font-size:16px;
+    color:#262626;
+    border-color:#ffffff;
+}
+.panel .panel-heading a {
+    font-weight:400;
+    font-size:11px;
+}
+.panel .panel-heading.edit{
+    height: 50px;
+}
 
+.panel .panel-default {
+    border-color:#cccccc;
+}
+.panel .panel-thumbnail {
+    padding:0;
+}
+
+.navbar .glyphicon.glyphicon-check {
+    font-size: 18px;
+}

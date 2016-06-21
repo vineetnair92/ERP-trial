@@ -12,7 +12,8 @@ module.exports = function (db_project) {
         findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
         deleteWebsiteForUser: deleteWebsiteForUser,
-        addLocationForUser: addLocationForUser
+        addLocationForUser: addLocationForUser,
+        removeLocationFromUser: removeLocationFromUser
 
     };
     return api;
@@ -83,6 +84,17 @@ module.exports = function (db_project) {
                 function (err) {
                    res.status(400).send(err);
                 });
+    }
+    
+    function removeLocationFromUser(userId, locId) {
+        return User
+            .update({_id: userId},
+                {
+                    $pull: {
+                        "locations":{_id: locId}
+                    }
+                },
+                {safe: true});
     }
     
    

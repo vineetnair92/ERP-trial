@@ -110,12 +110,12 @@
 /*    text-shadow: -1px 0px 9px #9E9B9C;
     -webkit-text-shadow: -1px 0px 9px #9E9B9C;
     -moz-text-shadow: -1px 0px 9px #9E9B9C;*/
-    text-shadow:1px 0px 1px rgba(71,71,71,1);font-weight:normal;color: #ebeee6;background-color:#FFFFFF;letter-spacing:0pt;word-spacing:1pt;font-size:18px;text-align:left;font-family:Arial, sans-serif, courier, monospace;line-height:1;
+    /*text-shadow:1px 0px 1px rgba(71,71,71,1);font-weight:normal;color: #ebeee6;background-color:#FFFFFF;letter-spacing:0pt;word-spacing:1pt;font-size:18px;text-align:left;font-family:Arial, sans-serif, courier, monospace;line-height:1;
     -webkit-text-shadow:1px 0px 1px rgba(71,71,71,1);font-weight:normal;color:#EBEEE6;background-color:#FFFFFF;letter-spacing:0pt;word-spacing:1pt;font-size:18px;text-align:left;font-family:Arial, sans-serif, monospace;line-height:1;
-    -moz-text-shadow:1px 0px 1px rgba(71,71,71,1);font-weight:normal;color:#EBEEE6;background-color:#FFFFFF;letter-spacing:0pt;word-spacing:1pt;font-size:18px;text-align:left;font-family:Arial, sans-serif, monospace;line-height:1;
+    -moz-text-shadow:1px 0px 1px rgba(71,71,71,1);font-weight:normal;color:#EBEEE6;background-color:#FFFFFF;letter-spacing:0pt;word-spacing:1pt;font-size:18px;text-align:left;font-family:Arial, sans-serif, monospace;line-height:1;*/
 }
 
-.panel-body {
+.panel-login .panel-body{
     background: url('/project/images/roads.jpg') no-repeat center center fixed;
     background-size: 100% 100%;
 }

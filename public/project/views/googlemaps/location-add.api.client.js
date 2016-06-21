@@ -70,7 +70,31 @@ function initAddlocation() {
 
             $("#lng").val(place.geometry.location.lng());
             $("#lng").trigger("input");
+            var city, state, country;
+            place.address_components.forEach(function (comp, index) {
+                comp.types.forEach(function (type) {
+                    if(type == 'locality') {
+                        city = comp.long_name;
+                    }
+                    if(type == 'administrative_area_level_1') {
+                        state = comp.long_name;
+                    }
+                    if(type == 'country') {
+                        country = comp.long_name;
+                    }
+                })
 
+            });
+            $("#city").val(city);
+            $("#city").trigger("input");
+
+            $("#state").val(state);
+            $("#state").trigger("input");
+
+            $("#country").val(country);
+            $("#country").trigger("input");
+
+            console.log(country + " " + state+ " "+ city);
         }
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {

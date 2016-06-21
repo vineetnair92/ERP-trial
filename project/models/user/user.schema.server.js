@@ -9,7 +9,7 @@ module.exports = function () {
     });
 
     var LocationSchema = Schema({
-        _id: {type: Schema.ObjectId},
+        _id: {type: Schema.ObjectId, ref:'Location'},
         name: String
     });
 

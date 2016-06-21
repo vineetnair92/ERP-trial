@@ -51,9 +51,9 @@
                 controllerAs: 'model'
 
             })
-            .when("/user/:uid/website/new", {
-                templateUrl: 'views/website/website-new.view.client.html',
-                controller: 'NewWebsiteController',
+            .when("/user/:uid/location/:locId", {
+                templateUrl: 'views/location/location-edit.client.view.html',
+                controller: 'EditLocationController',
                 controllerAs: 'model'
             })
             .when("/user/:uid/website/:wid", {

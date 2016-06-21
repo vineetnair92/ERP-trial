@@ -62,7 +62,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user" class="navbar-link">
+                <a href="#/user/{{model.userId}}/location" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -125,6 +125,18 @@
            type="text"
            class="input-hidden"
            ng-model="model.location.lng">
+    <input id="city"
+           type="text"
+           class="input-hidden"
+           ng-model="model.location.city">
+    <input id="state"
+           type="text"
+           class="input-hidden"
+           ng-model="model.location.state">
+    <input id="country"
+           type="text"
+           class="input-hidden"
+           ng-model="model.location.country">
 </div>
 
 

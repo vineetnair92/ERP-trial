@@ -6,7 +6,10 @@
 
     function LocationService($http) {
         api = {
-            createLocation: createLocation
+            createLocation: createLocation,
+            findLocationById: findLocationById,
+            updateLocation: updateLocation,
+            deleteLocation: deleteLocation
             /*login: login,
             logout: logout,
             register: register,
@@ -23,6 +26,21 @@
         function createLocation(userId, location) {
             var url = "/api/userP/" + userId + "/location";
             return $http.post(url, location);
+        }
+
+        function findLocationById(locationId) {
+            var url = "/api/location/"+locationId;
+            return $http.get(url);
+        }
+
+        function updateLocation(locId, location) {
+           var url = "/api/location/"+locId;
+           return  $http.put(url, location);
+        }
+
+        function deleteLocation(locId, userId){
+            var url = "/api/userP/"+userId+"/location/"+locId;
+            return $http.delete(url);
         }
 
 

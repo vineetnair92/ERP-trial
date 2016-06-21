@@ -12,23 +12,22 @@
 
         function createLocation(location) {
             console.log(location);
-            location.users = [cModel.userId];
             LocationService
                 .createLocation(cModel.userId, location)
                 .then(
                     function (response) {
                         if (response.data) {
-                            var location = response.data;
-                            var locRef = {
-                                _id: location._id,
-                                name: location.name
-                            }
-                            return UserService
-                                     .addLocationForUser(cModel.userId, locRef);
+                            var locRef = response.data;
+                                return UserService
+                                    .addLocationForUser(cModel.userId, locRef);
+                        }
+                        else {
+                            cModel.error = "Error Creating Location!!";
                         }
                     },
                     function (error) {
                         cModel.error = "Error Creating Location!!"
+                        return error;
                     }
                 )
                 .then(
