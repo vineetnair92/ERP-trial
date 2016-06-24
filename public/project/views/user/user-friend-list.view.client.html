@@ -1,0 +1,68 @@
+<nav class="mobile-nav navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="">
+               Find Buddies
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid content">
+
+    <!-- <ul class="list-group">
+         <li ng-repeat="location in model.locations" class="list-group-item">
+             <a href="#/user/{{model.userId}}/location/{{location._id}}/post">
+                 {{location.name}}
+             </a>
+             <div class="pull-right">
+                 <a href="#/user/{{website._user}}/website/{{website._id}}">
+                     <span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-play"></span>
+                 </a>
+             </div>
+         </li>
+     </ul>-->
+    <div class="row">
+    <div class="col-md-2">
+        <label>Search By First Name: <input class="form-control" ng-model="search.firstName"></label>
+    </div>
+    <div class="col-md-2">
+        <label>Search By Username: <input class="form-control" ng-model="search.username"></label>
+    </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="user in model.users | filter:search:strict"  class="col-md-12">
+            <div ng-if="model.userId!=user._id" class="panel panel-info">
+                <div class="panel-body">
+                    <p><span style="font-weight: bolder">Name </span> {{user.firstName}} {{user.lastName}}</p>
+                    <p><span style="font-weight: bolder">Username</span> {{user.username}}</p>
+                    <span ng-if="model.isFriend(user._id)">
+                        <a ng-click="model.unFollowUser(user)" class="btn btn-warning">Unfollow</a>
+                    </span>
+                     <span ng-if="!model.isFriend(user._id)">
+                        <a ng-click="model.followUser(user)" class="btn btn-success">Follow</a>
+                    </span>
+                    <span ng-if="model.isFriend(user._id)">
+                        <a href="#/user/{{model.userId}}/friend/{{user._id}}/profile" class="btn btn-info">View Profile</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row navbar-footer pull-right">
+            <div class=" navbar-text text-center">
+                <a href="#/user">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

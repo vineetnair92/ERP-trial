@@ -31,12 +31,6 @@
             width: 250px;
         }
 
-        .addButton {
-            margin-left: 12px;
-            margin-top: 10px;
-            padding: 0 11px 0 13px;
-        }
-
         #pac-input:focus {
             border-color: #4d90fe;
         }
@@ -85,7 +79,7 @@
 <div ng-if="model.error" class="alert alert-danger" role="alert">
        {{model.error}}
 </div>
-    {{model.location}}
+
 <div class="col-sm-6">
 <input id="pac-input"
        class="search-input controls"
@@ -106,7 +100,7 @@
 <div class="row">
 <div class="col-sm-4">
         <button id="add"
-                class="btn btn-success mapsButton"
+                class="btn btn-success mapsAddButton"
                 type="button"
                 ng-click="model.createLocation(model.location)">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add

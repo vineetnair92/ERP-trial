@@ -2,79 +2,113 @@ module.exports = function (app, models) {
 
     var locationModel = models.locationModel;
     var userModel = models.userModel;
+    var locationPostModel = models.locationPostModel;
 
-    app.post("/api/userP/:userId/location", createLocation);
-    app.get("/api/location/:locId", findLocationById);
-    app.get("/api/location", findAllLocations);
+    app.post("/api/userP/:userId/location/:locId/locationpost", createLocationPost);
+    app.get("/api/userP/:userId/location/:locId/locationpost", findAllLocationPostForUserLocation);
+    app.get("/api/userP/:userId/locationpost", findAllLocationPostForUser);
+    app.post("/api/locationpost", findAllLocationPostForLocations);
+    app.delete("/api/locationpost/:locPostId", deleteLocationPost);
+/*    app.get("/api/location/:locId", findLocationById);
     app.put("/api/location/:locId", updateLocation);
-    app.delete("/api/userP/:userId/location/:locId", deleteLocation);
+    app.delete("/api/userP/:userId/location/:locId", deleteLocation);*/
 
    /* app.get("/api/user/:userId/website", findAllWebsitesForUser);
     app.get("/api/website/:websiteId", findWebsiteById);
     app.put("/api/website/:websiteId", updateWebsite);
     app.delete("/api/website/:websiteId", deleteWebsite);
 */
-    function createLocation(req, res) {
-        var newLocation = req.body;
-        var newLocLat = newLocation.lat;
-        var newLocLng = newLocation.lng;
+    function createLocationPost(req, res) {
+        var newLocationPost = req.body;
         var userId = req.params.userId;
-        var locId, locName;
-        locationModel
-            .findLocationByLatLng(newLocLat, newLocLng)
-            .then(
-                function (location) {
-                    if(!location) {
-                        newLocation.users = [userId];
-                        return  locationModel
-                            .createLocation(newLocation);
-                    }
-                    else {
-                        locId = location._id;
-                        locName = location.name;
-                        delete location._id;
-                        var duplicateUser = false;
+        var locId = req.params.locId;
 
-                        location.users.forEach(function (user) {
-                            if(user == userId){
-                                duplicateUser = true;
-                            }
-                        });
-
-                        if(!duplicateUser) {
-                            location.users.push(userId);
-                            console.log(location.users);
-                            return locationModel
-                                .updateLocation(locId, location);
-                        }
-                        else {
-                           return null;
-                        }
+        userModel
+            .findUserById(userId)
+            .then(function (user) {
+                if(user) {
+                    newLocationPost._user = {
+                        _id: user._id,
+                         firstName:  user.firstName
                     }
-                },
-                function (err) {
-                  return err;
+
+                    return locationModel
+                        .findLocationById(locId)
                 }
-            )
-            .then(
-                function (response) {
-                    if(response) {
-                        if (response._id) {
-                            locId = response._id;
-                            locName = response.name;
-                        }
-                        var locRef = {_id: locId, name: locName};
-                        res.send(locRef);
-                    }
-                    else {
-                        res.status(400).send();
+                else {
+                    return null;
+                }
+            })
+            .then(function (location) {
+                if (location) {
+                    newLocationPost._location = {
+                        _id  : location._id,
+                        name : location.name
                     }
 
-                },
-                function (err) {
-                    res.status(400).send(err);
+                    locationPostModel
+                        .createLocationPost(newLocationPost)
+                        .then(function (locationPost) {
+                                res.json(locationPost);
+                            },
+                            function (err) {
+                                res.status(400).send();
+                            })
                 }
-            );
+                else {
+                    res.status(400).send();
+                }
+            },function (err) {
+                res.status(400).send(err);
+            });
+    }
+
+    function findAllLocationPostForUserLocation(req, res) {
+        var userId = req.params.userId;
+        var locId = req.params.locId;
+        locationPostModel
+            .findAllLocationPostForUserLocation(userId, locId)
+            .then(function (locationposts) {
+                res.json(locationposts)
+            },function (err) {
+                res.status(404).send();
+            });
+
+    }
+
+    function findAllLocationPostForUser(req, res) {
+        var userId = req.params.userId;
+        locationPostModel
+            .findAllLocationPostForUser(userId)
+            .then(function (locationposts) {
+                res.json(locationposts);
+            }, function (err) {
+                res.status(400).send();
+            });
+    }
+
+    function deleteLocationPost(req, res){
+        var locPostId = req.params.locPostId;
+        locationPostModel
+            .deleteLocationPost(locPostId)
+            .then(function (response) {     
+                res.status(200).send();
+            },function (err) {
+                res.status(400).send();
+            })
+        
+    }
+
+    function findAllLocationPostForLocations(req, res) {
+        var locationIds = req.body;
+        locationPostModel
+            .findAllLocationPostForLocations(locationIds)
+            .then(function (locationPosts) {
+                res.status(200).send(locationPosts);
+            }, function (err) {
+                res.status(400).send();
+            });
+
     }
 
     function findLocationById(req, res) {
@@ -87,17 +121,6 @@ module.exports = function (app, models) {
             .catch(function (error) {
                 res.status(400).send(error);
             });
-    }
-
-    function findAllLocations(req, res) {
-        locationModel
-            .findAllLocations()
-            .then(function (locations) {
-                res.json(locations)
-            }, function (err) {
-                res.status(400).send(err);
-            })
-
     }
 
     function updateLocation(req, res) {

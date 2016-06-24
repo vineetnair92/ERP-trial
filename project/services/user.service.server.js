@@ -16,6 +16,9 @@ module.exports = function (app, models) {
     app.put("/api/userP/:userId", updateUser);
     app.delete("/api/userP/:userId", deleteUser);
     app.post("/api/userP/:userId/addlocation", addLocationForUser);
+    app.get("/api/userP/:userId/all", findAllUsers);
+    app.post("/api/userP/:userId/addUser", addUserForUser);
+    app.delete("/api/userP/:userId/removeUser/:friendId", removeUserFromUser);
 
     passport.use('local.two',new LocalStrategy(localStrategyProj));
     passport.serializeUser(serializeUser);
@@ -101,7 +104,7 @@ module.exports = function (app, models) {
     function createUser(req, res) {
         var newUser = req.body;
         userModel
-            .createWebsite(newUser)
+            .createUser(newUser)
             .then(function (user) {
                 res.json(user);
             })
@@ -190,5 +193,44 @@ module.exports = function (app, models) {
         userModel.
             addLocationForUser(userId, location, res);
     }
+
+    function findAllUsers(req, res) {
+        userModel
+            .findAllUsers()
+            .then(function (users) {
+                res.send(users);
+            }, function (err) {
+                res.status(400).send(err);
+            });
+    }
+
+    function addUserForUser(req, res) {
+        var userId = req.params.userId;
+        var user = req.body;
+        userModel
+            .addUserForUser(userId, user)
+            .then(function (response) {
+                res.status(200).send();
+            }, function (err) {
+                res.status(400).send();
+            });
+    }
+
+
+    function removeUserFromUser(req, res) {
+        var userId = req.params.userId;
+        var friendId = req.params.friendId;
+        userModel
+            .removeUserFromUser(userId, friendId)
+            .then(function (response) {
+                res.status(200).send();
+            }, function (err) {
+                res.status(400).send();
+            });
+    }
+
+
+
+
     
 };

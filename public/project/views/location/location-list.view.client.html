@@ -20,20 +20,6 @@
 </nav>
 <div class="container-fluid content">
 
-    <div ng-if="model.updateStats == 'success'" class="alert alert-success" role="alert">
-        Update Success <a class="pull-right" href="#/user" >Home</a>
-    </div>
-    <div ng-if="model.updateStats == 'error'" class="alert alert-danger" role="alert">
-        Update Error!!
-    </div>
-
-    <div ng-if="model.deleteStats == 'success'" class="alert alert-success" role="alert">
-        Delete Success
-    </div>
-    <div ng-if="model.deleteStats == 'error'" class="alert alert-danger" role="alert">
-        Delete Error!!
-    </div>
-
    <!-- <ul class="list-group">
         <li ng-repeat="location in model.locations" class="list-group-item">
             <a href="#/user/{{model.userId}}/location/{{location._id}}/post">
@@ -46,15 +32,18 @@
             </div>
         </li>
     </ul>-->
+    <div class="row">
+        <div ng-repeat="location in model.locations"  class="col-xs-12 col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    {{location.name}}
+                </div>
+                <div class="panel-body">
 
-    <div ng-repeat="location in model.locations" class="panel panel-info">
-        <div class="panel-heading">
-            {{location.name}}
-        </div>
-        <div class="panel-body">
-
-            <a href="#/user/{{model.userId}}/location/{{location._id}}/locpost">Location Posts</a>
-            <a class="pull-right" href="#/user/{{model.userId}}/location/{{location._id}}#top" >Edit Location</a>
+                    <a href="#/user/{{model.userId}}/location/{{location._id}}/locpost">Location Posts</a>
+                    <a class="pull-right" href="#/user/{{model.userId}}/location/{{location._id}}#top" >Edit Location</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

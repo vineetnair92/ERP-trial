@@ -25,10 +25,9 @@
             font-family: Roboto;
             font-size: 15px;
             font-weight: 300;
-            margin-left: 12px;
             padding: 0 11px 0 13px;
             text-overflow: ellipsis;
-            width: 350px;
+            width: 100%;
         }
 
 
@@ -39,7 +38,7 @@
         }
 </style>
 
-<nav class="mobile-nav navbar navbar-default navbar-fixed-top">
+<nav id="top" class="mobile-nav navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
@@ -61,29 +60,130 @@
     </div>
 </nav>
 
-<div class="container-fluid" style="position: absolute; left:0 ; top: 50px; z-index: 1">
+<div class="container-fluid" style="margin-top: 50px">
     <div class="row">
 
-        <div class="col-sm-6">
-            <input id="start_input" class="search-input controls" type="text"
+        <div class="col-md-6">
+            <input id="start_input"
+                   class="search-input controls"
+                   type="text"
+                   ng-model="model.startLocation.name"
                    placeholder="Start Location"/>
         </div>
 
-        <div class="col-sm-6">
-            <input id="end_input" class="search-input controls" type="text"
+        <div class="col-md-6">
+            <input id="end_input"
+                   class="search-input controls"
+                   type="text"
+                   ng-model="model.endLocation.name"
                    placeholder="End Location"/>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-4">
-            <button id="add" class="btn btn-success mapsButton" type="button">
+        <div class="col-sm-4 ">
+            <button id="add"
+                    class="btn btn-success mapsSearchButton"
+                    type="button"
+                    ng-click="model.searchRoutes(model.startLocation,model.endLocation)">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Routes
             </button>
         </div>
+    </div>
 
+    <div class="row">
+        <div ng-repeat="route in model.routes"  class="col-md-4">
+            <div class="panel panel-shadow panel-info panel-shadow">
+                <div class="panel-heading edit">
+                    ROUTE {{$index+1}}
+                    <a class="btn btn-info pull-right"
+                       href="#/user/{{model.userId}}/go/results?polyline={{route.overview_polyline}}&startName={{model.startLocation.name}}&startLatLng={{model.startLocation.latlng}}&endName={{model.endLocation.name}}&endLatLng={{model.endLocation.latlng}}">
+                        VIEW POSTS</a>
+                </div>
+                <div class="panel-body">
+                    <p><b>Via</b> {{route.summary}}</p>
+                    <p><b>Time</b>  {{route.legs[0].duration.text}}</p>
+
+                    <div class="accordion" id="myAccordion">
+                        <div class="panel panel-info">
+                             <div class="panel-heading inner-panel ">
+                                <button type="button"
+                                        class="btn btn-success"
+                                        data-toggle="collapse"
+                                        data-target="#collapsible-{{$index+1}}"
+                                        data-parent="#myAccordion-{{$index+1}}">Steps</button>
+                             </div>
+                             <div style="padding-left: 2px; padding-right: 2px">
+                                <div id="collapsible-{{$index+1}}" class="collapse">
+                                    <div ng-repeat="step in route.legs[0].steps">
+                                        <p>{{$index+1}}. <span ng-bind-html="model.getSafeHtml(step)"></span></p>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+
+
+
+
+                 <!--   <div>
+                       <hr>
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Steps
+                        </a>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div ng-repeat="step in route.legs[0].steps">
+                                <p>{{$index+1}}. <span ng-bind-html="model.getSafeHtml(step)"></span></p>
+                            </div>
+                        </div>
+
+                    </div>-->
+                </div>
+                    <!--<a href="#/user/{{model.userId}}/location/{{location._id}}/locpost">Location Posts</a>
+                    <a class="pull-right" href="#/user/{{model.userId}}/location/{{location._id}}#top" >Edit Location</a>-->
+            </div>
+        </div>
     </div>
 </div>
+
+
+<div class="row input-hidden" style="display: none">
+    <input id="startlatLng"
+           type="text"
+           class="input-hidden"
+           ng-model="model.startLocation.latlng">
+    <input id="startCity"
+           type="text"
+           class="input-hidden"
+           ng-model="model.startLocation.city">
+    <input id="startState"
+           type="text"
+           class="input-hidden"
+           ng-model="model.startLocation.state">
+    <input id="startCountry"
+           type="text"
+           class="input-hidden"
+           ng-model="model.startLocation.country">
+
+    <input id="endlatLng"
+           type="text"
+           class="input-hidden"
+           ng-model="model.endLocation.latlng">
+    <input id="endCity"
+           type="text"
+           class="input-hidden"
+           ng-model="model.endLocation.city">
+    <input id="endState"
+           type="text"
+           class="input-hidden"
+           ng-model="model.endLocation.state">
+    <input id="endCountry"
+           type="text"
+           class="input-hidden"
+           ng-model="model.endLocation.country">
+</div>
+
+
 
 
 <script>

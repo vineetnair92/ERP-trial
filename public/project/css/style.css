@@ -1,5 +1,5 @@
 body {
-    background-color:#e0e0e0;
+    background-color: #ebebeb;
     -webkit-font-smoothing: antialiased;
     font: normal 14px Roboto,arial,sans-serif;
 }
@@ -175,11 +175,19 @@ input.form-control {
     cursor: pointer;
 }
 
-.mapsButton {
-    margin-left: 12px;
-    margin-top: 10px;
+.mapsSearchButton {
+    margin-top: 15px;
+    margin-bottom: 10px;
     padding: 15px;
     height: 50px;
+}
+
+.mapsAddButton {
+    margin-left: 12px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 4px;
+    height: 30px;
 }
 
 .dropdown-menu > li a:hover {
@@ -201,13 +209,37 @@ textarea {
 .panel .btn i,.btn span{
     color:#666666;
 }
+
+.panel {
+    border: none;
+    border-radius: 0 !important;
+
+}
+
+.panel.panel-shadow{
+    -webkit-box-shadow: -2px 0px 37px -10px rgba(15,2,15,1);
+    -moz-box-shadow: -2px 0px 37px -10px rgba(15,2,15,1);
+    box-shadow: -2px 0px 37px -10px rgba(15,2,15,1);
+}
+
 .panel .panel-heading {
     background-color: #f9fbaa;
     font-weight:800;
     font-size:16px;
     color:#262626;
     border-color:#ffffff;
+    border-radius: 0 !important;
 }
+
+.panel .panel-heading.inner-panel {
+    font-size:10px;
+    background-color: rgba(55, 131, 46, 0.22);
+    color: #262626;
+    border-color: #cdcdcd;
+    padding: 0;
+    border-radius: 0 !important;
+}
+
 .panel .panel-heading a {
     font-weight:400;
     font-size:11px;
@@ -225,4 +257,49 @@ textarea {
 
 .navbar .glyphicon.glyphicon-check {
     font-size: 18px;
+}
+
+.form-entry {
+margin-bottom: 15px;
+
+}
+
+.panel-heading.High{
+    background-color: rgba(205, 10, 26, 0.49);
+}
+
+.panel-heading.Medium{
+    background-color: rgba(248, 106, 45, 0.49);
+}
+
+.panel-heading.Low{
+    background-color: rgba(214, 254, 157, 0.41);
+}
+
+.panel-footer {
+   height: 30px;
+}
+
+blockquote {
+    background: #e7e7e7;
+    border-left: 10px solid #262626;
+    padding: 2px 10px;
+
+}
+
+blockquote.selfLocPosts {
+    border-left: 10px solid rgba(55, 131, 46, 0.7);
+}
+
+blockquote.friendsLocPosts {
+    border-left: 10px solid rgba(143, 133, 254, 0.84);
+}
+
+blockquote.othersLocPosts {
+    border-left: 10px solid rgba(209, 162, 64, 0.71);
+}
+
+
+blockquote p {
+    display: inline;
 }

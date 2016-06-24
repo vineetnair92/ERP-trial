@@ -2,7 +2,7 @@
     angular.module("TrafficPost")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService, $location, $rootScope) {
+    function ProfileController($routeParams, UserService, $location, $rootScope, LocationPostService) {
         var cModel = this;
         cModel.userId = $rootScope.currentUser._id;
         cModel.updateProfile = updateProfile;
@@ -33,6 +33,7 @@
                 .catch(function (response) {
                     cModel.updateStats = "error";
                 })
+
         }
 
         function deleteUser(userId) {

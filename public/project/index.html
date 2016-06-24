@@ -20,9 +20,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="views/googlemaps/directions.api.client.js"></script>
     <script src="views/googlemaps/location-add.api.client.js"></script>
+    <script src="views/googlemaps/google.isLocation.api.client.js"></script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOdGhVLsulyv7UixqXi2QwBuCjrqxUsg&&libraries=places">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOdGhVLsulyv7UixqXi2QwBuCjrqxUsg&&libraries=places,geometry">
     </script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOdGhVLsulyv7UixqXi2QwBuCjrqxUsg&libraries=geometry"></script>-->
 
     <script src="app.js"></script>
     <script src="config.js"></script>
@@ -31,12 +33,21 @@
     <script src="views/user/userhome.controller.client.js"></script>
     <script src="views/user/user.controller.client.js"></script>
     <script src="views/user/register.controller.client.js"></script>
+    <script src="views/user/user-friend-list.controller.client.js"></script>
+    <script src="views/user/friend-profile.controller.client.js"></script>
+
     <script src="views/location/location-list.controller.client.js"></script>
     <script src="views/location/location-add.controller.client.js"></script>
     <script src="views/location/location-edit.controller.client.js"></script>
+    <script src="views/location/directions.controller.client.js"></script>
+    <script src="views/location/directions-result.controller.client.js"></script>
+    <script src="views/googlemaps/google.isLocation.controller.js"></script>
+    <script src="views/location/locationpost-list.controller.client.js"></script>
+    <script src="views/location/locationpost-add.controller.client.js"></script>
 
     <script src="services/user.service.client.js"></script>
     <script src="services/location.service.client.js"></script>
+    <script src="services/locationpost.service.client.js"></script>
 
 
 </head>

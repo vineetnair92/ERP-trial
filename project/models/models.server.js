@@ -17,7 +17,8 @@ module.exports = function () {
 
     var models = {
         userModel: require("./user/user.model.server.js")(db_project),
-        locationModel: require("./location/location.model.server")(db_project)
+        locationModel: require("./location/location.model.server")(db_project),
+        locationPostModel: require("./locationpost/locationpost.model.server")(db_project)
     }
     return models;
 }

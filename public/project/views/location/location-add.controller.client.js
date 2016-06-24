@@ -3,7 +3,7 @@
         .module("TrafficPost")
         .controller("LocationAddController", LocationAddController);
 
-    var userLocationsUpdateError = "Error updating website references in user";
+    var userLocationsAddError = "Error: not able to add location to user";
 
     function LocationAddController($location, $routeParams, LocationService, UserService) {
         var cModel = this;
@@ -12,6 +12,9 @@
 
         function createLocation(location) {
             console.log(location);
+            if(location.optname.trim()!='') {
+                location.name = location.optname;
+            }
             LocationService
                 .createLocation(cModel.userId, location)
                 .then(
@@ -36,11 +39,11 @@
                             $location.url("/user/" + cModel.userId + "/location");
                         }
                         else{
-                            cModel.error = "Error: not able to add location to user!!"
+                            cModel.error = userLocationsAddError;
                         }
                     },
                     function (err) {
-                        cModel.error = "Error: not able to add location to user!!"
+                        cModel.error = userLocationsAddError;
                     }
                 )
         }

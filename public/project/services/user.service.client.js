@@ -16,7 +16,9 @@
             createUser: createUser,
             deleteUser: deleteUser,
             addLocationForUser: addLocationForUser,
-            findLocationsForUser: findLocationsForUser
+            findAllUsers: findAllUsers,
+            addUserForUser: addUserForUser,
+            removeUserFromUser: removeUserFromUser
             /*    testApi: testApi*/
         }
         return api;
@@ -79,10 +81,20 @@
             var url= "/api/userP/"+userId+"/addlocation";
             return $http.post(url, location);
         }
-        
-        function findLocationsForUser(userId) {
-            var url= "/api/userP/"+userId+"/location";
+
+        function findAllUsers(userId) {
+            var url ="/api/userP/"+userId+"/all";
             return $http.get(url);
+        }
+
+        function addUserForUser(userId, user) {
+            var url="/api/userP/"+userId+"/addUser";
+            return $http.post(url, user);
+        }
+
+        function removeUserFromUser(userId, friendId) {
+            var url="/api/userP/"+userId+"/removeUser/"+friendId;
+            return $http.delete(url);
         }
 
         /*function testApi(callback) {

@@ -53,7 +53,7 @@
     </div>
 
 
-
+  <form>
     <div class="form-group">
         <div class="panel panel-success">
             <div class="panel-heading edit">
@@ -61,6 +61,7 @@
                    ng-click="model.deleteLocation(model.location._id)">Delete</a>
             </div>
             <div class="panel-body">
+                <div class="form-entry">
                     <label for="location-name">Location Name</label>
                     <input type="text" class="form-control"
                            id="location-name"
@@ -68,6 +69,8 @@
                            ng-model="model.location.name"
                            placeholder="Location Name"
                            readonly/>
+                </div>
+                <div class="form-entry">
                     <label for="location-desc">Location Description</label>
                     <textarea style="max-width: 100%;
                               max-height: 100%" id="location-desc"
@@ -75,9 +78,11 @@
                               rows=2
                               ng-model="model.location.description"
                               placeholder="Description"></textarea>
+                </div>
             </div>
         </div>
     </div>
+  </form>
 
     <div class="well">
         <form class="form">

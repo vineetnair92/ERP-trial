@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/user/{{model.userId}}/go" class="navbar-items">GO!</a></li>
                 <li><a href="#/user/{{model.userId}}/location/">MY POSTS</a></li>
-                <li><a href="#">FIND BUDDIES</a></li>
+                <li><a href="#/user/{{model.userId}}/all">FIND BUDDIES</a></li>
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{model.user.username}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -30,3 +30,50 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <p style="font-size: 30px; font-weight: 700; color: rgba(55, 131, 46, 0.7)">GET IN AND CHECK TRAFFIC POSTS BY OTHER DUDES ON ROAD</p>
+            <hr>
+            <p style="font-size: 25px; font-weight: 500">see specific traffic conditions for your route</p>
+            <hr>
+            <p style="font-size: 20px; font-weight: 400; color: rgba(128, 11, 26, 0.67)">Endorse Others Post If You Encounter Similiar Issues On Roads</p>
+        </div>
+
+        <div id="carousel-example-generic" class="col-md-8 carousel slide " data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/images/Blurred-Background1.jpg" style="width: 100%; height: 300px;" alt="...">
+                    <div class="carousel-caption">
+                       test background
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/project/images/roads.jpg" style="width: 100%; height: 300px;" alt="...">
+                    <div class="carousel-caption">
+                        ...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+
+            </a>
+        </div>
+    </div>
+</div>

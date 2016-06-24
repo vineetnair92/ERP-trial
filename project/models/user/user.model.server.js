@@ -13,7 +13,10 @@ module.exports = function (db_project) {
         deleteUser: deleteUser,
         deleteWebsiteForUser: deleteWebsiteForUser,
         addLocationForUser: addLocationForUser,
-        removeLocationFromUser: removeLocationFromUser
+        removeLocationFromUser: removeLocationFromUser,
+        findAllUsers: findAllUsers,
+        addUserForUser:addUserForUser,
+        removeUserFromUser: removeUserFromUser
 
     };
     return api;
@@ -96,6 +99,23 @@ module.exports = function (db_project) {
                 },
                 {safe: true});
     }
+
+    function findAllUsers() {
+        return User
+               .find();
+    }
+
+    function addUserForUser(userId, user) {
+      return User
+          .update({_id: userId}, {$push: {friends : {_id: user._id, username: user.username}}});
+    }
+
+    function removeUserFromUser(userId, friendId) {
+        return User
+            .update({_id: userId}, {$pull: {friends : {_id: friendId}}});
+    }
+
+
     
    
 }
