@@ -8,7 +8,10 @@ module.exports = function (app, models) {
     app.get("/api/userP/:userId/location/:locId/locationpost", findAllLocationPostForUserLocation);
     app.get("/api/userP/:userId/locationpost", findAllLocationPostForUser);
     app.post("/api/locationpost", findAllLocationPostForLocations);
+    app.get("/api/locationpost/:locPostId", findLocationPostById);
     app.delete("/api/locationpost/:locPostId", deleteLocationPost);
+    app.put("/api/userP/:userId/locationpost/:locId/endorse", endorsePost);
+    app.delete("/api/userP/:userId/locationpost/:locId/unendorse", unendorsePost);
 /*    app.get("/api/location/:locId", findLocationById);
     app.put("/api/location/:locId", updateLocation);
     app.delete("/api/userP/:userId/location/:locId", deleteLocation);*/
@@ -87,6 +90,18 @@ module.exports = function (app, models) {
             });
     }
 
+    function findLocationPostById(req, res) {
+        var locPostId =  req.params.locPostId;
+        locationPostModel
+            .findLocationPostById(locPostId)
+            .then(function (locationPost) {
+                res.json(locationPost);
+            }, function (err) {
+                res.status(400).send();
+            })
+    }
+
+
     function deleteLocationPost(req, res){
         var locPostId = req.params.locPostId;
         locationPostModel
@@ -110,6 +125,54 @@ module.exports = function (app, models) {
             });
 
     }
+
+    function endorsePost(req, res) {
+        var locPostId = req.params.locId;
+        var userId = req.params.userId;
+        locationPostModel
+            .endorsePost(locPostId, userId)
+            .then(function (response) {
+                 return userModel.endorsesPost(userId, locPostId);
+            }, function (err) {
+                 return err;
+            })
+            .then(function (response) {
+               return locationPostModel
+                         .findLocationPostById(locPostId);
+            }, function (err) {
+                 return err;
+            })
+            .then(function (locationPost) {
+                res.json(locationPost)
+            },function (err) {
+                res.status(400).send();
+            })
+
+
+    }
+    function unendorsePost(req, res) {
+        var locPostId = req.params.locId;
+        var userId = req.params.userId;
+        locationPostModel
+            .unendorsePost(locPostId, userId)
+            .then(function (response) {
+                return userModel.unendorsesPost(userId, locPostId);
+            }, function (err) {
+                return err;
+            })
+            .then(function (response) {
+                return locationPostModel
+                    .findLocationPostById(locPostId);
+            }, function (err) {
+                return err;
+            })
+            .then(function (locationPost) {
+                res.json(locationPost)
+            },function (err) {
+                res.status(400).send();
+            })
+    }
+
 
     function findLocationById(req, res) {
         var locId = req.params.locId;

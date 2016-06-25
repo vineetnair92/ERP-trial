@@ -10,11 +10,11 @@
             findAllLocationPostForUserLocation: findAllLocationPostForUserLocation,
             findAllLocationPostForLocations: findAllLocationPostForLocations,
             findAllLocationPostForUser: findAllLocationPostForUser,
-            deleteLocationPost: deleteLocationPost
-           /* findLocationById: findLocationById,
-            updateLocation: updateLocation,
-            deleteLocation: deleteLocation,
-            getDirectionRoutes: getDirectionRoutes*/
+            findLocationPostById: findLocationPostById,
+            deleteLocationPost: deleteLocationPost,
+            endorsePost: endorsePost,
+            unendorsePost: unendorsePost
+
         }
         return api;
 
@@ -38,10 +38,26 @@
             return $http.get(url);
         }
 
+        function findLocationPostById(locPostId) {
+            var url ="/api/locationpost/"+locPostId;
+            return $http.get(url);
+        }
+
 
         function deleteLocationPost(locPostId) {
             var url = "/api/locationpost/"+locPostId;
             return $http.delete(url);   
+        }
+
+        function endorsePost(locPostId, userId) {
+            var url = "/api/userP/"+userId+"/locationpost/"+locPostId+"/endorse";
+            return  $http.put(url);
+        }
+        
+        function unendorsePost(locPostId, userId) {
+            var url = "/api/userP/"+userId+"/locationpost/"+locPostId+"/unendorse";
+            return  $http.delete(url);
+            
         }
 
         function findLocationById(locationId) {
@@ -53,20 +69,6 @@
            var url = "/api/location/"+locId;
            return  $http.put(url, location);
         }
-
-        function deleteLocation(locId, userId){
-            var url = "/api/userP/"+userId+"/location/"+locId;
-            return $http.delete(url);
-        }
-
-        function getDirectionRoutes(startLocation, endLocation, callback){
-            var directionsService = new google.maps.DirectionsService;
-            directionsService.route({
-                origin: startLocation.latlng,
-                destination: endLocation.latlng,
-                provideRouteAlternatives: true,
-                travelMode: google.maps.TravelMode.DRIVING
-            }, callback);}
 
 
     }

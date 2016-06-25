@@ -11,6 +11,11 @@
         cModel.selfLocPosts = [];
         cModel.friendsLocPosts = [];
         cModel.othersLocPosts = [];
+        cModel.endorsePost = endorsePost;
+        cModel.unendorsePost = unendorsePost;
+        cModel.isEndorsedByCurrentUser = isEndorsedByCurrentUser;
+        var currentUser;
+        findCurrentUser();
         function init() {
             var encodedPolyline, friends;
             encodedPolyline = $location.search().polyline;
@@ -96,6 +101,87 @@
         }
 
         init();
+
+        function endorsePost(locPostId, postGroup) {
+            LocationPostService
+                .endorsePost(locPostId, cModel.userId)
+                .then(function (response) {
+                      if(response.data) {
+                          var updatedLocPost = response.data;
+                          findCurrentUser();
+                          updatePostsArray(postGroup, updatedLocPost);
+                      }
+                }, function (err) {
+                    cModel.error = "Error Endorsing Post!";
+                });
+        }
+
+
+        function unendorsePost(locPostId, postGroup) {
+            LocationPostService
+                .unendorsePost(locPostId, cModel.userId)
+                .then(function (response) {
+                    if(response.data) {
+                        var updatedLocPost = response.data;
+                        findCurrentUser();
+                        updatePostsArray(postGroup, updatedLocPost);
+                    }
+                }, function (err) {
+                    cModel.error = "Error UnEndorsing Post!";
+                });
+        }
+        
+        function findCurrentUser() {
+            UserService
+                .findUserById(cModel.userId)
+                .then(function (response) {
+                    if(response.data) {
+                        currentUser = response.data;
+                    }
+                    else {
+                        currentUser = null;
+                        cModel.error = "Error fetching user details!!";
+                    }
+                }, function (err) {
+                    cModel.error = "Error fetching user details!!";
+                });
+        }
+
+        function updatePostsArray(postGroup, updatedLocPost) {
+            var i, locPost;
+            if(postGroup == 'friends') {
+                for(i=0;i<cModel.friendsLocPosts.length; i++) {
+                    locPost = cModel.friendsLocPosts[i];
+                    if(locPost._id == updatedLocPost._id) {
+                        cModel.friendsLocPosts.splice(i,1);
+                        cModel.friendsLocPosts.push(updatedLocPost);
+                        break;
+                    }
+                }
+            }
+            else if(postGroup == 'others') {
+                for(i=0;i<cModel.othersLocPosts.length; i++) {
+                    locPost = cModel.othersLocPosts[i];
+                    if(locPost._id == updatedLocPost._id) {
+                        cModel.othersLocPosts.splice(i,1);
+                        cModel.othersLocPosts.push(updatedLocPost);
+                        break;
+                    }
+                }
+            }
+        }
+
+        function isEndorsedByCurrentUser(locPostId) {
+            var isEndorsed =false;
+            currentUser
+                .endorsedPost
+                .forEach(function (endorsedPostId) {
+                    if(endorsedPostId == locPostId) {
+                          isEndorsed = true;
+                    }
+                });
+            return isEndorsed;
+        }
 
 
         function searchRoutes(startLocation, endLocation) {

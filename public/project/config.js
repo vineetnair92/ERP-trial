@@ -17,7 +17,10 @@
             .when("/user/:uid/all", {
                 templateUrl: 'views/user/user-friend-list.view.client.html',
                 controller: 'UserFriendController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid", {
                 templateUrl: 'views/user/user.view.client.html',
@@ -38,12 +41,18 @@
             .when("/register", {
                 templateUrl: 'views/user/register.html',
                 controller: 'RegisterController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid/go", {
                 templateUrl: 'views/googlemaps/directions.view.client.html',
                 controller: 'DirectionsController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid/friend/:fid/profile", {
                 templateUrl: 'views/user/friend-profile.view.client.html',
@@ -57,80 +66,60 @@
             .when("/user/:uid/go/results", {
                 templateUrl: 'views/location/directions-result.view.client.html',
                 controller: 'DirectionsResultController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid/isLocation/:poly", {
                 templateUrl: 'views/googlemaps/google.isLocationOnEdge.html',
                 controller: 'isLocationController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid/location", {
                 templateUrl: 'views/location/location-list.view.client.html',
                 controller: 'LocationListController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
 
             })
             .when("/user/:uid/location/addlocation", {
                 templateUrl: 'views/googlemaps/location-add.client.view.html',
                 controller: 'LocationAddController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
 
             })
             .when("/user/:uid/location/:locId", {
                 templateUrl: 'views/location/location-edit.view.client.html',
                 controller: 'EditLocationController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid/location/:locId/locpost", {
                 templateUrl: 'views/location/locationpost-list.view.client.html',
                 controller: 'LocationPostListController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid/location/:locId/locpost/addlocationpost", {
                 templateUrl: 'views/location/locationpost-add.view.client.html',
                 controller: 'LocationPostAddController',
-                controllerAs: 'model'
-            })
-            .when("/user/:uid/website/:wid", {
-                templateUrl: 'views/website/website-edit.view.client.html',
-                controller: 'EditWebsiteController',
-                controllerAs: 'model'
-            })
-            .when("/user/:uid/website/:wid/page", {
-                templateUrl: 'views/page/page-list.view.client.html',
-                controller: 'PageListController',
-                controllerAs: 'model'
-            })
-            .when("/user/:uid/website/:wid/page/new", {
-                templateUrl: 'views/page/page-new.view.client.html',
-                controller: 'NewPageController',
-                controllerAs: 'model'
-            })
-            .when("/user/:uid/website/:wid/page/:pid", {
-                templateUrl: 'views/page/page-edit.view.client.html',
-                controller: 'EditPageController',
-                controllerAs: 'model'
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget", {
-                templateUrl: 'views/widget/widget-list.view.client.html',
-                controller: 'WidgetListController',
-                controllerAs: 'model'
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-                templateUrl: 'views/widget/widget-chooser.view.client.html',
-                controller: 'NewWidgetController',
-                controllerAs: 'model'
-
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
-                templateUrl: 'views/widget/widget-edit.view.client.html',
-                controller: 'EditWidgetController',
-                controllerAs: 'model'
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid/flickr", {
-                templateUrl: 'views/widget/widget-flickr-search.view.client.html',
-                controller: 'FlickrSearchController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .otherwise({
                 redirectTo: '/login'

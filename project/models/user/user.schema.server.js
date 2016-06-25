@@ -23,6 +23,7 @@ module.exports = function () {
         phone: String,
         friends: [FriendSchema],
         locations: [LocationSchema],
+        endorsedPost: [{type:Schema.ObjectId, ref: 'LocationPost'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "user_tp"});
 

@@ -67,8 +67,20 @@
                     <p><b>Traffic Type</b> {{friendsLocPost.trafficType}}</p>
                     <p><b>Severity</b> {{friendsLocPost.severity}}</p>
                     <hr>
-                       <a ng-click="" class="btn btn-default"><i class="fa fa-thumbs-up"  aria-hidden="true"></i></a>
-                    <span>5 Endorses</span>
+
+                    <span ng-if="model.isEndorsedByCurrentUser(friendsLocPost._id)">
+                        <a ng-click="model.unendorsePost(friendsLocPost._id, 'friends')" class="btn btn-default">
+                                <i class="fa fa-thumbs-up" style="color: orange"  aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                      <span ng-if="!model.isEndorsedByCurrentUser(friendsLocPost._id)">
+                        <a ng-click="model.endorsePost(friendsLocPost._id, 'friends')" class="btn btn-default">
+                                <i class="fa fa-thumbs-up"   aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span>{{friendsLocPost.endorsedBy.length}} Endorses</span>
                 </div>
                 <div class="panel-footer">
                     <p class="pull-left" style="font-size: 10px; font-weight: bolder">
@@ -103,8 +115,21 @@
                     <p><b>Traffic Type</b> {{othersLocPost.trafficType}}</p>
                     <p><b>Severity</b> {{othersLocPost.severity}}</p>
                     <hr>
-                    <a ng-click="" class="btn btn-default"><i class="fa fa-thumbs-up"  aria-hidden="true"></i></a>
-                    <span>5 Endorses</span>
+
+                    <span ng-if="model.isEndorsedByCurrentUser(othersLocPost._id)">
+                        <a ng-click="model.unendorsePost(othersLocPost._id, 'others')" class="btn btn-default">
+                                <i class="fa fa-thumbs-up" style="color: orange"  aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                      <span ng-if="!model.isEndorsedByCurrentUser(othersLocPost._id)">
+                        <a ng-click="model.endorsePost(othersLocPost._id, 'others')" class="btn btn-default">
+                                <i class="fa fa-thumbs-up"   aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+
+                    <span>{{othersLocPost.endorsedBy.length}} Endorses</span>
                 </div>
                 <div class="panel-footer">
                     <p class="pull-left" style="font-size: 10px; font-weight: bolder">

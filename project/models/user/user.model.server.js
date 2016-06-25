@@ -11,12 +11,13 @@ module.exports = function (db_project) {
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
-        deleteWebsiteForUser: deleteWebsiteForUser,
         addLocationForUser: addLocationForUser,
         removeLocationFromUser: removeLocationFromUser,
         findAllUsers: findAllUsers,
-        addUserForUser:addUserForUser,
-        removeUserFromUser: removeUserFromUser
+        addUserForUser: addUserForUser,
+        removeUserFromUser: removeUserFromUser,
+        endorsesPost: endorsesPost,
+        unendorsesPost: unendorsesPost
 
     };
     return api;
@@ -59,42 +60,31 @@ module.exports = function (db_project) {
         return User.remove({_id: userId});
     }
 
-
-    function deleteWebsiteForUser(userId, websiteId) {
-        return User.update({_id: userId},
-            {
-                $pullAll: {
-                    "websites": [websiteId]
-                }
-            },
-            {safe: true});
-    }
-
     function addLocationForUser(userId, location, res) {
         User
             .findOne({_id: userId})
             .then(
                 function (user) {
-                   if(user) {
-                       user.locations.push(location);
-                       user.save();
-                       res.status(200).send();
-                   }
-                   else{
-                      res.status(404).send();
-                   }
+                    if (user) {
+                        user.locations.push(location);
+                        user.save();
+                        res.status(200).send();
+                    }
+                    else {
+                        res.status(404).send();
+                    }
                 },
                 function (err) {
-                   res.status(400).send(err);
+                    res.status(400).send(err);
                 });
     }
-    
+
     function removeLocationFromUser(userId, locId) {
         return User
             .update({_id: userId},
                 {
                     $pull: {
-                        "locations":{_id: locId}
+                        "locations": {_id: locId}
                     }
                 },
                 {safe: true});
@@ -102,20 +92,30 @@ module.exports = function (db_project) {
 
     function findAllUsers() {
         return User
-               .find();
+            .find();
     }
 
     function addUserForUser(userId, user) {
-      return User
-          .update({_id: userId}, {$push: {friends : {_id: user._id, username: user.username}}});
+        return User
+            .update({_id: userId}, {$push: {friends: {_id: user._id, username: user.username}}});
     }
 
     function removeUserFromUser(userId, friendId) {
         return User
-            .update({_id: userId}, {$pull: {friends : {_id: friendId}}});
+            .update({_id: userId}, {$pull: {friends: {_id: friendId}}});
+    }
+
+    function endorsesPost(userId, locPostId) {
+        return User
+            .update({_id: userId}, {$push: {endorsedPost: locPostId}});
+
+    }
+
+    function unendorsesPost(userId, locPostId) {
+        return User
+            .update({_id: userId}, {$pull: {endorsedPost: locPostId}});
+
     }
 
 
-    
-   
 }
