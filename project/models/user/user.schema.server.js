@@ -21,6 +21,11 @@ module.exports = function () {
         lastName: String,
         email: String,
         phone: String,
+        role: {type: String, default: 'normal'},
+        google: {
+            id:    String,
+            token: String
+        },
         friends: [FriendSchema],
         locations: [LocationSchema],
         endorsedPost: [{type:Schema.ObjectId, ref: 'LocationPost'}],

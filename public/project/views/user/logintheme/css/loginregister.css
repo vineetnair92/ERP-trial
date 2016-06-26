@@ -60,7 +60,7 @@
     border-color: #ccc;
 }
 .btn-login {
-    background-color: #5bc362;
+    background-color: rgba(91, 195, 98, 0.87);
     outline: none;
     color: #fff;
     font-size: 14px;
@@ -104,6 +104,10 @@
     border-color: #1CA347;
 }
 
+.btn-login.btn-google {
+    background-color: rgba(64, 87, 246, 0.77);
+}
+
 .login-reg-brand {
     font-weight: 800;
     color: #797979;
@@ -118,4 +122,12 @@
 .panel-login .panel-body{
     background: url('/project/images/roads.jpg') no-repeat center center fixed;
     background-size: 100% 100%;
+}
+
+a .fa.fa-google {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: bolder;
+    margin-right: 5px;
+    padding: 2px;
 }

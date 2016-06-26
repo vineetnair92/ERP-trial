@@ -94,18 +94,6 @@ input.form-control {
     margin-bottom: 3px;
 }
 
-.widget {
-    padding-top: 5px;
-}
-.widget-settings {
-    position: absolute;
-    right: 0;
-    background-color: white;
-    padding: 2px;
-    opacity: 0.8;
-    border-bottom-left-radius: 5px;
-
-}
 
 .image {
     padding-top: 5px;
@@ -118,10 +106,6 @@ input.form-control {
     border-radius: 5px;
 }
 
-
-.flickr-add-button {
-    font-weight: bolder;
-}
 
 .navbar-inverse {
     background-color: #4580cd;
@@ -141,30 +125,7 @@ input.form-control {
     cursor: pointer;
 }
 
-.flickr-thumbnail {
-    height: 100%;
-    width: 100%;
-}
-.flickr-search-results {
-    margin-top: 10px;
-}
-.flickr-search-results .col-xs-4 {
-    padding: 0;
-}
 
-.youtube-widget {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-}
-
-.youtube-widget iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 .dropdown-menu .glyphicon {
     margin-left: 20px;
@@ -302,4 +263,55 @@ blockquote.othersLocPosts {
 
 blockquote p {
     display: inline;
+}
+
+.nav.nav-tabs>li>a {
+    position: relative;
+    display: block;
+    padding: 2px 5px;
+}
+
+.table-input {
+    width: 100px;
+}
+
+table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+td a {
+    padding:5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-underline: none;
+    text-outline: none;
+}
+
+td a:focus, a:hover {
+    text-decoration: none;
+}
+
+.glyphicon.glyphicon-remove {
+    color: darkred;
+}
+
+
+.bottom-sm-space {
+    margin-bottom: 2px;
+}
+
+.bottom-md-space {
+    margin-bottom: 5px;
+}
+
+.bottom-lg-space {
+    margin-bottom: 10px;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none
 }

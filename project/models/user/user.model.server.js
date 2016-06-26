@@ -9,6 +9,7 @@ module.exports = function (db_project) {
         updateUser: updateUser,
         findUserByCredentials: findUserByCredentials,
         findUserById: findUserById,
+        findUserByGoogleId: findUserByGoogleId,
         findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
         addLocationForUser: addLocationForUser,
@@ -50,6 +51,11 @@ module.exports = function (db_project) {
     function findUserById(userId) {
 
         return User.findOne({_id: userId});
+    }
+
+    function findUserByGoogleId(googleId) {
+        return User
+            .findOne({'google.id': googleId});
     }
 
     function findUserByUsername(username) {

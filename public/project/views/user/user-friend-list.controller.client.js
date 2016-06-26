@@ -74,11 +74,13 @@
         function isFriend(userId) {
             if(currentUser) {
                 var isFriend = false;
-                currentUser.friends.forEach(function (friend) {
-                    if(userId == friend._id) {
-                        isFriend = true;
-                    }
-                });
+                if( currentUser.friends) {
+                    currentUser.friends.forEach(function (friend) {
+                        if (userId == friend._id) {
+                            isFriend = true;
+                        }
+                    });
+                }
                 return isFriend;
             }
         }

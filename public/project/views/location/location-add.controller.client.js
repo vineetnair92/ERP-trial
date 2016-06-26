@@ -12,7 +12,7 @@
 
         function createLocation(location) {
             console.log(location);
-            if(location.optname.trim()!='') {
+            if(location.optname && location.optname.trim()!='') {
                 location.name = location.optname;
             }
             LocationService
