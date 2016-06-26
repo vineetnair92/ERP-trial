@@ -48,7 +48,8 @@
                 controller: 'AdminController',
                 controllerAs: 'model',
                 resolve: {
-                    isLoggedIn: isLoggedIn
+                    isLoggedIn: isLoggedIn,
+                    isAdmin: isAdmin
                 }
             })
             .when("/user/:uid/go", {
@@ -65,7 +66,7 @@
                 controllerAs: 'model',
                 resolve: {
                     isLoggedIn: isLoggedIn,
-                    isFriend : isFriend
+                    isFriend: isFriend
                 }
             })
             .when("/user/:uid/go/results", {
@@ -160,8 +161,8 @@
         function isFriend(UserService, $location, $q, $rootScope, $route) {
 
             var deferred = $q.defer();
-            var userId =  $route.current.params.uid;
-            var friendId =  $route.current.params.fid;
+            var userId = $route.current.params.uid;
+            var friendId = $route.current.params.fid;
 
             UserService
                 .findUserById(userId)
@@ -170,22 +171,46 @@
                         var user = response.data;
                         var isFriend = false;
                         user.friends.forEach(function (friend) {
-                            if(friend._id == friendId) {
+                            if (friend._id == friendId) {
                                 isFriend = true;
                             }
                         });
                         if (!isFriend) {
                             deferred.reject();
-                            $location.url("/user/"+userId+"/all");
+                            $location.url("/user/" + userId + "/all");
                         } else {
                             deferred.resolve();
                         }
                     },
                     function (err) {
-                        $location.url("/user/"+userId+"/all");
+                        $location.url("/user/" + userId + "/all");
                     }
                 );
 
+            return deferred.promise;
+        }
+
+        function isAdmin(UserService, $location, $q, $route) {
+
+            var deferred = $q.defer();
+            var userId = $route.current.params.uid;
+            UserService
+                .findUserById(userId)
+                .then(
+                    function (response) {
+                        var user = response.data;
+                        console.log(user);
+                        if (user.role != 'admin') {
+                            deferred.reject();
+                            $location.url("/user");
+                        } else {
+                            deferred.resolve();
+                        }
+                    },
+                    function (err) {
+                        $location.url("/user");
+                    }
+                );
             return deferred.promise;
         }
     }

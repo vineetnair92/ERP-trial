@@ -11,6 +11,7 @@
             findAllLocationPostForLocations: findAllLocationPostForLocations,
             findAllLocationPostForUser: findAllLocationPostForUser,
             findLocationPostById: findLocationPostById,
+            findAllLocationPosts: findAllLocationPosts,
             deleteLocationPost: deleteLocationPost,
             endorsePost: endorsePost,
             unendorsePost: unendorsePost
@@ -40,6 +41,11 @@
 
         function findLocationPostById(locPostId) {
             var url ="/api/locationpost/"+locPostId;
+            return $http.get(url);
+        }
+        
+        function findAllLocationPosts() {
+            var url = "/api/locationpost";
             return $http.get(url);
         }
 

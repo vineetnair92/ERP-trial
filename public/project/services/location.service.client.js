@@ -11,7 +11,8 @@
             updateLocation: updateLocation,
             deleteLocation: deleteLocation,
             getDirectionRoutes: getDirectionRoutes,
-            findAllLocations: findAllLocations
+            findAllLocations: findAllLocations,
+            deleteLocationByAdmin: deleteLocationByAdmin
         }
         return api;
 
@@ -52,7 +53,7 @@
 
         function  deleteLocationByAdmin(locId) {
             var url ="/api/admin/location/"+locId;
-            $http.delete(url);
+            return $http.delete(url);
         }
 
     }

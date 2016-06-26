@@ -18,7 +18,9 @@ module.exports = function (db_project) {
         addUserForUser: addUserForUser,
         removeUserFromUser: removeUserFromUser,
         endorsesPost: endorsesPost,
-        unendorsesPost: unendorsesPost
+        unendorsesPost: unendorsesPost,
+        removeLocationFromUsers: removeLocationFromUsers,
+        removeEndorseFromUsers: removeEndorseFromUsers
 
     };
     return api;
@@ -39,6 +41,7 @@ module.exports = function (db_project) {
                     email: user.email,
                     phone: user.phone,
                     friends: user.friends,
+                    role: user.role,
                     locations: user.locations
                 }
             });
@@ -120,6 +123,25 @@ module.exports = function (db_project) {
     function unendorsesPost(userId, locPostId) {
         return User
             .update({_id: userId}, {$pull: {endorsedPost: locPostId}});
+
+    }
+
+    function removeLocationFromUsers(locId, usersWithLocation) {
+        return User
+            .update({_id : {$in: usersWithLocation}},
+                {
+                    $pull: {locations: { _id : locId}}
+                },
+                {multi: true});
+    }
+
+    function removeEndorseFromUsers(locPostId, usersWithEndorse) {
+        return User
+            .update({_id : {$in : usersWithEndorse}},
+                {
+                    $pull: {endorsedPost: locPostId}
+                },
+                {multi: true});
 
     }
 

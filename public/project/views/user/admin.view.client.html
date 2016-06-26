@@ -86,7 +86,7 @@
 
         <!--Location Tab-->
         <div role="tabpanel" class="tab-pane" id="location" name="location">
-            <h3>Location</h3>
+            <h3>Locations</h3>
             <div ng-if="model.error" class="alert alert-danger" role="alert">
                 {{model.error}}
             </div>
@@ -109,11 +109,7 @@
                         <td><input class="form-control table-input" type="password" ng-model="model.location.city"/></td>
                         <td><input class="form-control table-input" type="text" ng-model="model.location.state"/></td>
                         <td><input class="form-control table-input" type="text" ng-model="model.location.country"/></td>
-
-                        <td>
-                            <a  ng-if= "model.updateLocRow" ng-click="model.updateProfile(model.user)" class="btn btn-success">UPDATE</a>
-                            <a  ng-if= "model.updateLocRow" ng-click="model.cancelUpdate()" class="btn btn-warning">CANCEL</a>
-                        </td>
+                        <td></td>
                     </tr>
                     <tr ng-repeat="location in model.locations">
                         <th scope="row">{{$index+1}}</th>
@@ -123,11 +119,8 @@
                         <td>{{location.country}}</td>
 
                         <td>
-                            <a ng-click="model.deleteLocation(location._id)">
+                            <a ng-click="model.deleteLocationByAdmin(location._id)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </a>
-                            <a ng-click="model.updateLocation(user)">
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </a>
                         </td>
                     </tr>
@@ -141,7 +134,54 @@
 
 
 
-        <div role="tabpanel" class="tab-pane" id="locationpost">IN LOCATION POST</div>
+        <!--Location  Post Tab-->
+        <div role="tabpanel" class="tab-pane" id="locationpost" name="locationpost">
+            <h3>Location Posts</h3>
+            <div ng-if="model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped">
+                    <thead class="thead-inverse">
+                    <tr>
+                        <th>#</th>
+                        <th>Location Name</th>
+                        <th>Posted By</th>
+                        <th>Posted Time</th>
+                        <th>Traffic Type</th>
+                        <th>Severity</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td><input class="form-control table-input" type="text" ng-model="model.locationpost._location.name"/></td>
+                        <td><input class="form-control table-input" type="password" ng-model="model.locationpost._user.firstName"/></td>
+                        <td><input class="form-control table-input" type="password" ng-model="model.locationpost.dateCreated"/></td>
+                        <td><input class="form-control table-input" type="text" ng-model="model.locationpost.trafficType"/></td>
+                        <td><input class="form-control table-input" type="text" ng-model="model.locationpost.severity"/></td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="locationpost in model.locationposts">
+                        <th scope="row">{{$index+1}}</th>
+                        <td>{{locationpost._location.name}}</td>
+                        <td>{{locationpost._user.firstName}}</td>
+                        <td>{{locationpost.dateCreated | date:'medium'}}</td>
+                        <td>{{locationpost.trafficType}}</td>
+                        <td>{{locationpost.severity}}</td>
+
+                        <td>
+                            <a ng-click="model.deleteLocationPostByAdmin(locationpost._id)">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
 
 </div>

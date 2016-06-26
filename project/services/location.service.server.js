@@ -8,7 +8,7 @@ module.exports = function (app, models) {
     app.get("/api/location", findAllLocations);
     app.put("/api/location/:locId", updateLocation);
     app.delete("/api/userP/:userId/location/:locId", deleteLocation);
-//    app.delete("/api/admin/location/:locId", deleteLocationByAdmin);
+    app.delete("/api/admin/location/:locId", deleteLocationByAdmin);
 
     /* app.get("/api/user/:userId/website", findAllWebsitesForUser);
      app.get("/api/website/:websiteId", findWebsiteById);
@@ -154,7 +154,7 @@ module.exports = function (app, models) {
                 });
     }
 
-/*    function deleteLocationByAdmin(req, res) {
+    function deleteLocationByAdmin(req, res) {
         var locId = req.params.locId;
         var usersWithLocation = [];
         locationModel
@@ -162,8 +162,8 @@ module.exports = function (app, models) {
             .then(function (location) {
                 if (location) {
                     usersWithLocation = location.users;
-                    return locationModel
-                        .deleteLocation(locId);
+                    return userModel
+                        .removeLocationFromUsers(locId, usersWithLocation);
                 }
                 else {
                     return null;
@@ -173,26 +173,27 @@ module.exports = function (app, models) {
                 return err;
             })
             .then(function (response) {
-                var deletedLocationForUsers = 0;
                 if (response) {
-                    for (var i = 0; i < usersWithLocation.length; i++) {
-                        userModel
-                            .removeLocationFromUser(userId, locId)
-                            .then(function (response) {
-                                 if(response) {
-                                     deletedLocationForUsers++;
-                                 }
-                            },
-                            function (err) {
-                                  console.log(err);
-                            })
-                    }
-
+                    return locationModel
+                        .deleteLocation(locId);
                 }
+                else {
+                    return null
+                }
+            })
+            .then(function (response) {
+                if(response) {
+                    res.status(200).send()
+                }
+                else {
+                   res.status(404).send();
+                }
+            }, function (err) {
+                res.status(400).send(err);
+            })
 
 
-            });
-    }*/
+    }
 
     /*
      function findAllWebsitesForUser(req, res) {

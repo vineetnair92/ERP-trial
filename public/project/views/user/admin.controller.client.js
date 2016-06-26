@@ -12,9 +12,11 @@
         cModel.deleteUser = deleteUser;
         cModel.editUser = editUser;
         cModel.cancelUpdate = cancelUpdate;
-        cModel.deleteLocation = deleteLocation;
+        cModel.deleteLocationByAdmin = deleteLocationByAdmin;
+        cModel.deleteLocationPostByAdmin = deleteLocationPostByAdmin;
         findAllUsers();
         findAllLocations();
+        findAllLocationPosts();
 
         function findAllUsers() {
             UserService
@@ -33,12 +35,28 @@
                         cModel.locations = response.data;
                     }
                     else {
-                        cModel.err = "Error Fetching locaitons";
+                        cModel.err = "Error Fetching locations";
                     }
                 }, function (err) {
-                    cModel.err = "Error Fetching locaitons";
+                    cModel.err = "Error Fetching locations";
                 })
         }
+
+        function findAllLocationPosts() {
+            LocationPostService
+                .findAllLocationPosts()
+                .then(function (response) {
+                    if(response.data) {
+                        cModel.locationposts = response.data;
+                    }
+                    else {
+                        cModel.err = "Error Fetching location posts";
+                    }
+                }, function (err) {
+                    cModel.err = "Error Fetching location posts";
+                })
+        }
+
 
         function createUser(user) {
                 UserService
@@ -79,7 +97,8 @@
                 username : user.username,
                 firstName : user.firstName,
                 lastName : user.lastName,
-                email : user.email
+                email : user.email,
+                role: user.role
             }
 
             cModel.updateRow = 1;
@@ -136,9 +155,9 @@
             }
         }
         
-        function deleteLocation(locId) {
+        function deleteLocationByAdmin(locId) {
 
-            LocationService.deleteLocation(locId, cModel.userId)
+            LocationService.deleteLocationByAdmin(locId, cModel.userId)
                 .then(function (response) {
                     var deleteStats = response.status;
                     if (deleteStats === 200) {
@@ -152,6 +171,21 @@
                 .catch(function (response) {
                     cModel.error = "Unable to delete location";
                 });
+        }
+        
+        function deleteLocationPostByAdmin(locPostId) {
+            LocationPostService.deleteLocationPost(locPostId)
+                .then(function (response) {
+                    var deleteStats = response.status;
+                    if (deleteStats === 200) {
+                        findAllLocationPosts();
+                    }
+                    else {
+                        cModel.error = "Unable to delete location post";
+                    }
+                }, function (err) {
+                    cModel.error = "Unable to delete location post";
+                })
         }
 
 

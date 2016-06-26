@@ -11,7 +11,8 @@ module.exports = function (db_assignment) {
         findLocationPostById: findLocationPostById,
         deleteLocationPost: deleteLocationPost,
         endorsePost: endorsePost,
-        unendorsePost: unendorsePost
+        unendorsePost: unendorsePost,
+        findAllLocationPosts: findAllLocationPosts
     };
     return api;
 
@@ -51,5 +52,9 @@ module.exports = function (db_assignment) {
     function unendorsePost(locPostId, userId) {
         return LocationPost
             .update({_id: locPostId}, {$pull : {endorsedBy: userId}});
+    }
+
+    function  findAllLocationPosts() {
+        return LocationPost.find();
     }
 }

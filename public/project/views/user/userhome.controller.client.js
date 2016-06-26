@@ -5,7 +5,7 @@
     function UserHomeController($routeParams, UserService, $location, $rootScope) {
         var cModel = this;
         cModel.userId = $rootScope.currentUser._id;
-
+        cModel.userRole = $rootScope.currentUser.role;
         cModel.logout = logout;
 
         init();

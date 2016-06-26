@@ -15,6 +15,7 @@
                 <li class="active"><a class="navbar-items" href="">HOME</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li ng-if="model.userRole == 'admin'"><a href="#/user/{{model.userId}}/admin" class="navbar-items">ADMIN</a></li>
                 <li><a href="#/user/{{model.userId}}/go" class="navbar-items">GO!</a></li>
                 <li><a href="#/user/{{model.userId}}/location/">MY POSTS</a></li>
                 <li><a href="#/user/{{model.userId}}/all">FIND BUDDIES</a></li>

@@ -33,8 +33,6 @@
                 .deleteLocationPost(locPostId)
                 .then(function(response){
                     if(response.status == 200) {
-                        return UserService
-                               .deleteEndorsedPost(locPostId)
                         init();
                     }
                     else {
