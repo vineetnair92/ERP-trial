@@ -8,12 +8,13 @@ module.exports = function (app, models) {
     app.get("/api/location", findAllLocations);
     app.put("/api/location/:locId", updateLocation);
     app.delete("/api/userP/:userId/location/:locId", deleteLocation);
+//    app.delete("/api/admin/location/:locId", deleteLocationByAdmin);
 
-   /* app.get("/api/user/:userId/website", findAllWebsitesForUser);
-    app.get("/api/website/:websiteId", findWebsiteById);
-    app.put("/api/website/:websiteId", updateWebsite);
-    app.delete("/api/website/:websiteId", deleteWebsite);
-*/
+    /* app.get("/api/user/:userId/website", findAllWebsitesForUser);
+     app.get("/api/website/:websiteId", findWebsiteById);
+     app.put("/api/website/:websiteId", updateWebsite);
+     app.delete("/api/website/:websiteId", deleteWebsite);
+     */
     function createLocation(req, res) {
         var newLocation = req.body;
         var newLocLat = newLocation.lat;
@@ -24,9 +25,9 @@ module.exports = function (app, models) {
             .findLocationByLatLng(newLocLat, newLocLng)
             .then(
                 function (location) {
-                    if(!location) {
+                    if (!location) {
                         newLocation.users = [userId];
-                        return  locationModel
+                        return locationModel
                             .createLocation(newLocation);
                     }
                     else {
@@ -36,29 +37,29 @@ module.exports = function (app, models) {
                         var duplicateUser = false;
 
                         location.users.forEach(function (user) {
-                            if(user == userId){
+                            if (user == userId) {
                                 duplicateUser = true;
                             }
                         });
 
-                        if(!duplicateUser) {
+                        if (!duplicateUser) {
                             location.users.push(userId);
                             console.log(location.users);
                             return locationModel
                                 .updateLocation(locId, location);
                         }
                         else {
-                           return null;
+                            return null;
                         }
                     }
                 },
                 function (err) {
-                  return err;
+                    return err;
                 }
             )
             .then(
                 function (response) {
-                    if(response) {
+                    if (response) {
                         if (response._id) {
                             locId = response._id;
                             locName = response.name;
@@ -136,7 +137,7 @@ module.exports = function (app, models) {
                     }
                 },
                 function (err) {
-                     return err;
+                    return err;
                 })
             .then(function (response) {
                     return userModel
@@ -146,77 +147,117 @@ module.exports = function (app, models) {
                     return err;
                 })
             .then(function (response) {
-                res.status(200).send();
-            },
-            function (err) {
-                res.status(400).send(err);
-            });
+                    res.status(200).send();
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
+
+/*    function deleteLocationByAdmin(req, res) {
+        var locId = req.params.locId;
+        var usersWithLocation = [];
+        locationModel
+            .findLocationById(locId)
+            .then(function (location) {
+                if (location) {
+                    usersWithLocation = location.users;
+                    return locationModel
+                        .deleteLocation(locId);
+                }
+                else {
+                    return null;
+                }
+
+            }, function (err) {
+                return err;
+            })
+            .then(function (response) {
+                var deletedLocationForUsers = 0;
+                if (response) {
+                    for (var i = 0; i < usersWithLocation.length; i++) {
+                        userModel
+                            .removeLocationFromUser(userId, locId)
+                            .then(function (response) {
+                                 if(response) {
+                                     deletedLocationForUsers++;
+                                 }
+                            },
+                            function (err) {
+                                  console.log(err);
+                            })
+                    }
+
+                }
+
+
+            });
+    }*/
 
     /*
      function findAllWebsitesForUser(req, res) {
-        var userId = req.params.userId;
-        websiteModel
-            .findAllWebsitesForUser(userId)
-            .then(function (websites) {
-                res.json(websites);
-            })
-            .catch(function (error) {
-                res.status(400).send(error);
-            });
-    }
+     var userId = req.params.userId;
+     websiteModel
+     .findAllWebsitesForUser(userId)
+     .then(function (websites) {
+     res.json(websites);
+     })
+     .catch(function (error) {
+     res.status(400).send(error);
+     });
+     }
 
-    function findWebsiteById(req, res) {
-        var websiteId = req.params.websiteId;
-        websiteModel
-            .findWebsiteById(websiteId)
-            .then(function (website) {
-                res.json(website);
-            })
-            .catch(function (error) {
-                res.status(400).send(error);
-            });
+     function findWebsiteById(req, res) {
+     var websiteId = req.params.websiteId;
+     websiteModel
+     .findWebsiteById(websiteId)
+     .then(function (website) {
+     res.json(website);
+     })
+     .catch(function (error) {
+     res.status(400).send(error);
+     });
 
-    }
+     }
 
-    function updateWebsite(req, res) {
-        var website = req.body;
-        var websiteId = req.params.websiteId;
-        delete website._id;
-        websiteModel
-            .updateWebsite(websiteId, website)
-            .then(function (response) {
-                res.send(response);
-            })
-            .catch(function (error) {
-                res.status(400).send(error);
-            })
-    }
+     function updateWebsite(req, res) {
+     var website = req.body;
+     var websiteId = req.params.websiteId;
+     delete website._id;
+     websiteModel
+     .updateWebsite(websiteId, website)
+     .then(function (response) {
+     res.send(response);
+     })
+     .catch(function (error) {
+     res.status(400).send(error);
+     })
+     }
 
-    function deleteWebsite(req, res) {
-        var websiteId = req.params.websiteId;
-        websiteModel
-            .findWebsiteById(websiteId)
-            .then(function (website) {
-                websiteModel
-                    .deleteWebsite(websiteId)
-                    .then(function (response) {
-                        userModel
-                            .deleteWebsiteForUser(website._user, websiteId)
-                            .then(function (response) {
-                                res.send(response);
-                            })
-                            .catch(function (error) {
-                                res.status(400).send(error);
-                            })
+     function deleteWebsite(req, res) {
+     var websiteId = req.params.websiteId;
+     websiteModel
+     .findWebsiteById(websiteId)
+     .then(function (website) {
+     websiteModel
+     .deleteWebsite(websiteId)
+     .then(function (response) {
+     userModel
+     .deleteWebsiteForUser(website._user, websiteId)
+     .then(function (response) {
+     res.send(response);
+     })
+     .catch(function (error) {
+     res.status(400).send(error);
+     })
 
-                    })
-                    .catch(function (error) {
-                        res.status(400).send(error);
-                    });
-            })
-            .catch(function (error) {
-                res.status(400).send(error);
-            });
-    }*/
+     })
+     .catch(function (error) {
+     res.status(400).send(error);
+     });
+     })
+     .catch(function (error) {
+     res.status(400).send(error);
+     });
+     }*/
 };

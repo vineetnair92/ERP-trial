@@ -11,12 +11,8 @@ module.exports = function (db_assignment) {
         deleteLocation: deleteLocation,
         removeUserFromLocation: removeUserFromLocation,
         findAllLocations: findAllLocations,
-
-        findAllWebsitesForUser: findAllWebsitesForUser,
-        findWebsiteById: findWebsiteById,
-        updateWebsite: updateWebsite,
-        deleteWebsite: deleteWebsite,
-        deletePageForWebsite: deletePageForWebsite
+        removeUserFromLocations: removeUserFromLocations,
+        deleteLocationsWithNoUsers: deleteLocationsWithNoUsers
     };
     return api;
 
@@ -27,14 +23,14 @@ module.exports = function (db_assignment) {
 
     function findLocationByLatLng(newLocLat, newLocLng) {
         console.log("Create location in model");
-        return Location.findOne({"$and" : [{lat: newLocLat},{lng: newLocLng}]});
+        return Location.findOne({"$and": [{lat: newLocLat}, {lng: newLocLng}]});
     }
 
     function findLocationById(locId) {
         console.log("Create location in model");
         return Location.findById({_id: locId});
     }
-    
+
     function updateLocation(locId, location) {
         return Location.update({_id: locId},
             {
@@ -45,7 +41,7 @@ module.exports = function (db_assignment) {
                 }
             });
     }
-    
+
     function deleteLocation(locId) {
         return Location.remove({_id: locId});
     }
@@ -60,46 +56,23 @@ module.exports = function (db_assignment) {
                 },
                 {safe: true});
     }
-    
+
+    function removeUserFromLocations(userId, userLocations) {
+        return Location
+            .update({_id: {$in: userLocations}},
+                {
+                    $pullAll: {users: [userId]}
+                },
+                {multi: true});
+    }
+
+    function deleteLocationsWithNoUsers() {
+        return Location.remove({users: []});
+    }
+
     function findAllLocations() {
         return Location.find();
 
     }
 
-    function findAllWebsitesForUser(userId) {
-        return Website.find({_user: userId});
-    }
-
-    function findWebsiteById(websiteId) {
-
-        return Website.findById({_id: websiteId});
-    }
-
-    function updateWebsite(websiteId, website) {
-
-        return Website.update({_id: websiteId},
-            {
-                $set: {
-                    _user: website._user,
-                    name: website.name,
-                    description: website.description,
-                    pages: website.pages
-                }
-            });
-    }
-
-
-    function deleteWebsite(websiteId) {
-        return Website.remove({_id: websiteId});
-    }
-
-    function deletePageForWebsite(websiteId, pageId) {
-        return Website.update({_id: websiteId},
-            {
-                $pullAll: {
-                    "pages": [pageId]
-                }
-            },
-            {safe: true});
-    }
 }

@@ -50,6 +50,11 @@
             return $http.get(url);
         }
 
+        function  deleteLocationByAdmin(locId) {
+            var url ="/api/admin/location/"+locId;
+            $http.delete(url);
+        }
+
     }
 
 })();

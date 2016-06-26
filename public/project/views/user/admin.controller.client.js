@@ -12,15 +12,32 @@
         cModel.deleteUser = deleteUser;
         cModel.editUser = editUser;
         cModel.cancelUpdate = cancelUpdate;
-        init();
+        cModel.deleteLocation = deleteLocation;
+        findAllUsers();
+        findAllLocations();
 
-        function init() {
+        function findAllUsers() {
             UserService
                 .findAllUsers()
                 .then(function (response) {
                     cModel.users = response.data;
                 });
 
+        }
+
+        function findAllLocations() {
+            LocationService
+                .findAllLocations()
+                .then(function (response) {
+                    if(response.data) {
+                        cModel.locations = response.data;
+                    }
+                    else {
+                        cModel.err = "Error Fetching locaitons";
+                    }
+                }, function (err) {
+                    cModel.err = "Error Fetching locaitons";
+                })
         }
 
         function createUser(user) {
@@ -44,7 +61,7 @@
                 .then(function (response) {
                     var user = response.data;
                     if (user) {
-                        init();
+                        findAllUsers();
                     }
                     else {
                         cModel.error = "Error creating user!!";
@@ -76,7 +93,7 @@
                     if (response.status === 200) {
                         cModel.updateRow = 0;
                         clearUserFields();
-                        init();
+                        findAllUsers();
                     }
                     else {
                         cModel.error = "error updating";
@@ -98,7 +115,7 @@
                 .then(function (response) {
                     if (response.status === 200) {
                         cModel.deleteStats = "success";
-                        init();
+                        findAllUsers();
                     }
                     else {
                         cModel.deleteStats = "error";
@@ -117,6 +134,24 @@
                 lastName : '',
                 email :''
             }
+        }
+        
+        function deleteLocation(locId) {
+
+            LocationService.deleteLocation(locId, cModel.userId)
+                .then(function (response) {
+                    var deleteStats = response.status;
+                    if (deleteStats === 200) {
+                       findAllLocations();
+                    }
+                    else {
+                        cModel.error = "Unable to delete location";
+                    }
+
+                })
+                .catch(function (response) {
+                    cModel.error = "Unable to delete location";
+                });
         }
 
 

@@ -6,6 +6,7 @@ var bcrypt = require("bcrypt-nodejs");
 module.exports = function (app, models) {
 
     var userModel = models.userModel;
+    var locationModel = models.locationModel;
 
     app.post("/api/userP", createUser);
     app.get("/api/userP/:userId", findUserById);
@@ -229,14 +230,37 @@ module.exports = function (app, models) {
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
+        var userLocations = [];
         userModel
-            .deleteUser(userId)
-            .then(function (response) {
-                res.send(response);
+            .findUserById(userId)
+            .then(function (user) {
+                user.locations.forEach(function (location) {
+                    userLocations.push(location._id);
+                });
+                return locationModel
+                    .removeUserFromLocations(userId, userLocations);
+            },
+            function (err) {
+                   return err;
             })
-            .catch(function (error) {
-                res.status(400).send(error);
+            .then(function (response) {
+                return locationModel.
+                           deleteLocationsWithNoUsers();
+            },function (err) {
+                return err;
+            })
+            .then(function (response) {
+                return userModel
+                    .deleteUser(userId);
+            }, function (err) {
+                return err
+            })
+            .then(function (response) {
+                res.status(200).send();
+            }, function (err) {
+                res.status(400).send();
             });
+        
     }
     
     function addLocationForUser(req, res) {
