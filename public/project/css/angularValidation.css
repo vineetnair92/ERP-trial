@@ -1,0 +1,26 @@
+.ng-submitted input.ng-invalid {
+    background-color: rgba(250, 172, 84, 0.76);
+    color: white;
+    border: 2px solid #98350e;
+}
+
+.elementErrorMsg{
+    margin-top: -5px;
+    margin-bottom: 5px;
+    z-index: 1;
+
+}
+
+.directionsErrorMsg{
+    margin-top: 5px;
+}
+
+.elementErrorMsg,.directionsErrorMsg > span{
+    color: #b60a17;
+}
+
+.validationButton {
+    border: none;
+    background: none;
+    outline: none;
+}
