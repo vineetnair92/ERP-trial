@@ -20,12 +20,12 @@
         return api;
 
         function createLocationPost(userId, locId, locationPost) {
-            var url = "/api/userP/" + userId + "/location/"+locId+"/locationpost";
+            var url = "/api/userP/" + userId + "/location/" + locId + "/locationpost";
             return $http.post(url, locationPost);
         }
-        
+
         function findAllLocationPostForUserLocation(userId, locId) {
-            var url = "/api/userP/" + userId + "/location/"+locId+"/locationpost";
+            var url = "/api/userP/" + userId + "/location/" + locId + "/locationpost";
             return $http.get(url);
         }
 
@@ -40,10 +40,10 @@
         }
 
         function findLocationPostById(locPostId) {
-            var url ="/api/locationpost/"+locPostId;
+            var url = "/api/locationpost/" + locPostId;
             return $http.get(url);
         }
-        
+
         function findAllLocationPosts() {
             var url = "/api/locationpost";
             return $http.get(url);
@@ -51,29 +51,29 @@
 
 
         function deleteLocationPost(locPostId) {
-            var url = "/api/locationpost/"+locPostId;
-            return $http.delete(url);   
+            var url = "/api/locationpost/" + locPostId;
+            return $http.delete(url);
         }
 
         function endorsePost(locPostId, userId) {
-            var url = "/api/userP/"+userId+"/locationpost/"+locPostId+"/endorse";
-            return  $http.put(url);
+            var url = "/api/userP/" + userId + "/locationpost/" + locPostId + "/endorse";
+            return $http.put(url);
         }
-        
+
         function unendorsePost(locPostId, userId) {
-            var url = "/api/userP/"+userId+"/locationpost/"+locPostId+"/unendorse";
-            return  $http.delete(url);
-            
+            var url = "/api/userP/" + userId + "/locationpost/" + locPostId + "/unendorse";
+            return $http.delete(url);
+
         }
 
         function findLocationById(locationId) {
-            var url = "/api/location/"+locationId;
+            var url = "/api/location/" + locationId;
             return $http.get(url);
         }
 
         function updateLocation(locId, location) {
-           var url = "/api/location/"+locId;
-           return  $http.put(url, location);
+            var url = "/api/location/" + locId;
+            return $http.put(url, location);
         }
 
 

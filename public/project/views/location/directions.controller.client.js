@@ -48,33 +48,11 @@
         function routesCallback(response, status) {
             var poly;
             if (status === google.maps.DirectionsStatus.OK) {
-                //    directionsDisplay.set(response);
-           /*     console.log(response.routes[0].overview_polyline);
-                poly = response.routes[0].overview_polyline;
-                polycleaned = response.routes[0].overview_polyline.replace(/\\/g, "\\\\");
-                console.log("\n");
-                console.log(poly);
-                cModel.response = poly;
-                IsLocationInPolyline(42.34169, -71.09065, poly); // in
-                IsLocationInPolyline(42.34656, -71.09015, poly); // out
-                IsLocationInPolyline(42.34499, -71.09069, poly); // in
-                IsLocationInPolyline(42.34388, -71.08994, poly); // in
-                IsLocationInPolyline(42.34393, -71.08973, poly); // out
-                IsLocationInPolyline(42.34656, -71.09015, poly); // out
-                IsLocationInPolyline(42.34656, -71.09015, poly);
-                IsLocationInPolyline(42.34656, -71.09015, poly);
-                IsLocationInPolyline(42.34656, -71.09015, poly);
-                IsLocationInPolyline(42.34656, -71.09015, poly);
-                IsLocationInPolyline(42.34656, -71.09015, poly);
-                IsLocationInPolyline(42.34656, -71.09015, poly);
-                IsLocationInPolyline(42.34656, -71.09015, poly);
-                IsLocationInPolyline(42.34656, -71.09015, poly);*/
                 cModel.routes = response.routes;
                 $scope.$apply();
             } else {
                 poly = null;
                 window.alert('Directions request failed due to ' + status);
-
             }
         }
 

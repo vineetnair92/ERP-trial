@@ -19,7 +19,6 @@
             findAllUsers: findAllUsers,
             addUserForUser: addUserForUser,
             removeUserFromUser: removeUserFromUser
-            /*    testApi: testApi*/
         }
         return api;
 
@@ -38,27 +37,27 @@
         function isLoggedIn() {
             return $http.get("/api/isLoggedInP");
         }
-        
+
         function findUserByCredentials(username, password) {
-            var attr1 = "username="+username;
-            var attr2 = "password="+password;
-            var url="/api/userP?"+attr1+"&"+attr2;
+            var attr1 = "username=" + username;
+            var attr2 = "password=" + password;
+            var url = "/api/userP?" + attr1 + "&" + attr2;
             return $http.get(url);
         }
 
         function findUserById(userId) {
-            var url = "/api/userP/"+userId;
+            var url = "/api/userP/" + userId;
             return $http.get(url);
         }
 
         function findUserByUsername(username) {
-            var attr1 = "username="+username;
-            var url="/api/userP?"+attr1;
+            var attr1 = "username=" + username;
+            var url = "/api/userP?" + attr1;
             return $http.get(url);
         }
 
         function updateUser(userId, user) {
-            var url ="/api/userP/"+userId;
+            var url = "/api/userP/" + userId;
             return $http.put(url, user);
         }
 
@@ -72,41 +71,30 @@
         }
 
         function deleteUser(userId) {
-            var url ="/api/userP/"+userId;
+            var url = "/api/userP/" + userId;
             return $http.delete(url);
 
         }
 
         function addLocationForUser(userId, location) {
-            var url= "/api/userP/"+userId+"/addlocation";
+            var url = "/api/userP/" + userId + "/addlocation";
             return $http.post(url, location);
         }
 
         function findAllUsers(userId) {
-            var url ="/api/userP/"+userId+"/all";
+            var url = "/api/userP/" + userId + "/all";
             return $http.get(url);
         }
 
         function addUserForUser(userId, user) {
-            var url="/api/userP/"+userId+"/addUser";
+            var url = "/api/userP/" + userId + "/addUser";
             return $http.post(url, user);
         }
 
         function removeUserFromUser(userId, friendId) {
-            var url="/api/userP/"+userId+"/removeUser/"+friendId;
+            var url = "/api/userP/" + userId + "/removeUser/" + friendId;
             return $http.delete(url);
         }
-
-        /*function testApi(callback) {
-         var directionsService = new google.maps.DirectionsService;
-         return directionsService.route({
-         origin: '67 Harvard Ave,Allston,02134',
-         destination: '42.340005,-71.089204',
-         provideRouteAlternatives: true,
-         travelMode: google.maps.TravelMode.DRIVING
-         }, callback);
-         }*/
-
 
     }
 

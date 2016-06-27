@@ -22,21 +22,21 @@
         }
 
         function findLocationById(locationId) {
-            var url = "/api/location/"+locationId;
+            var url = "/api/location/" + locationId;
             return $http.get(url);
         }
 
         function updateLocation(locId, location) {
-           var url = "/api/location/"+locId;
-           return  $http.put(url, location);
+            var url = "/api/location/" + locId;
+            return $http.put(url, location);
         }
 
-        function deleteLocation(locId, userId){
-            var url = "/api/userP/"+userId+"/location/"+locId;
+        function deleteLocation(locId, userId) {
+            var url = "/api/userP/" + userId + "/location/" + locId;
             return $http.delete(url);
         }
 
-        function getDirectionRoutes(startLocation, endLocation, callback){
+        function getDirectionRoutes(startLocation, endLocation, callback) {
             var directionsService = new google.maps.DirectionsService;
             directionsService.route({
                 origin: startLocation.latlng,
@@ -51,8 +51,8 @@
             return $http.get(url);
         }
 
-        function  deleteLocationByAdmin(locId) {
-            var url ="/api/admin/location/"+locId;
+        function deleteLocationByAdmin(locId) {
+            var url = "/api/admin/location/" + locId;
             return $http.delete(url);
         }
 

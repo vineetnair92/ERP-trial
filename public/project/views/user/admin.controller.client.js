@@ -64,7 +64,6 @@
                     .then(function (response) {
                         if (!response.data) {
                             registerUserAfterValidation(user);
-
                         }
                         else {
                             cModel.error = "Username already exists, Please enter another username !!";

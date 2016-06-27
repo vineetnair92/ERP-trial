@@ -103,14 +103,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row"></th>
-                        <td><input class="form-control table-input" type="text" ng-model="model.location.name"/></td>
-                        <td><input class="form-control table-input" type="password" ng-model="model.location.city"/></td>
-                        <td><input class="form-control table-input" type="text" ng-model="model.location.state"/></td>
-                        <td><input class="form-control table-input" type="text" ng-model="model.location.country"/></td>
-                        <td></td>
-                    </tr>
                     <tr ng-repeat="location in model.locations">
                         <th scope="row">{{$index+1}}</th>
                         <td>{{location.name}}</td>
@@ -154,15 +146,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row"></th>
-                        <td><input class="form-control table-input" type="text" ng-model="model.locationpost._location.name"/></td>
-                        <td><input class="form-control table-input" type="password" ng-model="model.locationpost._user.firstName"/></td>
-                        <td><input class="form-control table-input" type="password" ng-model="model.locationpost.dateCreated"/></td>
-                        <td><input class="form-control table-input" type="text" ng-model="model.locationpost.trafficType"/></td>
-                        <td><input class="form-control table-input" type="text" ng-model="model.locationpost.severity"/></td>
-                        <td></td>
-                    </tr>
                     <tr ng-repeat="locationpost in model.locationposts">
                         <th scope="row">{{$index+1}}</th>
                         <td>{{locationpost._location.name}}</td>

@@ -29,7 +29,7 @@
 
 
     <div class="row">
-        <div ng-repeat="selfLocPost in model.selfLocPosts | orderBy : 'dateCreated' : false"  class="col-md-4">
+        <div ng-repeat="selfLocPost in model.selfLocPosts | orderBy : 'dateCreated' : true"  class="col-md-4">
             <div class="panel panel-shadow panel-info">
                 <div class="panel-heading" ng-class="selfLocPost.severity">
                     <p>
@@ -56,7 +56,7 @@
         </div>
     </blockquote>
     <div class="row">
-        <div ng-repeat="friendsLocPost in model.friendsLocPosts | orderBy : 'dateCreated' : false"  class="col-md-4">
+        <div ng-repeat="friendsLocPost in model.friendsLocPosts | orderBy : 'dateCreated' : true"  class="col-md-4">
             <div class="panel panel-shadow panel-info">
                 <div class="panel-heading" ng-class="friendsLocPost.severity">
                     <p>
@@ -104,7 +104,7 @@
     </blockquote>
 
     <div class="row">
-        <div ng-repeat="othersLocPost in model.othersLocPosts | orderBy : 'dateCreated' : false"  class="col-md-4">
+        <div ng-repeat="othersLocPost in model.othersLocPosts | orderBy : 'dateCreated' : true"  class="col-md-4">
             <div class="panel panel-shadow panel-info ">
                 <div  class="panel-heading" ng-class="othersLocPost.severity">
                     <p>
