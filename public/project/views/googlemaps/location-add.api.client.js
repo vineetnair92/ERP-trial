@@ -114,7 +114,7 @@ function initAddlocation() {
         marker.setVisible(true);
 
 
-        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-        infowindow.open(map, marker);
+        //infowindow.setContent('<div><strong>' + place.name + '</strong><br>');
+        //infowindow.open(map, marker);
     });
 }

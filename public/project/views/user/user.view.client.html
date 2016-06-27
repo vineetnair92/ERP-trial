@@ -1,3 +1,4 @@
+<form name="profileForm" novalidate>
 <nav class="mobile-nav navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -11,9 +12,11 @@
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateProfile(model.user)" class="navbar-link ">
+                <button ng-click="(submitted=true) &&
+                                    profileForm.$valid &&
+                                    model.updateProfile(model.user)" class="navbar-link validationButton  ">
                     <span class="glyphicon glyphicon-ok"></span>
-                </a>
+                </button>
             </p>
         </div>
     </div>
@@ -32,75 +35,85 @@
     <div ng-if="model.deleteStats == 'error'" class="alert alert-danger" role="alert">
         Delete Error!!
     </div>
+    <div class="panel panel-success">
+            <div class="panel-body">
 
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text"
-                   class="form-control"
-                   id="username"
-                   ng-model="model.user.username"
-                   placeholder="username">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email"
-                   class="form-control"
-                   id="email"
-                   ng-model="model.user.email"
-                   placeholder="abc@gmail.com">
-        </div>
-        <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="first-name"
-                   ng-model="model.user.firstName"
-                   placeholder="Abcde">
-        </div>
-        <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="last-name"
-                   ng-model="model.user.lastName"
-                   placeholder="Xyz">
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text"
-                   class="form-control"
-                   id="phone"
-                   ng-model="model.user.phone"
-                   placeholder="0123456789">
-        </div>
-        <div ng-switch="model.updateStats">
-            <div ng-switch-when="true">
-                <div class="alert alert-success" role="alert">
-                    Update Sucess!
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text"
+                           class="form-control"
+                           id="username"
+                           ng-model="model.user.username"
+                           placeholder="username"
+                           readonly>
                 </div>
-            </div>
-            <div ng-switch-when="false">
-                <div class="alert alert-danger" role="alert">
-                    Update Error!
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email"
+                           class="form-control"
+                           id="email"
+                           ng-model="model.user.email"
+                           placeholder="abc@gmail.com">
                 </div>
-            </div>
-        </div>
-    </form>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="first-name"
+                           name="firstName"
+                           ng-model="model.user.firstName"
+                           placeholder="Abcde"
+                           required>
+                    <div ng-show="profileForm.$submitted && profileForm.firstName.$invalid" class="elementErrorMsg">
+                        <span>*required field</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="last-name"
+                           ng-model="model.user.lastName"
+                           placeholder="Xyz">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text"
+                           class="form-control"
+                           id="phone"
+                           ng-model="model.user.phone"
+                           placeholder="0123456789">
+                </div>
+                <div ng-switch="model.updateStats">
+                    <div ng-switch-when="true">
+                        <div class="alert alert-success" role="alert">
+                            Update Sucess!
+                        </div>
+                    </div>
+                    <div ng-switch-when="false">
+                        <div class="alert alert-danger" role="alert">
+                            Update Error!
+                        </div>
+                    </div>
+                </div>
 
-
-    <a class="btn btn-danger  btn-block"
-      ng-click="model.deleteUser(model.userId)">Delete Account</a>
+            <a class="btn btn-danger  btn-block"
+              ng-click="model.deleteUser(model.userId)">Delete Account</a>
+         </div>
+    </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="row navbar-footer pull-right">
             <div class=" navbar-text text-center">
-                <a href="">
-                    <span class="glyphicon glyphicon-user"></span>
+                <a href="#/user">
+                    <span class="glyphicon glyphicon-home"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
+
+</form>
+

@@ -4,11 +4,6 @@
             margin: 0;
             padding: 0;
         }
-        #map {
-            position: absolute;
-            height: 100%;
-            width : 100%
-        }
         .controls {
             margin-top: 10px;
             border: 1px solid transparent;
@@ -48,38 +43,47 @@
                 </a>
             </p>
             <a class="navbar-brand" href="">
-               Get Directions
+                Enter Your Route
             </a>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid" style="margin-top: 50px">
+ <form name="getDirectionsForm" novalidate>
     <div class="row">
-
         <div class="col-md-6">
             <input id="start_input"
+                   name="start"
                    class="search-input controls"
                    type="text"
                    ng-model="model.startLocation.name"
-                   placeholder="Start Location"/>
+                   placeholder="Start Location"
+                   required/>
         </div>
 
         <div class="col-md-6">
             <input id="end_input"
+                   name="endInput"
                    class="search-input controls"
                    type="text"
                    ng-model="model.endLocation.name"
-                   placeholder="End Location"/>
+                   placeholder="End Location"
+                   required/>
+
         </div>
     </div>
 
+     <div ng-show="getDirectionsForm.$submitted && getDirectionsForm.$invalid" class="directionsErrorMsg">
+         <span>* Both the fields are required to get a route</span>
+     </div>
     <div class="row">
         <div class="col-sm-4 ">
             <button id="add"
                     class="btn btn-success mapsSearchButton"
-                    type="button"
-                    ng-click="model.searchRoutes(model.startLocation,model.endLocation)">
+                    ng-click="(submitted = true) &&
+                    getDirectionsForm.$valid &&
+                    model.searchRoutes(model.startLocation,model.endLocation)">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Routes
             </button>
         </div>
@@ -116,28 +120,11 @@
                              </div>
                         </div>
                     </div>
-
-
-
-
-                 <!--   <div>
-                       <hr>
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Steps
-                        </a>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                            <div ng-repeat="step in route.legs[0].steps">
-                                <p>{{$index+1}}. <span ng-bind-html="model.getSafeHtml(step)"></span></p>
-                            </div>
-                        </div>
-
-                    </div>-->
                 </div>
-                    <!--<a href="#/user/{{model.userId}}/location/{{location._id}}/locpost">Location Posts</a>
-                    <a class="pull-right" href="#/user/{{model.userId}}/location/{{location._id}}#top" >Edit Location</a>-->
             </div>
         </div>
     </div>
+ </form>
 </div>
 
 

@@ -35,16 +35,6 @@
             border-color: #4d90fe;
         }
 
-        .pac-container {
-            font-family: Roboto;
-        }
-
-        #type-selector {
-            color: #fff;
-            background-color: #4d90fe;
-            padding: 5px 11px 0px 11px;
-        }
-
         #type-selector label {
             font-family: Roboto;
             font-size: 13px;
@@ -64,75 +54,72 @@
             <a class="navbar-brand" href="">
                 Add Location
             </a>
-            <!--<p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
-                  <span class="glyphicon glyphicon-plus">
-                  </span>
-                </a>
-            </p>-->
         </div>
     </div>
 </nav>
 
-<div class="container-fluid" style="position: absolute; left:0 ; top: 50px; z-index: 1">
-<div class="row">
-<div ng-if="model.error" class="alert alert-danger" role="alert">
-       {{model.error}}
-</div>
+<form name="addLocationForm" novalidate>
+    <div class="container-fluid" style="position: absolute; left:0 ; top: 50px; z-index: 1">
+        <div class="row">
+        <div ng-if="model.error" class="alert alert-danger" role="alert">
+               {{model.error}}
+        </div>
 
-<div class="col-sm-6">
-<input id="pac-input"
-       class="search-input controls"
-       type="text"
-       placeholder="Enter a location"
-       ng-model="model.location.name"/>
-</div>
+        <div class="col-sm-6">
+        <input id="pac-input"
+               class="search-input controls"
+               type="text"
+               placeholder="Enter a location"
+               ng-model="model.location.name"
+               required/>
+        </div>
 
-<div class="col-sm-6">
-<input id="opt-loc-name"
-       class="search-input controls"
-       type="text"
-       placeholder="Marker's Alternate LocName"
-       ng-model="model.location.optname"/>
-</div>
-</div>
+        <div class="col-sm-6">
+        <input id="opt-loc-name"
+               class="search-input controls"
+               type="text"
+               placeholder="Marker's Alternate LocName"
+               ng-model="model.location.optname"/>
+        </div>
+        </div>
 
-<div class="row">
-<div class="col-sm-4">
-        <button id="add"
-                class="btn btn-success mapsAddButton"
-                type="button"
-                ng-click="model.createLocation(model.location)">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add
-        </button>
-</div>
-</div>
+        <div class="row">
+        <div class="col-sm-4">
+                <button id="add"
+                        class="btn btn-success mapsAddButton"
+                        ng-click="(submitted=true) && addLocationForm.$valid && model.createLocation(model.location)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add
+                </button>
+        </div>
+        </div>
+        <div ng-show="addLocationForm.$submitted && addLocationForm.$invalid" class="directionsErrorMsg">
+            <span>*Select a location to add</span>
+        </div>
+    </div>
 
-</div>
-
-<div style="display: none" id="loc-variables">
-    <input id="lat"
-           type="text"
-           class="input-hidden"
-           ng-model="model.location.lat">
-    <input id="lng"
-           type="text"
-           class="input-hidden"
-           ng-model="model.location.lng">
-    <input id="city"
-           type="text"
-           class="input-hidden"
-           ng-model="model.location.city">
-    <input id="state"
-           type="text"
-           class="input-hidden"
-           ng-model="model.location.state">
-    <input id="country"
-           type="text"
-           class="input-hidden"
-           ng-model="model.location.country">
-</div>
-
+    <div style="display: none" id="loc-variables">
+            <input id="lat"
+                   type="text"
+                   class="input-hidden"
+                   ng-model="model.location.lat">
+            <input id="lng"
+                   type="text"
+                   class="input-hidden"
+                   ng-model="model.location.lng">
+            <input id="city"
+                   type="text"
+                   class="input-hidden"
+                   ng-model="model.location.city">
+            <input id="state"
+                   type="text"
+                   class="input-hidden"
+                   ng-model="model.location.state">
+            <input id="country"
+                   type="text"
+                   class="input-hidden"
+                   ng-model="model.location.country">
+    </div>
+</form>
 
 
 

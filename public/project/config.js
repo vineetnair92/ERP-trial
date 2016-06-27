@@ -10,7 +10,7 @@
 
         $routeProvider
             .when("/login", {
-                templateUrl: 'views/user/login.html',
+                templateUrl: 'views/user/login.view.client.html',
                 controller: 'LoginController',
                 controllerAs: 'model'
             })
@@ -39,7 +39,7 @@
                 }
             })
             .when("/register", {
-                templateUrl: 'views/user/register.html',
+                templateUrl: 'views/user/register.view.client.html',
                 controller: 'RegisterController',
                 controllerAs: 'model'
             })
@@ -112,7 +112,7 @@
                 }
             })
             .when("/user/:uid/location/:locId/locpost", {
-                templateUrl: 'views/location/locationpost-list.view.client.html',
+                templateUrl: 'views/locationpost/locationpost-list.view.client.html',
                 controller: 'LocationPostListController',
                 controllerAs: 'model',
                 resolve: {
@@ -120,7 +120,7 @@
                 }
             })
             .when("/user/:uid/location/:locId/locpost/addlocationpost", {
-                templateUrl: 'views/location/locationpost-add.view.client.html',
+                templateUrl: 'views/locationpost/locationpost-add.view.client.html',
                 controller: 'LocationPostAddController',
                 controllerAs: 'model',
                 resolve: {
