@@ -3,7 +3,9 @@ module.exports = function () {
 
     var mongoose = require("mongoose");
 
-    var connectionString = 'mongodb://localhost/erp';
+//    var connectionString = 'mongodb://localhost/erp';
+    var connectionString = 'mongodb://heroku_12sph4bj:o24170di1gv45h01bepb1k5rga@ds033046.mlab.com:33046/heroku_12sph4bj';
+
 
     if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
