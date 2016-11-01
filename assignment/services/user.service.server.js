@@ -1,6 +1,5 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (app, models) {
@@ -19,7 +18,6 @@ module.exports = function (app, models) {
     app.post("/api/user", createUser);
     app.get("/api/user/:userId", findUserById);
     app.post("/api/login",passport.authenticate('local'), login);
-    app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
     app.post('/api/logout', logout);
     app.post('/api/register', register);
     app.get('/api/isLoggedIn', isLoggedIn);
@@ -28,20 +26,7 @@ module.exports = function (app, models) {
     app.delete("/api/user/:userId", deleteUser);
 
 
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/assignment/#/user',
-            failureRedirect: '/assignment/#/login'
-        }));
-
-    var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    };
-
     passport.use(new LocalStrategy(localStrategy));
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
@@ -61,39 +46,6 @@ module.exports = function (app, models) {
                     done(err);
                 }
             );
-    }
-
-    function facebookStrategy(token, refreshToken, profile, done) {
-        userModel
-            .findUserByFacebookId(profile.id)
-            .then(function (facebookUser) {
-                if(facebookUser) {
-                    done(null, facebookUser);
-                }
-                else {
-                    facebookUser = {
-                        username: profile.displayName.replace(/ /g,''),
-                        facebook: {
-                            token: token,
-                            id: profile.id,
-                            displayName: profile.displayName
-                        }
-                    };
-                    userModel
-                        .createUser(facebookUser)
-                        .then(
-                            function(user) {
-                                done(null, user);
-                            },
-                            function (error) {
-                                 done(error, null);
-                            }
-                        );
-                }
-            },
-            function (error) {
-                done(error, null);
-            });
     }
 
     function serializeUser(user, done) {

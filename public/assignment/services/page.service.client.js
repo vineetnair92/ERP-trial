@@ -3,12 +3,6 @@
         .module("WebAppMaker")
         .factory("PageService", PageService);
 
-    var pages = [
-        {"_id": "321", "name": "Post 1", "websiteId": "456"},
-        {"_id": "432", "name": "Post 2", "websiteId": "456"},
-        {"_id": "543", "name": "Post 3", "websiteId": "456"}
-    ];
-
     function PageService($http) {
         var api = {
             createPage: createPage,
@@ -21,8 +15,16 @@
 
         function createPage(websiteId, page) {
             var newPage = {
-                name: page.name,
-                title: page.title,
+                SlNo: page.SlNo,
+                diameter: page.diameter,
+                clothdesc: page.clothdesc,
+                color: page.color,
+                actualWeight:page.actualWeight,
+                pdcWeight:page.pdcWeight,
+                actualRolls:page.actualRolls,
+                pdcRolls:page.pdcRolls,
+                uom:page.uom,
+                Remarks:page.Remarks,
                 _website: websiteId
             };
             var url = "/api/website/" + websiteId + "/page";

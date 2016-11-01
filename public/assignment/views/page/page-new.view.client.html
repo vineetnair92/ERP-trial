@@ -9,10 +9,11 @@
                 </a>
             </p>
             <a class="navbar-brand" href="">
-                New Page
+                LOT INWARD
             </a>
             <p class="navbar-text pull-right">
-                <button ng-click="(submitted=true) && newPageForm.$valid && model.createPage(page)" class="validationButton navbar-link">
+                <button ng-click="(submitted=true) && newPageForm.$valid && model.createPage(page)"
+                        class="validationButton navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
             </p>
@@ -22,27 +23,92 @@
 
 
 <div class="container content">
-        <div class="form-group">
-            <label for="create-page-name">Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="create-page-name"
-                   name="pagename"
-                   ng-model="page.name"
-                   placeholder="Page Name"
-                   required>
-            <div ng-show="newPageForm.$submitted && newPageForm.pagename.$invalid" class="elementErrorMsg">
-                <span>*required field</span>
-            </div>
+    <div class="form-group">
+        <label for="SL NO">Sl No</label>
+        <input type="text"
+               class="form-control"
+               id="SL NO"
+               name="SL NO"
+               ng-model="page.SlNo"
+               placeholder="SL NO"
+               required>
+        <div ng-show="newPageForm.$submitted && newPageForm.pagename.$invalid"
+             class="elementErrorMsg">
+            <span>*required field</span>
         </div>
-        <div class="form-group">
-            <label for="create-page-title">Title</label>
-            <input type="text"
-                   class="form-control"
-                   id="create-page-title"
-                   ng-model="page.title"
-                   placeholder="Page Title">
-        </div>
+    </div>
+    <div class="form-group">
+        <label for="DIA">Diameter</label>
+        <input type="text"
+               class="form-control"
+               id="DIA"
+               ng-model="page.diameter"
+               placeholder="Diameter">
+    </div>
+    <div class="form-group">
+        <label for="Cloth Desc">Cloth Description</label>
+        <input type="text"
+               class="form-control"
+               id="Cloth Desc"
+               ng-model="page.clothdesc"
+               placeholder="Description">
+    </div>
+    <div class="form-group">
+        <label for="Color">Color</label>
+        <input type="text"
+               class="form-control"
+               id="Color"
+               ng-model="page.color"
+               placeholder="Color">
+    </div>
+    <div class="form-group">
+        <label for="Act-Wt">Actual Weight</label>
+        <input type="text"
+               class="form-control"
+               id="Act-Wt"
+               ng-model="page.actualWeight"
+               placeholder="Actual Weight">
+    </div>
+    <div class="form-group">
+        <label for="PDC-Wt">PDC Weight</label>
+        <input type="text"
+               class="form-control"
+               id="PDC-Wt"
+               ng-model="page.pdcWeight"
+               placeholder="PDC Weight">
+    </div>
+    <div class="form-group">
+        <label for="Act Rolls">Actual Rolls</label>
+        <input type="text"
+               class="form-control"
+               id="Act Rolls"
+               ng-model="page.actualRolls"
+               placeholder="Actual Rolls">
+    </div>
+    <div class="form-group">
+        <label for="PDC Rolls">PDC Rolls</label>
+        <input type="text"
+               class="form-control"
+               id="PDC Rolls"
+               ng-model="page.pdcRolls"
+               placeholder="PDC Rolls">
+    </div>
+    <div class="form-group">
+        <label for="UOM">UOM</label>
+        <input type="text"
+               class="form-control"
+               id="UOM"
+               ng-model="page.uom"
+               placeholder="UOM">
+    </div>
+    <div class="form-group">
+        <label for="Remarks">Remarks</label>
+        <input type="text"
+               class="form-control"
+               id="Remarks"
+               ng-model="page.Remarks"
+               placeholder="Remarks">
+    </div>
 
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         Error Page Creation !

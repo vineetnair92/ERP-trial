@@ -1,6 +1,3 @@
-/**
- * Created by nasir on 5/27/16.
- */
 (function () {
     angular
         .module("WebAppMaker")
@@ -78,39 +75,6 @@
             .when("/user/:uid/website/:wid/page/:pid", {
                 templateUrl: 'views/page/page-edit.view.client.html',
                 controller: 'EditPageController',
-                controllerAs: 'model',
-                resolve: {
-                    isLoggedIn: isLoggedIn
-                }
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget", {
-                templateUrl: 'views/widget/widget-list.view.client.html',
-                controller: 'WidgetListController',
-                controllerAs: 'model',
-                resolve: {
-                    isLoggedIn: isLoggedIn
-                }
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-                templateUrl: 'views/widget/widget-chooser.view.client.html',
-                controller: 'NewWidgetController',
-                controllerAs: 'model',
-                resolve: {
-                    isLoggedIn: isLoggedIn
-                }
-
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
-                templateUrl: 'views/widget/widget-edit.view.client.html',
-                controller: 'EditWidgetController',
-                controllerAs: 'model',
-                resolve: {
-                    isLoggedIn: isLoggedIn
-                }
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid/flickr", {
-                templateUrl: 'views/widget/widget-flickr-search.view.client.html',
-                controller: 'FlickrSearchController',
                 controllerAs: 'model',
                 resolve: {
                     isLoggedIn: isLoggedIn

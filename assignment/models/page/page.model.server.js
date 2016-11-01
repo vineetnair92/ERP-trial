@@ -34,10 +34,16 @@ module.exports = function (db_assignment) {
             {
                 $set: {
                     _website: page._website,
-                    name: page.name,
-                    title: page.title,
-                    description: page.description,
-                    widgets: page.widgets
+                    SlNo: page.SlNo,
+                    diameter: page.diameter,
+                    clothdesc: page.clothdesc,
+                    color: page.color,
+                    actualWeight:page.actualWeight,
+                    pdcWeight:page.pdcWeight,
+                    actualRolls:page.actualRolls,
+                    pdcRolls:page.pdcRolls,
+                    uom:page.uom,
+                    Remarks:page.Remarks,
                 }
             });
     }

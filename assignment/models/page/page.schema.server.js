@@ -4,10 +4,16 @@ module.exports = function () {
     var Schema = mongoose.Schema;
     var PageSchema = Schema({
         _website: {type: Schema.Types.ObjectId, ref: 'User'},
-        name: String,
-        title: String,
-        description: String,
-        widgets: [Schema.Types.ObjectId],
+        SlNo: String,
+        diameter: String,
+        clothdesc: String,
+        color:String,
+        actualWeight:String,
+        pdcWeight:String,
+        actualRolls:String,
+        pdcRolls:String,
+        uom:String,
+        Remarks:String,
         dateCreated: {type: Date, default: Date.now},
     }, {collection: "page"});
 
