@@ -4,7 +4,7 @@ module.exports = function () {
     var mongoose = require("mongoose");
 
 //    var connectionString = 'mongodb://localhost/erp';
-    var connectionString = 'mongodb://heroku_12sph4bj:o24170di1gv45h01bepb1k5rga@ds033046.mlab.com:33046/heroku_12sph4bj';
+    var connectionString = 'mongodb://heroku_dkjw1m77:2ued38bogvfa0sl5873ahsmc5v@ds037165.mlab.com:37165/heroku_dkjw1m77';
 
 
     if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
