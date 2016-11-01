@@ -1,6 +1,6 @@
 module.exports = function (db_assignment) {
 
-    var mongoose = require("mongoose");
+    var mongoose = require("mongodb");
     var UserSchema = require("./user.schema.server")();
     var User = db_assignment.model("User", UserSchema);
     var Schema = mongoose.Schema;

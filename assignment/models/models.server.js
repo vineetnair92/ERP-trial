@@ -1,7 +1,7 @@
 module.exports = function () {
 
 
-    var mongoose = require("mongoose");
+    var mongoose = require("mongodb");
 
 //    var connectionString = 'mongodb://localhost/erp';
     var connectionString = 'mongodb://heroku_dkjw1m77:2ued38bogvfa0sl5873ahsmc5v@ds037165.mlab.com:37165/heroku_dkjw1m77';
