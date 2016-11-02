@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var passport = require('passport');
-require("./assignment/app.js")(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,9 +26,8 @@ app.use(passport.session());
 
 app.set('ipaddress', (process.env.IP));
 app.set('port', (process.env.PORT || 3000));
+require("./assignment/app.js")(app);
+
+
 app.listen(app.get('port'), app.get('ipaddress'));
-
-
-
-
 console.log("server started");
