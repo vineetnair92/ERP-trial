@@ -1,7 +1,14 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .controller("EditPageController", EditPageController);
+        .controller("EditPageController", EditPageController)
+//        .controller('DropDownController', ['$scope', function($scope) {
+//        $scope.data = {
+//            singleSelect: null,
+//        };
+//        }])
+;
+
 
     function EditPageController($location, $routeParams, PageService) {
         console.log("In edit page");

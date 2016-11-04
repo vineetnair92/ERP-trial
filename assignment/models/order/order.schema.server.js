@@ -2,8 +2,8 @@ module.exports = function () {
 
     var mongoose = require("mongoose");
     var Schema = mongoose.Schema;
-    var PageSchema = Schema({
-        _website: {type: Schema.Types.ObjectId, ref: 'User'},
+    var OrderSchema = Schema({
+        _page: {type: Schema.Types.ObjectId, ref: 'User'},
         SlNo: String,
         description: String,
         diameter: String,
@@ -15,9 +15,8 @@ module.exports = function () {
         pdcRolls:Number,
         uom:String,
         Remarks:String,
-        orders: [Schema.Types.ObjectId],
         dateCreated: {type: Date, default: Date.now},
-    }, {collection: "page"});
+    }, {collection: "order"});
 
-    return PageSchema;
+    return OrderSchema;
 }

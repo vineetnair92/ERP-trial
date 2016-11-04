@@ -80,6 +80,22 @@
                     isLoggedIn: isLoggedIn
                 }
             })
+            .when("/user/:uid/website/:wid/page/:pid/order", {
+                templateUrl: 'views/page/order-list.view.client.html',
+                controller: 'OrderListController',
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
+            })
+            .when("/user/:uid/website/:wid/page/:pid/order/orders", {
+                templateUrl: 'views/page/page-modify.view.client.html',
+                controller: 'ModifyPageController',
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
+            })
             .otherwise({
                 redirectTo: '/login'
             });

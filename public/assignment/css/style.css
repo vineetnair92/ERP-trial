@@ -73,6 +73,11 @@ body {
 color: rgb(58, 58, 58);
 }
 
+
+.order {
+    padding-right: 20px;
+}
+
 .flickr-add-button {
     font-weight: bolder;
 }

@@ -23,11 +23,18 @@
     <ul class="list-group">
         <li ng-repeat="page in model.pages" class="list-group-item">
             <a href="">
-                {{page.SlNo}}
+                {{page.description}}
             </a>
             <a href="#/user/{{model.userId}}/website/{{page._website}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
+            <a href="#/user/{{model.userId}}/website/{{page._website}}/page/{{page._id}}/order/orders" class="pull-right order">
+                <span class="glyphicon glyphicon-minus"></span>
+            </a>
+            <a href="#/user/{{model.userId}}/website/{{page._website}}/page/{{page._id}}/order/orders" class="pull-right order">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+
         </li>
     </ul>
 </div>

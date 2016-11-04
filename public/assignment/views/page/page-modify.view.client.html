@@ -1,5 +1,5 @@
-<form name="newPageForm" novalidate>
-<nav class="navbar navbar-default navbar-fixed-top">
+<form name="newOrderForm" novalidate>
+    <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
@@ -9,10 +9,10 @@
                 </a>
             </p>
             <a class="navbar-brand" href="">
-                LOT INWARD
+                Add Remove Order
             </a>
             <p class="navbar-text pull-right">
-                <button ng-click="(submitted=true) && newPageForm.$valid && model.createPage(page)"
+                <button ng-click="(submitted=true) && newOrderForm.$valid && model.createOrder(order)"
                         class="validationButton navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
@@ -21,7 +21,6 @@
     </div>
 </nav>
 
-
 <div class="container content">
     <div class="form-group">
         <label for="SL NO">Sl No</label>
@@ -29,23 +28,24 @@
                class="form-control"
                id="SL NO"
                name="SL NO"
-               ng-model="page.SlNo"
+               ng-model="order.SlNo"
                placeholder="SL NO"
                required>
-        <div ng-show="newPageForm.$submitted && newPageForm.pagename.$invalid"
+        <div ng-show="newOrderForm.$submitted && newOrderForm.ordername.$invalid"
              class="elementErrorMsg">
             <span>*required field</span>
         </div>
     </div>
+
     <div class="form-group">
         <label for="description">Order Description</label>
         <input type="text"
                class="form-control"
                id="description"
-               ng-model="page.description"
+               ng-model="order.description"
                placeholder="Order Description"
-        required>
-        <div ng-show="newPageForm.$submitted && newPageForm.pagename.$invalid"
+               required>
+        <div ng-show="newOrderForm.$submitted && newOrderForm.ordername.$invalid"
              class="elementErrorMsg">
             <span>*required field</span>
         </div>
@@ -55,7 +55,7 @@
         <input type="text"
                class="form-control"
                id="DIA"
-               ng-model="page.diameter"
+               ng-model="order.diameter"
                placeholder="Diameter">
     </div>
     <div class="form-group">
@@ -63,7 +63,7 @@
         <input type="text"
                class="form-control"
                id="Cloth Desc"
-               ng-model="page.clothdesc"
+               ng-model="order.clothdesc"
                placeholder="Description">
     </div>
     <div class="form-group">
@@ -71,7 +71,7 @@
         <input type="text"
                class="form-control"
                id="Color"
-               ng-model="page.color"
+               ng-model="order.color"
                placeholder="Color">
     </div>
     <div class="form-group">
@@ -79,7 +79,7 @@
         <input type="text"
                class="form-control"
                id="Act-Wt"
-               ng-model="page.actualWeight"
+               ng-model="order.actualWeight"
                placeholder="Actual Weight">
     </div>
     <div class="form-group">
@@ -87,7 +87,7 @@
         <input type="text"
                class="form-control"
                id="PDC-Wt"
-               ng-model="page.pdcWeight"
+               ng-model="order.pdcWeight"
                placeholder="PDC Weight">
     </div>
     <div class="form-group">
@@ -95,7 +95,7 @@
         <input type="text"
                class="form-control"
                id="Act Rolls"
-               ng-model="page.actualRolls"
+               ng-model="order.actualRolls"
                placeholder="Actual Rolls">
     </div>
     <div class="form-group">
@@ -103,7 +103,7 @@
         <input type="text"
                class="form-control"
                id="PDC Rolls"
-               ng-model="page.pdcRolls"
+               ng-model="order.pdcRolls"
                placeholder="PDC Rolls">
     </div>
     <div class="form-group">
@@ -111,7 +111,7 @@
         <input type="text"
                class="form-control"
                id="UOM"
-               ng-model="page.uom"
+               ng-model="order.uom"
                placeholder="UOM">
     </div>
     <div class="form-group">
@@ -119,25 +119,25 @@
         <input type="text"
                class="form-control"
                id="Remarks"
-               ng-model="page.Remarks"
+               ng-model="order.Remarks"
                placeholder="Remarks">
-    </div>
-    </div>
-
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        Error Page Creation !
     </div>
 </div>
 
+<div ng-show="model.error" class="alert alert-danger" role="alert">
+    Error Adding lot Order!
+</div>
+</div>
+</form>
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row  navbar-footer">
-            <div class="navbar-text text-center pull-right ">
+    <div class="container-fluid">
+        <div class="row navbar-footer">
+            <p class="navbar-text pull-right">
                 <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
-            </div>
+            </p>
         </div>
     </div>
 </nav>
-</form>

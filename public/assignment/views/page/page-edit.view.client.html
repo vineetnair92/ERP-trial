@@ -30,12 +30,26 @@
                    name="SLNO"
                    placeholder="SL NO"
                    ng-model="model.page.SlNo"
-                   required/>
+                   required>
             <div ng-show="editPageForm.$submitted && editPageForm.pagename.$invalid" class="elementErrorMsg">
                 <span>*required field</span>
             </div>
         </div>
-        <div class="form-group">
+    <div class="form-group">
+        <label for="description">Order Description</label>
+        <input type="text"
+               class="form-control"
+               id="description"
+               ng-model="model.page.description"
+               placeholder="Order Description"
+               required>
+        <div ng-show="newPageForm.$submitted && newPageForm.pagename.$invalid"
+             class="elementErrorMsg">
+            <span>*required field</span>
+        </div>
+    </div>
+
+    <div class="form-group">
             <label for="diameter-edit">Diameter</label>
             <input type="text"
                    class="form-control"
@@ -80,7 +94,7 @@
         <input type="text"
                class="form-control"
                id="Act Rolls"
-               ng-model="model.page.actRolls"
+               ng-model="model.page.actualRolls"
                placeholder="Actual Rolls">
     </div>
     <div class="form-group">

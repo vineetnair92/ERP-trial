@@ -1,22 +1,22 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .controller("PageListController", PageListController)
+        .controller("OrderListController", OrderListController)
 
 
-    function PageListController($routeParams, PageService) {
+    function OrderListController($routeParams, OrderService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
-        cModel.websiteId = $routeParams.wid;
+        cModel.pageId = $routeParams.wid;
 
         init();
 
         function init() {
 
             PageService
-                .findPageByWebsiteId(cModel.websiteId)
+                .findOrderByPageId(cModel.pageId)
                 .then(function (response) {
-                    cModel.pages = response.data;
+                    cModel.orders = response.data;
                 });
         }
     }

@@ -24,24 +24,23 @@ module.exports = function (db_assignment) {
     }
 
     function findPageById(pageId) {
-
         return Page.findById({_id: pageId});
     }
 
     function updatePage(pageId, page) {
-
         return Page.update({_id: pageId},
             {
                 $set: {
                     _website: page._website,
                     SlNo: page.SlNo,
+                    description: page.description,
                     diameter: page.diameter,
                     clothdesc: page.clothdesc,
                     color: page.color,
-                    actualWeight:page.actualWeight,
-                    pdcWeight:page.pdcWeight,
-                    actualRolls:page.actualRolls,
-                    pdcRolls:page.pdcRolls,
+                    actualWeight:parseInt(page.actualWeight),
+                    pdcWeight:parseInt(page.pdcWeight),
+                    actualRolls:parseInt(page.actualRolls),
+                    pdcRolls:parseInt(page.pdcRolls),
                     uom:page.uom,
                     Remarks:page.Remarks,
                 }
