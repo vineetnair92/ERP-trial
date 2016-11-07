@@ -8,11 +8,15 @@
     function ModifyPageController($location, $routeParams, OrderService, PageService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
+        cModel.websiteId = $routeParams.wid;
         cModel.pageId = $routeParams.pid;
-        cModel.createOrder = createOrder;
+        cModel.CreateOrder = CreateOrder;
+        cModel.back=back;
+        cModel.profile = profile;
+        cModel.clear = clear;
 
 
-        function createOrder(order) {
+        function CreateOrder(order) {
             OrderService
                 .createOrder(cModel.pageId, order)
                 .then(function (response) {
@@ -41,7 +45,7 @@
                             .updatePage(cModel.pageId, page)
                             .then(function (response) {
                                 if (response.status === 200) {
-                                    $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page" + cModel.pageId + "/order");
+                                    $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page");
                                      }
                                 else {
                                     cModel.error = pageOrdersUpdateError;
@@ -61,5 +65,19 @@
                 });
         }
 
+
+        function back() {
+            $location.url("/user/" + cModel.userId + "/website/" + cModel.websiteId + "/page/");
+        }
+
+        function profile() {
+            $location.url("/user/" + cModel.userId);
+        }
+
+
+        function clear() {
+            cModel.success = "";
+            cModel.alert = "";
+        }
     }
 })();

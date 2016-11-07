@@ -1,14 +1,14 @@
 module.exports = function (app, models) {
 
     var orderModel = models.orderModel;
-    app.post("/api/page/:pageId/order", createOrder);
-    app.get("/api/page/:pageId/order", findAllOrdersForPage);
+    app.post("/api/page/:pid/order", createOrder);
+    app.get("/api/page/:pid/order", findAllOrdersForPage);
     app.get("/api/order/:orderId", findOrderById);
 
     function createOrder(req, res) {
         var newOrder = req.body;
         orderModel
-            .createOrder(newOrder)
+            .createorder(newOrder)
             .then(function (order) {
                 res.json(order);
             })
@@ -18,9 +18,9 @@ module.exports = function (app, models) {
     }
 
     function findAllOrdersForPage(req, res) {
-        var pageId = req.params.pageId;
+        var pageId = req.params.pid;
         orderModel
-            .findAllOrdersForPage(pageId)
+            .findAllOrdersforPage(pageId)
             .then(function (orders) {
                 res.json(orders);
             })
@@ -33,7 +33,7 @@ module.exports = function (app, models) {
     function findOrderById(req, res) {
         var orderId = req.params.orderId;
         orderModel
-            .findOrderById(orderId)
+            .findOrderbyId(orderId)
             .then(function (order) {
                 res.json(order);
             })

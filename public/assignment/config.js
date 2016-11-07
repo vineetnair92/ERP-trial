@@ -88,7 +88,7 @@
                     isLoggedIn: isLoggedIn
                 }
             })
-            .when("/user/:uid/website/:wid/page/:pid/order/orders", {
+            .when("/user/:uid/website/:wid/page/:pid/order/new", {
                 templateUrl: 'views/page/page-modify.view.client.html',
                 controller: 'ModifyPageController',
                 controllerAs: 'model',

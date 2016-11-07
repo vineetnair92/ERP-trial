@@ -6,7 +6,7 @@
     function OrderService($http) {
         var api = {
             createOrder: createOrder,
-            findOrderByPageId: findOrderByPageId,
+            findOrdersByPageId: findOrdersByPageId,
             findOrderById: findOrderById
         };
         return api;
@@ -18,10 +18,10 @@
                 diameter: order.diameter,
                 clothdesc: order.clothdesc,
                 color: order.color,
-                actualWeight:parseInt(order.actualWeight),
-                pdcWeight:parseInt(order.pdcWeight),
-                actualRolls:parseInt(order.actualRolls),
-                pdcRolls:parseInt(order.pdcRolls),
+                actualWeight:order.actualWeight,
+                pdcWeight:order.pdcWeight,
+                actualRolls:order.actualRolls,
+                pdcRolls:order.pdcRolls,
                 uom:order.uom,
                 Remarks:order.Remarks,
                 _page: pageId
@@ -30,7 +30,7 @@
             return $http.post(url, newOrder);
         }
 
-        function findOrderByPageId(pageId) {
+        function findOrdersByPageId(pageId) {
             var url = "/api/page/" + pageId + "/order";
             return $http.get(url);
 

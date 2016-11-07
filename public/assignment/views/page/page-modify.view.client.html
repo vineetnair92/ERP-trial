@@ -12,7 +12,7 @@
                 Add Remove Order
             </a>
             <p class="navbar-text pull-right">
-                <button ng-click="(submitted=true) && newOrderForm.$valid && model.createOrder(order)"
+                <button ng-click="(submitted=true) && newOrderForm.$valid && model.CreateOrder(order)"
                         class="validationButton navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
@@ -126,7 +126,6 @@
 
 <div ng-show="model.error" class="alert alert-danger" role="alert">
     Error Adding lot Order!
-</div>
 </div>
 </form>
 
