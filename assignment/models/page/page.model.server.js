@@ -34,15 +34,6 @@ module.exports = function (db_assignment) {
                     _website: page._website,
                     SlNo: page.SlNo,
                     description: page.description,
-                    diameter: page.diameter,
-                    clothdesc: page.clothdesc,
-                    color: page.color,
-                    actualWeight:parseInt(page.actualWeight),
-                    pdcWeight:parseInt(page.pdcWeight),
-                    actualRolls:parseInt(page.actualRolls),
-                    pdcRolls:parseInt(page.pdcRolls),
-                    uom:page.uom,
-                    Remarks:page.Remarks,
                 }
             });
     }

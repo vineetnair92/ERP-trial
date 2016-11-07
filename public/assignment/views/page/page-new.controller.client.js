@@ -11,7 +11,6 @@
         cModel.websiteId = $routeParams.wid;
         cModel.createPage = createPage;
 
-
         function createPage(page) {
             PageService
                 .createPage(cModel.websiteId, page)
