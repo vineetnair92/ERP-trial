@@ -9,6 +9,8 @@ module.exports = function () {
         lastName: String,
         email: String,
         phone: String,
+        usertype: String,
+        company:String,
         websites: [{type: Schema.ObjectId}],
         facebook: {
             id:    String,

@@ -9,7 +9,7 @@
             findWebsitesByUser: findWebsitesByUser,
             deleteWebsite: deleteWebsite,
             findWebsiteById: findWebsiteById,
-            updateWebsite: updateWebsite
+            updateWebsite: updateWebsite,
         };
         return api;
 

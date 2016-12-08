@@ -9,6 +9,17 @@
                      registerForm.password.$modelValue != registerForm.verifypassword.$modelValue)" class="alert alert-danger" role="alert">
             Error Registration! Please check values.
         </div>
+
+        <div>
+        User Type:
+        <select id="usertype"  ng-model="user.usertype" ng-dropdown required>
+            <option ng-option value="Customer">Customer</option>
+            <option ng-option value="Staff">Staff</option>
+        </select>
+        </div>
+        <br>
+
+
         <div class="form-group">
             <input type="text"
                    class="form-control"
@@ -49,6 +60,17 @@
         <div ng-if="registerForm.$submitted &&
                     registerForm.password.$modelValue != registerForm.verifypassword.$modelValue" class="elementErrorMsg">
             <span>*Passwords must match</span>
+        </div>
+        <div id="cash" ng-if="user.usertype == 'Customer'">
+            <div >
+                <div>
+                    <input type="text" placeholder="Company Name" class="form-control"  ng-model="user.company"    />
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="loginForm.$submitted && loginForm.username.$invalid" class="elementErrorMsg">
+            <span>*required field</span>
         </div>
         <button class="btn btn-primary btn-block"
            ng-click="(submitted = true) &&

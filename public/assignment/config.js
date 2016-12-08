@@ -27,6 +27,31 @@
                     isLoggedIn: isLoggedIn
                 }
             })
+            .when("/customer/:uid", {
+                templateUrl: 'views/customer/user.view.client.html',
+                controller: 'ProfileController',
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
+            })
+            .when("/customer", {
+                templateUrl: 'views/customer/user.view.client.html',
+                controller: 'ProfileController',
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
+            })
+            .when("/customer/:uid/order", {
+            templateUrl: 'views/customer/order-view.client.html',
+            controller: 'OrderController',
+            controllerAs: 'model',
+            resolve: {
+                isLoggedIn: isLoggedIn
+            }
+        })
+
             .when("/register", {
                 templateUrl: 'views/user/register.view.client.html',
                 controller: 'RegisterController',

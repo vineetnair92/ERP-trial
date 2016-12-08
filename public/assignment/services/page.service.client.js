@@ -9,7 +9,8 @@
             deletePage: deletePage,
             updatePage: updatePage,
             findPageByWebsiteId: findPageByWebsiteId,
-            findPageById: findPageById
+            findPageById: findPageById,
+            findAllPagesForWebsite: findAllPagesForWebsite
         };
         return api;
 
@@ -41,6 +42,11 @@
 
         function findPageById(pageId) {
             var url = "/api/page/" + pageId;
+            return $http.get(url);
+        }
+
+        function findAllPagesForWebsite(websiteId) {
+            var url="/api/website/" + websiteId+ "/page";
             return $http.get(url);
         }
 
