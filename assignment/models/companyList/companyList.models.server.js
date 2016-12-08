@@ -16,7 +16,7 @@ module.exports = function (db_assignment) {
 
     function findCompanyExists(company) {
         console.log("Models Server side");
-        return companyList.find({company: company});
+        return companyList.find({"company": company});
     }
 
    }

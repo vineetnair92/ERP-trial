@@ -2,7 +2,6 @@ module.exports = function (app, models) {
 
     var websiteModel = models.websiteModel;
     var userModel = models.userModel;
-    var companyListModel = models.companyListModel;
 
     app.post("/api/user/:userId/website", createWebsite);
     app.get("/api/user/:userId/website", findAllWebsitesForUser);
@@ -15,18 +14,12 @@ module.exports = function (app, models) {
         websiteModel
             .createWebsiteForUser(newWebsite)
             .then(function (website) {
-                companyListModel.createCompanyList(website)
-                    .then(function (websites){
-                        res.json(website);
-                        console.log(website._doc._id);
-                    })
-                    .catch(function (error) {
-                        res.status(400).send(error);
-                    })
+                res.json(website);
+                console.log(website._doc._id);
             })
             .catch(function (error) {
                 res.status(400).send(error);
-            });
+            })
     }
 
     function findAllWebsitesForUser(req, res) {

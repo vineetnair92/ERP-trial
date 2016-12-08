@@ -5,15 +5,13 @@
 
     var userWebsitesUpdateError = "Error updating website references in user";
 
-    function NewWebsiteController($location, $routeParams, WebsiteService, UserService) {
+    function NewWebsiteController($location, $routeParams, WebsiteService, UserService, CompanyListService) {
         var cModel = this;
         cModel.userId = $routeParams.uid;
         cModel.createWebsite = createWebsite;
 
 
         function createWebsite(website) {
-
-
             WebsiteService
                 .createWebsite(cModel.userId, website)
                 .then(function (response) {
@@ -23,10 +21,15 @@
                     } else {
                         cModel.error = "Unable to create website";
                     }
-                })
-                .catch(function (error) {
-                    cModel.error = "Something went wrong!!"
-                })
+                });
+            CompanyListService
+                .createCompanyList(cModel.userId, website)
+                .then(function (response) {
+                    if (!response.data) {
+                        cModel.error = "Unable to create website";
+                    }
+                });
+
         }
 
         function updateWebsiteReferencesInUser(websiteId) {

@@ -33,7 +33,8 @@
         function ValidateCompanyandRegister(user) {
             CompanyListService.findCompanyExists(user.company)
                 .then(function (res) {
-                    if (res.data) {
+                    console.log(res.data);
+                    if (res.data.length && res.data.length> 0) {
                         UserService
                             .findUserByUsername(user.username)
                             .then(function (response) {
@@ -45,9 +46,11 @@
                                 }
                             });
                     }
-                }).catch(function (response) {
-                console.log("No such company exist");
-            });
+                    else {
+                            cModel.error="No such company!";
+                    }
+
+                });
         }
 
 
@@ -57,7 +60,7 @@
                 .then(function (response) {
                     var user = response.data;
                     if (user && user.usertype == "Customer") {
-                        console.log(user.websites.name);
+                        console.log(user._id);
                         $location.url("/customer/" + user._id);
                     }
                     else if (user && user.usertype == "Staff") {
