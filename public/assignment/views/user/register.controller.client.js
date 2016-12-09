@@ -33,7 +33,7 @@
         function ValidateCompanyandRegister(user) {
             CompanyListService.findCompanyExists(user.company)
                 .then(function (res) {
-                    console.log(res.data);
+                    console.log(res.data+ " dws");
                     if (res.data.length && res.data.length> 0) {
                         UserService
                             .findUserByUsername(user.username)

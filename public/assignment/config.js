@@ -43,6 +43,13 @@
                     isLoggedIn: isLoggedIn
                 }
             })
+            .when("/customer/:uid/:cid/chat", {
+                templateUrl: 'views/customer/chat.view.client.html',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
+            })
+
             .when("/customer/:uid/:cid/order", {
             templateUrl: 'views/customer/order-view.client.html',
             controller: 'OrderController',
