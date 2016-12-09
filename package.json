@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
+    "botbuilder": "^3.4.4",
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
@@ -15,8 +16,9 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
-    "botbuilder": "^3.4.4",
-    "restify": "^4.3.0"
+    "restify": "^4.3.0",
+    "socket.io": "1.7.1",
+    "ws": "1.1.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -24,5 +26,17 @@
     "start": "node server.js"
   },
   "author": "Jose G. Annunziato",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vineetnair92/ERP-trial.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/vineetnair92/ERP-trial/issues"
+  },
+  "homepage": "https://github.com/vineetnair92/ERP-trial#readme"
 }
