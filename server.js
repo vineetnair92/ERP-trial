@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var passport = require('passport');
-//var chat=require('./app.js')
+var chat=require('./app.js')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
