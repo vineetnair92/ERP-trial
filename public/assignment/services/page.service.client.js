@@ -50,6 +50,5 @@
             return $http.get(url);
         }
 
-
     }
 })();

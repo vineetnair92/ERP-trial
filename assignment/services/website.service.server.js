@@ -8,6 +8,7 @@ module.exports = function (app, models) {
     app.get("/api/website/:websiteId", findWebsiteById);
     app.put("/api/website/:websiteId", updateWebsite);
     app.delete("/api/website/:websiteId", deleteWebsite);
+    app.get("/api/website/:cid", findOrdersByCompany);
 
     function createWebsite(req, res) {
         var newWebsite = req.body;
@@ -46,6 +47,19 @@ module.exports = function (app, models) {
             });
 
     }
+
+
+    function findOrdersByCompany(req,res) {
+        var companyName = req.params.cid;
+        websiteModel.findOrdersByCompany(companyName)
+            .then(function (orders){
+                res.json(orders);
+            }).catch(function (error) {
+                res.status(400).send(error);
+            });
+
+    }
+
 
     function updateWebsite(req, res) {
         var website = req.body;

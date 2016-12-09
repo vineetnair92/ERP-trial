@@ -27,7 +27,7 @@
                     isLoggedIn: isLoggedIn
                 }
             })
-            .when("/customer/:uid", {
+            .when("/customer/:uid/:cid", {
                 templateUrl: 'views/customer/user.view.client.html',
                 controller: 'ProfileController',
                 controllerAs: 'model',
@@ -43,7 +43,7 @@
                     isLoggedIn: isLoggedIn
                 }
             })
-            .when("/customer/:uid/order", {
+            .when("/customer/:uid/:cid/order", {
             templateUrl: 'views/customer/order-view.client.html',
             controller: 'OrderController',
             controllerAs: 'model',
@@ -89,6 +89,7 @@
                     isLoggedIn: isLoggedIn
                 }
             })
+
             .when("/user/:uid/website/:wid/page/new", {
                 templateUrl: 'views/page/page-new.view.client.html',
                 controller: 'NewPageController',
@@ -97,6 +98,7 @@
                     isLoggedIn: isLoggedIn
                 }
             })
+
             .when("/user/:uid/website/:wid/page/:pid", {
                 templateUrl: 'views/page/page-edit.view.client.html',
                 controller: 'EditPageController',
@@ -105,6 +107,16 @@
                     isLoggedIn: isLoggedIn
                 }
             })
+
+            .when("/user/:uid/website/:wid/page/:pid/orderstatus", {
+                templateUrl: 'views/page/update-orderStatus.view.client.html',
+                controller: 'UpdateOrderStatusController',
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
+            })
+
             .when("/user/:uid/website/:wid/page/:pid/order", {
                 templateUrl: 'views/page/order-list.view.client.html',
                 controller: 'OrderListController',

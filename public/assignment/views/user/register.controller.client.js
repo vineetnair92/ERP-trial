@@ -61,7 +61,7 @@
                     var user = response.data;
                     if (user && user.usertype == "Customer") {
                         console.log(user._id);
-                        $location.url("/customer/" + user._id);
+                        $location.url("/customer/" + user._id+"/"+ user.company);
                     }
                     else if (user && user.usertype == "Staff") {
                         $location.url("/user/" + user._id);

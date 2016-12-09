@@ -34,6 +34,7 @@ module.exports = function (db_assignment) {
                     _website: page._website,
                     SlNo: page.SlNo,
                     description: page.description,
+                    orderstatus:page.orderstatus
                 }
             });
     }

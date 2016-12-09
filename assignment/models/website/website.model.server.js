@@ -9,7 +9,8 @@ module.exports = function (db_assignment) {
         findWebsiteById: findWebsiteById,
         updateWebsite: updateWebsite,
         deleteWebsite: deleteWebsite,
-        deletePageForWebsite: deletePageForWebsite
+        deletePageForWebsite: deletePageForWebsite,
+        findOrdersByCompany:findOrdersByCompany
     };
     return api;
 
@@ -25,6 +26,11 @@ module.exports = function (db_assignment) {
     function findWebsiteById(websiteId) {
 
         return Website.findById({_id: websiteId});
+    }
+
+    function findOrdersByCompany(companyName) {
+        return Website.find({name:companyName});
+
     }
 
     function updateWebsite(websiteId, website) {

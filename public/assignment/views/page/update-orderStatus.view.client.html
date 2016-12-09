@@ -1,0 +1,82 @@
+<form name="UpdateOrderStatusForm" novalidate>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="">
+                UPDATE ORDER STATUS
+            </a>
+            <p class="navbar-text pull-right">
+                <button ng-click="(submitted=true) && UpdateOrderStatusForm.$valid && model.UpdateOrderStatus(model.page)" class="validationButton navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </p>
+        </div>
+    </div>
+</nav>
+
+    <div class="container content">
+        <div class="form-group">
+            <label for="description">Order Description</label>
+            <input type="text"
+                   class="form-control"
+                   id="description"
+                   ng-model="model.page.description"
+                   placeholder="Order Description"
+                   required>
+            <div ng-show="UpdateOrderStatusForm.$submitted && UpdateOrderStatusForm.pagename.$invalid"
+                 class="elementErrorMsg">
+                <span>*required field</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="edit-page-SLNO">Order Status</label>
+            <input type="text"
+                   class="form-control"
+                   id="edit-page-SLNO"
+                   name="OrderStatus"
+                   placeholder="Order Status"
+                   ng-model="model.page.orderstatus"
+                   required
+                   disabled>
+            <div ng-show="UpdateOrderStatusForm.$submitted && UpdateOrderStatusForm.pagename.$invalid" class="elementErrorMsg">
+                <span>*required field</span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            Update Order Status:
+            <select id="usertype"  ng-model="model.page.orderstatus" ng-dropdown required>
+                <option ng-option value="Processing">Processing</option>
+                <option ng-option value="Order Completed">Order Completed</option>
+                <option ng-option value="Out for Delivery">Out for Delivery</option>
+                <option ng-option value="Delivered">Delivered</option>
+            </select>
+            <div ng-show="UpdateOrderStatusForm.$submitted && UpdateOrderStatusForm.pagename.$invalid" class="elementErrorMsg">
+                <span>*required field</span>
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row navbar-footer">
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+</form>

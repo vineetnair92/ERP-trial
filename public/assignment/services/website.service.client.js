@@ -10,6 +10,7 @@
             deleteWebsite: deleteWebsite,
             findWebsiteById: findWebsiteById,
             updateWebsite: updateWebsite,
+            findOrdersByCompany:findOrdersByCompany
         };
         return api;
 
@@ -45,5 +46,9 @@
             return $http.put(url, website);
         }
 
+        function findOrdersByCompany(company) {
+            var url= "/api/website/"+company;
+            return $http.get(url);
+        }
     }
 })();

@@ -4,19 +4,18 @@
         .controller("OrderController", OrderController)
 
 
-    function OrderController($routeParams, OrderService) {
+    function OrderController($routeParams, WebsiteService) {
         var vm = this;
         vm.userId = $routeParams["uid"];
-        vm.websiteId = $routeParams["wid"];
-        vm.pageId = $routeParams["pid"];
+        vm.company=$routeParams["cid"]
         vm.back = back;
         vm.profile = profile;
         vm.clear = clear;
 
         function init() {
 
-            OrderService
-                .findOrdersByPageId(vm.pageId)
+            WebsiteService
+                .findOrdersByCompany(vm.company)
                 .then(function (response) {
                     vm.orders = response.data;
                 }, function (error) {
