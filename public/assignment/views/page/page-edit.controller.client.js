@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("TexApp")
         .controller("EditPageController", EditPageController)
 //        .controller('DropDownController', ['$scope', function($scope) {
 //        $scope.data = {

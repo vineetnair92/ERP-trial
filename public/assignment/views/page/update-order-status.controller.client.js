@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module('WebAppMaker')
+        .module('TexApp')
         .controller("UpdateOrderStatusController", UpdateOrderStatusController)
 
 

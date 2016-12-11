@@ -1,5 +1,5 @@
 (function () {
-    angular.module("WebAppMaker")
+    angular.module("TexApp")
         .controller("LoginController", LoginController);
 
     function LoginController($location, UserService, $rootScope) {

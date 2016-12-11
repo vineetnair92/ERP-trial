@@ -14,15 +14,20 @@
     </div>
 </nav>
 
-<div class="container-fluid content">
-    <ul class="list-group">
-        <li ng-repeat="order in model.orders" class="list-group-item">
-            <a href="">
-                {{order.description}}
-            </a>
-        </li>
-    </ul>
-</div>
+<table ng-repeat="order in model.orders"  class="table">
+    <thead >
+    <tr>
+        <th class="col-md-6">Order Name</th>
+        <th class="col-md-6">Order Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{order.description}}</td>
+        <td>{{order.orderstatus}}</td>
+    </tr>
+    </tbody>
+</table>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

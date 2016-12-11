@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("TexApp")
         .config(Configure);
 
     function Configure($routeProvider) {
@@ -27,6 +27,14 @@
                     isLoggedIn: isLoggedIn
                 }
             })
+
+            .when("/customer/:uid/location", {
+                templateUrl: 'views/customer/location.view.client.html',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
+            })
+
             .when("/customer/:uid/:cid", {
                 templateUrl: 'views/customer/user.view.client.html',
                 controller: 'ProfileController',
@@ -43,12 +51,6 @@
                     isLoggedIn: isLoggedIn
                 }
             })
-            .when("/customer/:uid/:cid/chat", {
-                templateUrl: 'views/customer/chat.view.client.html',
-                resolve: {
-                    isLoggedIn: isLoggedIn
-                }
-            })
 
             .when("/customer/:uid/:cid/order", {
             templateUrl: 'views/customer/order-view.client.html',
@@ -57,13 +59,14 @@
             resolve: {
                 isLoggedIn: isLoggedIn
             }
-        })
+            })
 
             .when("/register", {
                 templateUrl: 'views/user/register.view.client.html',
                 controller: 'RegisterController',
                 controllerAs: 'model'
             })
+
             .when("/user/:uid/website", {
                 templateUrl: 'views/website/website-list.view.client.html',
                 controller: 'WebsiteListController',

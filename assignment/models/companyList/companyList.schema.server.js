@@ -3,7 +3,7 @@ module.exports = function () {
     var mongoose = require("mongoose");
     var Schema = mongoose.Schema;
     var companyListSchema = Schema({
-        _user: {type: Schema.Types.ObjectId, ref: 'User'},
+        _web: {type: Schema.Types.ObjectId, ref: 'Website'},
         company: String,
         dateCreated: {type: Date, default: Date.now},
     }, {collection: "companyList"});

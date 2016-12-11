@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("TexApp")
         .controller("NewWebsiteController", NewWebsiteController);
 
     var userWebsitesUpdateError = "Error updating website references in user";
@@ -17,22 +17,15 @@
                 .then(function (response) {
                     if (response.data) {
                         var _websiteId = response.data._id;
-                        updateWebsiteReferencesInUser(_websiteId);
+                        updateWebsiteReferencesInUser(_websiteId,website);
                     } else {
-                        cModel.error = "Unable to create website";
-                    }
-                });
-            CompanyListService
-                .createCompanyList(cModel.userId, website)
-                .then(function (response) {
-                    if (!response.data) {
                         cModel.error = "Unable to create website";
                     }
                 });
 
         }
 
-        function updateWebsiteReferencesInUser(websiteId) {
+        function updateWebsiteReferencesInUser(websiteId,website) {
             UserService
                 .findUserById(cModel.userId)
                 .then(function (response) {
@@ -61,6 +54,15 @@
                 .catch(function (error) {
                     cModel.error = userWebsitesUpdateError;
                 });
+
+            CompanyListService
+                .createCompanyList(websiteId, website)
+                .then(function (response) {
+                    if (!response.data) {
+                        cModel.error = "Unable to create website";
+                    }
+                });
+
         }
     }
 })();

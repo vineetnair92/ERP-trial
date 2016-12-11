@@ -8,7 +8,7 @@ module.exports = function (app, models) {
     app.get("/api/website/:websiteId", findWebsiteById);
     app.put("/api/website/:websiteId", updateWebsite);
     app.delete("/api/website/:websiteId", deleteWebsite);
-    app.get("/api/website/:cid", findOrdersByCompany);
+    app.get("/api/website", findOrdersByCompany);
 
     function createWebsite(req, res) {
         var newWebsite = req.body;
@@ -50,7 +50,8 @@ module.exports = function (app, models) {
 
 
     function findOrdersByCompany(req,res) {
-        var companyName = req.params.cid;
+        var companyName = req.query.company;
+        console.log("Company Name in service serer");
         websiteModel.findOrdersByCompany(companyName)
             .then(function (orders){
                 res.json(orders);

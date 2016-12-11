@@ -1,5 +1,5 @@
 (function () {
-    angular.module("WebAppMaker")
+    angular.module("TexApp")
         .controller("ProfileController", ProfileController);
 
     function ProfileController($routeParams, UserService, $location, $rootScope) {

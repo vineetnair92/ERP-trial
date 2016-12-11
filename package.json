@@ -4,6 +4,8 @@
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
   "dependencies": {
+    "angular-google-maps": "^2.4.0",
+    "angular-simple-logger": "^0.1.7",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "botbuilder": "^3.4.4",

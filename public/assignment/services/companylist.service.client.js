@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("TexApp")
         .factory("CompanyListService", CompanyListService);
 
     function CompanyListService($http) {
@@ -18,11 +18,11 @@
             return $http.get(url);
         }
 
-        function createCompanyList(userId, website) {
+        function createCompanyList(websiteId, website) {
             var newCompany = {
                 //_id: (new Date()).getTime() + "",
-                company: website.name,
-                _user: userId
+                _web:websiteId,
+                company: website.name
             };
             var url = "/api/companylist";
             return $http.post(url, newCompany);

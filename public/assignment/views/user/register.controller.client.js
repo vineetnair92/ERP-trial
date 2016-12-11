@@ -1,5 +1,5 @@
 (function () {
-    angular.module("WebAppMaker")
+    angular.module("TexApp")
         .controller("RegisterController", RegisterController);
 
     function RegisterController($location, UserService, CompanyListService) {

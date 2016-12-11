@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("TexApp")
         .factory("OrderService", OrderService);
 
     function OrderService($http) {

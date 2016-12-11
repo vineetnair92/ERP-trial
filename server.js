@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var passport = require('passport');
-var chat=require('./app.js')
+//var chat=require('./app.js');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -24,6 +25,7 @@ app.use(passport.session());
 //require ("./test/app.js")(app);
 
 require("./assignment/app.js")(app);
+
 
 app.set('ipaddress', (process.env.IP));
 app.set('port', (process.env.PORT || 3000));

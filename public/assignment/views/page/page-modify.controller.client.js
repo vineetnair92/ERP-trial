@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("TexApp")
         .controller("ModifyPageController", ModifyPageController);
 
     var pageOrdersUpdateError = "Error updating pages references in websites";

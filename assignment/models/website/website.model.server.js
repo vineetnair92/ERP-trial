@@ -30,7 +30,6 @@ module.exports = function (db_assignment) {
 
     function findOrdersByCompany(companyName) {
         return Website.find({name:companyName});
-
     }
 
     function updateWebsite(websiteId, website) {

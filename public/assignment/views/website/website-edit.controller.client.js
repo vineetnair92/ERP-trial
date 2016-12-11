@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("TexApp")
         .controller("EditWebsiteController", EditWebsiteController);
 
     function EditWebsiteController($location, $routeParams, WebsiteService) {
