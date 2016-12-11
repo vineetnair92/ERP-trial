@@ -3,8 +3,8 @@ module.exports = function () {
 
     var mongoose = require("mongoose");
 
-    var connectionString = 'mongodb://localhost/erp';
-   // var connectionString = 'mongodb://heroku_dkjw1m77:2ued38bogvfa0sl5873ahsmc5v@ds037165.mlab.com:37165/heroku_dkjw1m77';
+//    var connectionString = 'mongodb://localhost/erp';
+    var connectionString = 'mongodb://heroku_dkjw1m77:2ued38bogvfa0sl5873ahsmc5v@ds037165.mlab.com:37165/heroku_dkjw1m77';
 
 
     if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
