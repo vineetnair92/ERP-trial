@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding-top: 0px;
+    background-color: #222222;
+    background-size: 1440px 800px;
+    background-repeat:no-repeat;
+    font: 13px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.well {
+
+    background-color: #222222;
+    border: 1px solid #030303;
+
+}
+.page {
+
+    height:50%;
+}
+.btn{
+    box-shadow: 0 0 1px 1px black;
+    margin: 10px;
+}
+.bottomaligned {position:relative; top:12em;  margin-bottom:7px; left: 0;}
+label {
+    color:white;
+}
+.navbar {
+    margin-bottom:0;
+}
+
+.jumbotron {
+    margin-bottom:0;
+    margin-top:0px;
+    background-image: url('../../images/wall1.jpg');
+    color: white;
+    text-shadow: 2px 2px 5px  black;
+    height:60%;
+}
+.page-header{
+    color: mediumaquamarine;
+}
+.aboutus {
+    color: yellowgreen;
+}
