@@ -1,9 +1,15 @@
-"use strict";
+
 (function () {
     angular
         .module("TexApp")
         .controller("ProjectController", ProjectController);
 
-    function ProjectController(UserService) {
+    function ProjectController($routeParams,UserService) {
+        function init()
+        {
+            console.log("HI");
+        }
+    init();
     }
+
 })();

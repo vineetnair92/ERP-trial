@@ -6,10 +6,11 @@
     function Configure($routeProvider) {
 
         $routeProvider
+
             .when("/home", {
                 templateUrl: "views/homepage/project.view.client.html",
-                controller: "ProjectController",
-                controllerAs: "model",
+                controller: 'ProjectController',
+                controllerAs: 'model',
                 resolve: {
                     loggedIn : isLoggedIn
                 }
