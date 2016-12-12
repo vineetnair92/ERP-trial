@@ -10,15 +10,14 @@
             .when("/home", {
                 templateUrl: "views/homepage/project.view.client.html",
                 controller: 'ProjectController',
-                controllerAs: 'model',
-                resolve: {
-                    loggedIn : isLoggedIn
-                }
             })
             .when("/login", {
                 templateUrl: 'views/user/login.view.client.html',
                 controller: 'LoginController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    isLoggedIn: isLoggedIn
+                }
             })
             .when("/user/:uid", {
                 templateUrl: 'views/user/user.view.client.html',
