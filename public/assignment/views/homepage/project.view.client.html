@@ -1,5 +1,4 @@
-<div>
-<div class="navbar navbar-inverse navbar-static" id ="my-navbar">
+<div class="navbar navbar-inverse navbar-fixed-top" id ="my-navbar">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -12,8 +11,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href='#about'>About us</a>
-                <li><a href="#" data-toggle="modal"  data-target="#SigninModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#" data-toggle="modal"  data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </div>
@@ -25,89 +24,23 @@
         <H1>MithunRamTex</H1>
         <p>Great Design is the Foundation of Great Business</p>
         <div class="btn-group bottomaligned">
-            <p><a class='btn btn-info btn-lg ' href='#' role='button' data-toggle="modal" data-target="#loginModal">Login</a>
-                <a class='btn btn-warning btn-lg ' href='#' role='button' data-toggle="modal" data-target="#SigninModal">Signup</a></p>
+            <p><a class='btn btn-info btn-lg ' href='#/login' role='button'>Login</a>
+                <a class='btn btn-warning btn-lg ' href='#/register' role='button'>Signup</a></p>
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="SigninModal" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-                <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- modal -->
-<div class="modal fade" id="loginModal" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <!--<div ng-view></div>-->
-            <div class="modal-body">
-                <div class="loginmodal-container">
-                    <h1>Login to Your Account</h1><br>
-                    <form>
-                        <input type="text" name="user" placeholder="Username">
-                        <input type="password" name="pass" placeholder="Password">
-                        <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-                    </form>
-
-                    <div class="login-help">
-                        <a href="#">Register</a> - <a href="#">Forgot Password</a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- end of modal -->
-<!--
-<nav class="navbar navbar-inverse">
-<div class="container-fluid">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">WebSiteName</a>
-  </div>
-  <ul class="nav navbar-nav">
-          <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-  </ul>
-</div>
-</nav>-->
-<div class="container page"></div>
-
+    <div class="container page about-us"></div>
 <div class="container page">
     <section><div class="page-header" id="about" >
         <h2>About Us.</h2>
-        <h3>
             <small>A Garment Industry that stores order information and displays your order status</small>
-        </h3>
     </div>
+
+        <table border="0">
         <div class="row aboutus">
             <div class="col-lg-4"><blockquote><p>Login with your credentials and find out about the progress of your company orders</p></blockquote></div>
             <div class="col-lg-4"><blockquote><p>The orders both in order and out order are entered by our staff for your company</p></blockquote></div>
             <div class="col-lg-4"><blockquote><p>Also you could check the location of your warehouse via google maps that is embedded in our website</p></blockquote><footer>Vineet Nair</footer></blockquote></div></div>
-    </section>
-</div>
-
+        </table></section>
 </div>

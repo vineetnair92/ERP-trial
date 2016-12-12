@@ -11,13 +11,11 @@
                 templateUrl: "views/homepage/project.view.client.html",
                 controller: 'ProjectController',
             })
+
             .when("/login", {
                 templateUrl: 'views/user/login.view.client.html',
                 controller: 'LoginController',
-                controllerAs: 'model',
-                resolve: {
-                    isLoggedIn: isLoggedIn
-                }
+                controllerAs: 'model'
             })
             .when("/user/:uid", {
                 templateUrl: 'views/user/user.view.client.html',

@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    padding-top: 10px;
-    background-color: #222222;
+    padding-top: 0px;;
+    background-color: honeydew;
     background-size: 1440px 800px;
     background-repeat:no-repeat;
     font: 13px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -22,7 +22,7 @@ body {
 }
 .bottomaligned {position:relative; top:12em;  margin-bottom:7px; left: 0;}
 label {
-    color:white;
+    color:black;
 }
 .navbar {
     margin-bottom:0;
@@ -30,7 +30,7 @@ label {
 
 .jumbotron {
     margin-bottom:0;
-    margin-top:0px;
+    margin-top:30px;
     background-image: url('../../images/wall1.jpg');
     color: white;
     text-shadow: 2px 2px 5px  black;
@@ -41,4 +41,7 @@ label {
 }
 .aboutus {
     color: yellowgreen;
+}
+.about-us{
+    padding-top: 200px;
 }
